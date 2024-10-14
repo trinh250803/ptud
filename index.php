@@ -1,8 +1,5 @@
 <?php
   include './model/ketnoi.php';
-    
-
-
     session_start();
     error_reporting(1);
 ?>
@@ -34,7 +31,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -54,8 +51,11 @@
                         </div>
                     </div>
                     <a href="./view/contact.php" class="nav-item nav-link">Liên hệ</a>
-                    <a href="./view/dangky.php" class="nav-item nav-link">Đăng ký</a>
-
+                    <?php
+                    if(!isset($_SESSION['dn'])){
+                        echo '<a href="view/dangnhap.php" class="nav-item nav-link">Đăng nhập</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -71,7 +71,7 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h3 class="text-primary text-capitalize m-0">Gói tập chỉ chỉ 599K</h3>
                         <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Thanh Toán Chill - Hưởng thả ga</h2>
-                        <a href="" class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Mua gói trả tháng ngay</a>
+                        <a href="./view/dangnhap.php" class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Mua gói trả tháng ngay</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -846,3 +846,7 @@
 </body>
 
 </html>
+
+<?php
+
+?>

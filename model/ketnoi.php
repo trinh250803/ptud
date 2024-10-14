@@ -2,11 +2,12 @@
 class clsketnoi {
     public function MoKetNoi() {
         // Kết nối với cơ sở dữ liệu
-        $conn = mysqli_connect("localhost", "gym", "", "gym", "3306");
+        $conn = mysqli_connect("localhost", "root", "", "kiemtra");
+
         
         if($conn) {
             // Thiết lập bộ mã hóa ký tự
-            mysqli_query($conn, "SET NAMES 'utf8'");
+            mysqli_query($conn, "SET NAMES UTF-8");
         } else {
             // Hiển thị thông báo lỗi nếu kết nối thất bại
             die('Kết nối thất bại: ' . mysqli_connect_error());

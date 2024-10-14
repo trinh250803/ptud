@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -21,8 +23,6 @@
 </head>
 
 <body>
-
-
   <div class="d-lg-flex half">
     <div class="bg order-1 order-md-2" style="background-image: url('./login/images/login.jpeg'); background-style:cover; background-repeat: no-repeat;">
       <h1 class="header-img">TIÊU CHUẨN CỦA SỰ SANG TRỌNG</h1>
@@ -34,17 +34,20 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
             <h3 style=" margin-left: 112px; margin-bottom:30px;"><strong>Đăng nhập</strong></h3>
-            <form action="#" method="post">
+            <form action="login.php" method="post">
               <div class="form-group last mb-3">
                 <label for="text">Số điện thoại</label>
-                <input type="text" class="form-control" placeholder="Số điện thoại*" id="telephone">
+                <input type="text" class="form-control" name="phone" placeholder="Số điện thoại*" id="telephone">
+                <span></span>
+                <small></small>
               </div>
               <div class="form-group last mb-3">
                 <label for="pass">Mật khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập Password" id="password">
+                <input type="password" class="form-control" placeholder="Nhập Password" id="password" name="password">
+                <span></span>
+                <small></small>
               </div>
-              <input type="submit" value="Đăng nhập" class="btn btn-block mt-5" style="background-color: #da2127; color: #fff6f4; font-weight: 600; font-size:1.2rem; ">
-
+              <input type="submit" name="btn-dangnhap" value="Đăng nhập" id="Loginds" class="mt-3 mb-3">
             </form>
             <a class="already-signup" href="./dangky.php">Bạn chưa có tài khoản</a>
           </div>
@@ -56,13 +59,12 @@
   </div>
 
 
-
+  <script src="./login/js/style.js"></script>
   <script src="./login/js/jquery-3.3.1.min.js"></script>
   <script src="./login/js/popper.min.js"></script>
   <script src="./login/js/bootstrap.min.js"></script>
   <script src="./login/js/main.js"></script>
 </body>
-
 <style>
   /* h1 */
   h1.header-img {
@@ -107,7 +109,85 @@
   a.already-signup:hover {
     color: #da2127;
   }
+
+  .form-group.error {
+    border-color: #e74c3c;
+  }
+
+  .form-group.succes {
+    border-color: #2691d9;
+  }
+
+
+  .form-group input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  small {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 3px;
+    color: #e74c3c;
+  }
+
+  .form-group span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: 0.3s;
+  }
+
+  .form-group input:focus~span::before {
+    width: 100%;
+  }
+
+  form .form-group {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 40px 0;
+  }
+
+  #Loginds{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #da2127;
+    color: white;
+  }
+
+  #Loginds:hover{
+    background-color: #aa214b;
+    color: white;
+  }
 </style>
 
 
 </html>
+
+<?php
+
+
+session_start();
+
+if ((isset($_POST["btn-dangnhap"]))){ 
+    include_once("controller/cNguoiDung.php");
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+
+    $p = new cNguoiDung();
+    $p->get1NguoiDung($phone, $password);
+}
+
+
+?>

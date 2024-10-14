@@ -37,28 +37,47 @@
             <form action="#" method="post">
               <div class="form-group first">
                 <label for="username">Họ tên</label>
-                <input type="text" class="form-control" placeholder="Họ tên*" id="username">
+                <input type="text" class="form-control" placeholder="Họ tên*" id="username" name="username">
+                <span></span>
+                <small></small>
               </div>
+
               <div class="form-group first">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" placeholder="your-email@gmail.com*" id="username">
+                <input type="email" class="form-control" placeholder="your-email@gmail.com*" id="email" name="email">
+                <span></span>
+                <small></small>
               </div>
+              
               <div class="form-group last mb-3">
                 <label for="text">Số điện thoại</label>
-                <input type="text" class="form-control" placeholder="Số điện thoại*" id="telephone">
+                <input type="text" class="form-control" placeholder="Số điện thoại*" id="telephone" name="telephone">
+                <span></span>
+                <small></small>
+              </div>
+
+              <div class="form-group last mb-3">
+                <label for="text">Địa chỉ </label>
+                <input type="text" class="form-control" placeholder="Địa chỉ" id="address" name="address">
+                <span></span>
+                <small></small>
               </div>
               <!-- password -->
               <div class="form-group last mb-3">
                 <label for="pass">Mật khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập Password" id="password">
+                <input type="password" class="form-control" placeholder="Nhập Password" id="password" name="password">
+                <span></span>
+                <small></small>
               </div>
 
               <div class="form-group last mb-3">
                 <label for="pass"> Nhập lại mật khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập Password" id="password-reset">
+                <input type="password" class="form-control" placeholder="Nhập Password" id="password-reset" name="pass-reset">
+                <span></span>
+                <small></small>
               </div>
               
-              <input type="submit" value="Đăng ký" class="btn btn-block mt-5" style="background-color: #da2127; color: #fff6f4; font-weight: 600; font-size:1.2rem; ">
+              <input type="submit" value="Đăng ký" name="btn-dangky" class="btn btn-block mt-5" style="background-color: #da2127; color: #fff6f4; font-weight: 600; font-size:1.2rem; ">
 
 
             </form>
@@ -72,7 +91,7 @@
   </div>
 
 
-
+  <script src="./login/js/regester.js"></script>
   <script src="./login/js/jquery-3.3.1.min.js"></script>
   <script src="./login/js/popper.min.js"></script>
   <script src="./login/js/bootstrap.min.js"></script>
@@ -121,6 +140,53 @@ a.already-signup {
 a.already-signup:hover{
     color: #da2127;
 }
+
+.form-group.error {
+    border-color: #e74c3c;
+  }
+
+  .form-group.succes {
+    border-color: #2691d9;
+  }
+
+
+  .form-group input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  small {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 3px;
+    color: #e74c3c;
+  }
+
+  .form-group span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: 0.3s;
+  }
+
+  .form-group input:focus~span::before {
+    width: 100%;
+  }
+
+  form .form-group {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 26px 0;
+  }
 
 </style>
 
