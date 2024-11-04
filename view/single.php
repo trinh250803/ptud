@@ -33,18 +33,23 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="feature.php" class="nav-item nav-link">Our Features</a>
-                    <a href="class.php" class="nav-item nav-link">Classes</a>
+                    <a href="../index.php" class="nav-item nav-link">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Dịch vụ</a>
                         <div class="dropdown-menu text-capitalize">
                             <a href="blog.php" class="dropdown-item">Blog Grid</a>
                             <a href="single.php" class="dropdown-item">Blog Detail</a>
                         </div>
                     </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <?php
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="view/dangky.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -55,11 +60,11 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Detail Page</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Bài viết</h4>
             <div class="d-inline-flex">
-                <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
+                <p class="m-0 text-white"><a class="text-white" href="../index.php">Trang chủ</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Detail</p>
+                <p class="m-0 text-white">Bài viết</p>
             </div>
         </div>
     </div>
@@ -70,15 +75,15 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-12">
-                <img class="img-fluid mb-4" src="../assets/img/carousel-1.jpg" alt="Image">
+                <img class="img-fluid mb-4" src="../assets/img/truoc-khi-tap-gym-nen-an-gi-3.jpg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
                     <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 100px; height: 100px;">
-                        <span>01</span>
-                        <strong class="text-uppercase m-0 text-white">Jan</strong>
-                        <span>2045</span>
+                        <span>20</span>
+                        <strong class="text-uppercase m-0 text-white">Oct</strong>
+                        <span>2024</span>
                     </div>
                     <div class="pl-3">
-                        <h1 class="font-weight-bold mb-3">Lorem ipsum dolor sit amet</h1>
+                        <h1 class="font-weight-bold mb-3">Lần đầu đi tập gym nên lưu ý điều gì?</h1>
                         <div class="d-flex">
                             <span class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</span>
                             <span class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</span>
@@ -86,14 +91,30 @@
                         </div>
                     </div>
                 </div>
-                <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren sit stet no diam kasd vero, eos tempor gubergren clita est consetetur dolores et dolor. Sadipscing lorem kasd labore ea sanctus sanctus, dolores invidunt et consetetur et duo. Tempor dolores accusam sit vero sit, sed labore duo vero et at, et amet et justo gubergren. Labore aliquyam voluptua dolor nonumy lorem. Sanctus sed sadipscing rebum ipsum dolor et ea no. Ipsum elitr sea erat.</p>
-                <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et, clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat justo dolore sit invidunt, sed duo dolor et amet no et. Ut takimata tempor kasd amet kasd ut. No et ipsum amet tempor et. Sed nonumy sed vero ut, sed aliquyam accusam clita dolores tempor est. Ea et takimata consetetur et amet sanctus. Duo no diam ipsum diam dolores, eirmod diam dolores clita sed erat magna. Dolore ut amet ea magna. Sea et dolore sit labore at amet eos. Dolor voluptua sit rebum sit ut nonumy. Dolor amet amet sit sadipscing, lorem.</p>
-                <h2 class="mb-4 font-weight-bold">Est dolor lorem et ea</h2>
+                <p>Trước khi tập gym nên ăn gì?
+
+                    Hãy chắc chắn rằng bạn cung cấp năng lượng cho cơ thể để bạn có đủ năng lượng để tập luyện. Tránh ăn bất cứ thứ gì nặng bụng sẽ khiến bạn cảm thấy uể oải và hãy đảm bảo rằng bạn có đủ thời gian để cơ thể tiêu hóa chúng.
+
+                    Đồ ăn nhẹ như chuối, táo và bơ đậu phộng, phô mai, sinh tố trái cây hoặc bánh sandwich giàu protein sẽ cung cấp cho bạn nguồn năng lượng cần thiết trước khi tập luyện.</p>
+
+                <h2 class="mb-4 font-weight-bold">Khi đi tập nên chuẩn bị gì?</h2>
                 <img class="w-50 float-left mr-4 mb-3" src="../assets/img/blog-1.jpg" alt="Image">
-                <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et. Justo erat magna ipsum magna sea. Magna amet est sit sed sadipscing. At takimata dolores ut dolore takimata stet nonumy ipsum, gubergren vero ea consetetur aliquyam kasd est magna justo, dolore justo at dolore et aliquyam nonumy lorem gubergren. Amet duo invidunt kasd labore aliquyam. Vero dolores lorem elitr justo ut, accusam erat sed dolor at accusam takimata ipsum sea diam. Ipsum voluptua lorem sed amet, amet sea sit et at nonumy labore takimata, justo ipsum voluptua stet takimata. Ea lorem elitr aliquyam gubergren sit magna sanctus, sed sed dolore ipsum justo dolor et amet invidunt erat. Sadipscing sanctus stet.</p>
-                <h3 class="mb-4 font-weight-bold">Est dolor lorem et ea</h3>
+                <p>Khi đi tập bạn nên mang theo chai nước, ổ khoá, điện thoại di động để check-in vào phòng tập, khăn, dây kháng lực và các dụng cụ hỗ trợ tập luyện cá nhân khác.</p>
+                <h3 class="mb-4 font-weight-bold">Khi đi tập nên mặc gì?</h3>
                 <img class="w-50 float-right ml-4 mb-3" src="../assets/img/blog-2.jpg" alt="Image">
-                <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et. Justo erat magna ipsum magna sea. Magna amet est sit sed sadipscing. At takimata dolores ut dolore takimata stet nonumy ipsum, gubergren vero ea consetetur aliquyam kasd est magna justo, dolore justo at dolore et aliquyam nonumy lorem gubergren. Amet duo invidunt kasd labore aliquyam. Vero dolores lorem elitr justo ut, accusam erat sed dolor at accusam takimata ipsum sea diam. Ipsum voluptua lorem sed amet, amet sea sit et at nonumy labore takimata, justo ipsum voluptua stet takimata. Ea lorem elitr aliquyam gubergren sit magna sanctus, sed sed dolore ipsum justo dolor et amet invidunt erat. Sadipscing sanctus stet.</p>
+                <p>
+                    Tiêu chí quan trọng nhất khi chọn trang phục tập gym chính là sự thoải mái để bạn có thể dễ thực hiện các động tác tập. Dưới đây là một số trang phục phổ biến thường được sử dụng trong tập luyện như sau:
+                    Áo thể thao là trang phục không thể thiếu của câu hỏi đi tập gym mặc gì. Với chất liệu vải thoáng mát, thấm hút mồ hôi và rộng rãi đây là trang phục tập mà bạn nên ưu tiên chọn lựa. Phổ biến hiện nay là các mẫu áo tank cực thoải mái cho cả nam và nữ. Bên cạnh đó, các loại áo croptop thể thao nữ hay áo ngực thể thao với dây lưng bản to cũng được nhiều bạn trẻ lựa chọn.
+                    Quần bó cơ với chất liệu thấm hút mồ hôi và độ co giãn tốt sẽ giúp cho việc tập luyện được thoải mái nhất. Với đặc điểm ôm sát cơ thể và phần eo cao giúp tạo ra lực nén giúp rút ngắn thời gian phục hồi cơ, giảm tình trạng bị chuột rút và giúp định hình vóc dáng. Vì những ưu điểm đó bạn không nên thiếu loại quần này trong bộ sưu tập đi tập gym mặc gì nhé.
+                    Quần short sẽ thích hợp cho việc luyện tập trong mùa hè với các bài tập chạy, cardio. Đây là mẫu quần giúp việc luyện tập thoải mái, ko bị vướng víu khi thực hiện các động tác.
+                    Quần jogger thun là loại quần tập luyện thể thao phổ biến mà cả nam và nữ đều cần phải có. Với kiểu dáng thể thao form rộng, chất liệu co giãn và phần ống quần túm lại sẽ giúp thực hiện các hoạt động được dễ dàng.
+                    Giày thể thao là món đồ không thể thiếu cho việc tập gym. Một đôi giày thể thao vừa vặn sẽ hỗ trợ việc luyện tập được hiệu quả hơn rất nhiều. Đây cũng là một items cần thiết trong danh sách đi tập gym mặc gì mà bắt buộc mỗi người tập đều phải có. Một đôi giày tập không chỉ bảo vệ đôi bàn chân mà còn thể hiện tính cách, gu ăn mặc sành điệu của bạn nữa đấy.
+                    Cách chọn quần áo gym phù hợp
+                    Kích cỡ
+                    Việc chọn kích cỡ quần áo khi tập gym là một lựa chọn đáng lưu ý mà mọi người cần quan tâm. Quần áo tập gym sẽ khác với những bộ quần áo bạn thường mặc ở nhà mặc dù chúng có độ rộng rãi, thoải mái như nhau. Một số lưu ý để chọn size đồ tập như sau:
+                    Chọn size vừa với số đo cơ thể, không quá rộng. Size đồ quá cỡ sẽ gây ra sự vướng víu, luộm thuộm khi tập.
+                    Tránh chọn size quá nhỏ, quá ôm sát. Điều này sẽ làm cho việc thấm hút mồ hôi bị hạn chế, đồng thời gây mất tự tin và mất thẩm mỹ.
+                </p>
             </div>
             <div class="col-12 pt-4">
                 <div class="media bg-secondary text-white mb-4 p-5">

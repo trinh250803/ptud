@@ -1,7 +1,7 @@
 <?php
-  include './model/ketnoi.php';
-    session_start();
-    error_reporting(1);
+include './model/ketnoi.php';
+session_start();
+error_reporting(1);
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +15,18 @@
     <meta content="Free Website Template" name="description">
 
     <!-- Favicon -->
-    <link href="./assets/img/favicon.ico" rel="icon">
+    <link href="./assets/img/logo.png" rel="icon">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/fontawesome-free-6.6.0-web/css/all.min.css">
 
     <!-- Flaticon Font -->
     <link href="./assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="./assets/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body class="bg-white">
@@ -43,17 +45,11 @@
                     <a href="./view/about.php" class="nav-item nav-link">Về chúng tôi</a>
                     <a href="./view/feature.php" class="nav-item nav-link">Tin tức</a>
                     <a href="./view/class.php" class="nav-item nav-link">Lớp học</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dịch vụ</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="./view/blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="./view/single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
+  
                     <a href="./view/contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
-                    if(!isset($_SESSION['dn'])){
-                        echo '<a href="view/dangnhap.php" class="nav-item nav-link">Đăng nhập</a>';
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="view/dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
                     }
                     ?>
                 </div>
@@ -69,7 +65,7 @@
                 <div class="carousel-item active">
                     <img class="w-100" src="./assets/img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h3 class="text-primary text-capitalize m-0">Gói tập chỉ chỉ 599K</h3>
+                        <h3 class="text-primary text-capitalize m-0">Gói tập chỉ từ 299K</h3>
                         <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Thanh Toán Chill - Hưởng thả ga</h2>
                         <a href="./view/dangnhap.php" class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Mua gói trả tháng ngay</a>
                     </div>
@@ -95,29 +91,65 @@
 
 
     <!-- Gym Class Start -->
-    <div class="container gym-class mb-5">
-        <div class="row px-3">
-            <div class="col-md-6 p-0">
-                <div class="gym-class-box d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white py-5 px-5">
-                    <i class="flaticon-six-pack"></i>
-                    <h3 class="display-4 mb-3 text-white font-weight-bold">Body Building</h3>
-                    <p>
-                        Lorem justo tempor sit aliquyam invidunt, amet vero ea dolor ipsum ut diam sit dolores, dolor
-                        sit eos sea sanctus erat lorem nonumy sanctus takimata. Kasd amet sit sadipscing at..
+    <div class="container gym-class mt-5">
+
+        <h4 class="display-4 font-weight-bold d-flex justify-content-center">HỘI VIÊN</h4>
+        <p class="comment-service text-center mt-3" id="">
+            Gymnast cung cấp gói Hội viên Black Card và Classic. Cả hai đều cho bạn tham gia tập luyện không giới hạn trong không gian Không phán xét, nơi mọi người cảm thấy được chào đón khi bước vào.
+        </p>
+
+        <div class="row px-3 mt-5">
+            <!-- card 1 -->
+            <div class="col-md-6 p-0 ">
+                <div class="gym-class-box d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white  px-4">
+                    <div class="card-item mb-5 mt-lg-n5">
+                        <h3 class="display-4 mb-3 text-white font-weight-bold">BLACK CARD</h3>
+                        <label class="btn btn-lg px-4 btn-success rounded card-item__link ">Giá tốt nhất</label>
+                    </div>
+                    <div class="card-price">
+                        <span class="price">
+                            2.399.000
+                            <sup>Đ</sup>
+                        </span>
+                        <small>/ 6 tháng</small>
+                    </div>
+                    <div class="card-notice body-2 inline-flex items-center gap-8 mt-2">
+                        <em class="fa-solid fa-thumbs-up p-1"></em>
+                        Tất Cả Quyền Lợi Trong Một
+                    </div>
+
+                    <p class="comment-service text-center">
+                        Tập luyện tại toàn hệ thống Gymnast, chuyển nhượng gói tập, nhiều dịch vụ hấp dẫn
+                        và nhiều hơn nữa!
                     </p>
-                    <a href="" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
+                    <a class="btn btn-outline-primary mt-5 px-4 accept-item" href="#">Tham gia<i class="fa fa-angle-right"></i></a>
                 </div>
+
             </div>
-            <div class="col-md-6 p-0">
-                <div class="gym-class-box d-flex flex-column align-items-start justify-content-center bg-secondary text-left text-white py-5 px-5">
-                    <i class="flaticon-bodybuilding"></i>
-                    <h3 class="display-4 mb-3 text-white font-weight-bold">Muscle Building</h3>
-                    <p>
-                        Lorem justo tempor sit aliquyam invidunt, amet vero ea dolor ipsum ut diam sit dolores, dolor
-                        sit eos sea sanctus erat lorem nonumy sanctus takimata. Kasd amet sit sadipscing at..
+            <!-- card 2 -->
+            <div class="col-md-6 p-0 ">
+                <div class="gym-class-box basic d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white  px-4">
+                    <div class="card-item mb-5 mt-lg-n5 ml-0">
+                        <h3 class="display-4 mb-3 text-white font-weight-bold text-left ml-3 w-100 ">BASIC</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price">
+                            299.000
+                            <sup>Đ</sup>
+                        </span>
+                        <small>/ 1 tháng</small>
+                    </div>
+                    <div class="card-notice body-2 inline-flex items-center gap-8 mt-2">
+                        <em class="fa-solid fa-thumbs-up p-1"></em>
+                        Tham gia Gym cho mọi người
+                    </div>
+
+                    <p class="comment-service text-center">
+                        Gói hội viên cơ bản của Gymnast, bạn được tập luyện không giới hạn tại câu lạc bộ đăng ký.
                     </p>
-                    <a href="" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
+                    <a class="btn btn-outline-primary mt-5 px-4 accept-item" href="#">Tham gia<i class="fa fa-angle-right"></i></a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -125,27 +157,20 @@
 
 
     <!-- About Start -->
-    <div class="container py-5">
-        <div class="row align-items-center">
+    <div class="container py-5 about-start">
+        <div class="row align-items-between">
             <div class="col-lg-6">
                 <img class="img-fluid mb-4 mb-lg-0" src="./assets/img/about.jpg" alt="Image">
             </div>
-            <div class="col-lg-6">
-                <h2 class="display-4 font-weight-bold mb-4">10 Years Experience</h2>
-                <p>Labore vero lorem eos sed aliquy ipsum aliquy sed. Vero dolore dolore takima ipsum lorem rebum</p>
-                <div class="row py-2">
-                    <div class="col-sm-6">
-                        <i class="flaticon-barbell display-2 text-primary"></i>
-                        <h4 class="font-weight-bold">Certified GYM Center</h4>
-                        <p>Ipsum sanctu dolor ipsum dolore sit et kasd duo</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="flaticon-medal display-2 text-primary"></i>
-                        <h4 class="font-weight-bold">Award Winning</h4>
-                        <p>Ipsum sanctu dolor ipsum dolore sit et kasd duo</p>
-                    </div>
-                </div>
-                <a href="" class="btn btn-lg px-4 btn-outline-primary">Learn More</a>
+            <div class="col-lg-6" style="margin-top: 140px;">
+                <h2 class="display-3 font-weight-bold mb-4 text-light ">Chào mừng bạn đến với Gymnast</h2>
+                <p class="about-start__item text-light">
+                    Chúng tôi tạo ra một môi trường nơi mà mọi người đều có thể cảm thấy thoải mái tập luyện một mình hoặc cùng bạn bè của mình, bất kể trình độ thể chất và hiểu biết về gym như thế nào mà không bao giờ lo lắng về việc bị đánh giá.</p>
+
+                <a href="" class="btn btn-lg px-4 btn-outline-primary about-start__more" style="background-color: #9b1b1b;border-bottom: 1px solid;outline:none">
+                    <i class="fa-solid fa-arrow-right" style="color: #fff;"></i>
+                    Tìm hiểu thêm
+                </a>
             </div>
         </div>
     </div>
@@ -154,36 +179,53 @@
 
     <!-- Features Start -->
     <div class="container-fluid my-5">
+        <h4 class="display-4 font-weight-bold d-flex justify-content-center">CÁC DỊCH VỤ CỦA CHÚNG TÔI</h4>
         <div class="row">
+            <!--  dv 1 -->
             <div class="col-lg-4 p-0">
-                <div class="d-flex align-items-center bg-secondary text-white px-5" style="min-height: 300px;">
-                    <i class="flaticon-training display-3 text-primary mr-3"></i>
-                    <div class="">
-                        <h2 class="text-white mb-3">Progression</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci velit id libero
-                        </p>
+                <a href="" class="text-decoration-none  service-link">
+                    <div class="d-flex align-items-center bg-secondary text-white px-5 service " style="min-height: 300px;">
+                        <div class="img-service">
+                            <img class="img-service__item" src="./assets/img/cardio.jpeg" alt="img-service"></img>
+                        </div>
+                        <div class="note-service">
+                            <h2 class="text-white mb-3">CARDIO</h2>
+                            <p class="comment-service__item">
+                                Nơi hoàn hảo để bạn cải thiện thể chất và đốt cháy Kcalo, mỡ thừa.
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
+            </div>
+            <!-- dv2 -->
+            <div class="col-lg-4 p-0">
+                <a href="" class="text-decoration-none service-link">
+                    <div class="d-flex align-items-center bg-secondary text-white px-5 service" style="min-height: 300px;">
+                        <div class="img-service">
+                            <img class="img-service__item" src="./assets/img/dancee.jpeg" alt="img-service">
+                        </div>
+                        <div class="note-service">
+                            <h2 class="text-white mb-3">DANCE</h2>
+                            <p class="comment-service__item">
+                                Sự kết hợp các điệu nhảy tự do với âm nhạc sôi động, giúp đốt cháy mỡ thừa,thư giãn cùng âm nhạc.
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="col-lg-4 p-0">
-                <div class="d-flex align-items-center bg-primary text-white px-5" style="min-height: 300px;">
-                    <i class="flaticon-weightlifting display-3 text-secondary mr-3"></i>
-                    <div class="">
-                        <h2 class="text-white mb-3">Workout</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci velit id libero
-                        </p>
+                <a href="" class="text-decoration-none service-link">
+                    <div class="d-flex align-items-center bg-secondary text-white px-5 service" style="min-height: 300px;">
+                        <div class="img-service">
+                            <img class="img-service__item" src="./assets/img/yoga.jpeg" alt="img-service">
+                        </div>
+                        <div class="note-service">
+                            <h2 class="text-white mb-3">YOGA</h2>
+                            <p class="comment-service__item">Chương trình luyện tập yoga được thiết kế khoa học và phù hợp từ chuyên gia.
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 p-0">
-                <div class="d-flex align-items-center bg-secondary text-white px-5" style="min-height: 300px;">
-                    <i class="flaticon-treadmill display-3 text-primary mr-3"></i>
-                    <div class="">
-                        <h2 class="text-white mb-3">Nutrition</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci velit id libero
-                        </p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -193,8 +235,8 @@
     <!-- GYM Feature Start -->
     <div class="container feature pt-5">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">Why Choose Us?</h4>
-            <h4 class="display-4 font-weight-bold">Benifits of Joining Our GYM</h4>
+            <h4 class="text-primary font-weight-bold">Tại sao nên chọn chúng tôi ?</h4>
+            <h4 class="display-4 font-weight-bold">Lợi ích khi tham gia GYM của chúng tôi</h4>
         </div>
         <div class="row">
             <div class="col-md-6 mb-5">
@@ -204,8 +246,8 @@
                         <i class="flaticon-barbell"></i>
                     </div>
                     <div class="col-sm-7">
-                        <h4 class="font-weight-bold">Videos Instruction</h4>
-                        <p>Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima  erat tempor</p>
+                        <h4 class="font-weight-bold">Chương trình tập luyện được cá nhân hóa</h4>
+                        <p>Chúng tôi cung cấp các chương trình tập luyện được tùy chỉnh riêng theo mục tiêu của mỗi người, dù đó là giảm cân, tăng cơ, cải thiện sức bền hay chuẩn bị cho các sự kiện đặc biệt</p>
                     </div>
                 </div>
             </div>
@@ -216,8 +258,9 @@
                         <i class="flaticon-training"></i>
                     </div>
                     <div class="col-sm-7">
-                        <h4 class="font-weight-bold">Training Calendar</h4>
-                        <p>Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima  erat tempor</p>
+                        <h4 class="font-weight-bold"> Dịch vụ chăm sóc khách hàng tận tâm và chu đáo</h4>
+                        <p>Đội ngũ nhân viên tận tình và luôn sẵn sàng hỗ trợ, tư vấn các thông tin cần thiết từ việc đăng ký gói tập, các chương trình khuyến mãi đến những thắc mắc trong quá trình tập luyện.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -228,8 +271,8 @@
                         <i class="flaticon-trends"></i>
                     </div>
                     <div class="col-sm-7">
-                        <h4 class="font-weight-bold">Free Apps & WiFi</h4>
-                        <p>Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima  erat tempor</p>
+                        <h4 class="font-weight-bold">Đa dạng gói tập luyện linh hoạt</h4>
+                        <p>Phòng gym cung cấp nhiều gói tập khác nhau, từ ngắn hạn đến dài hạn, phù hợp với mọi nhu cầu và ngân sách. Khách hàng có thể chọn gói tập hàng ngày, hàng tháng hoặc gói tập không giới hạn</p>
                     </div>
                 </div>
             </div>
@@ -240,8 +283,8 @@
                         <i class="flaticon-support"></i>
                     </div>
                     <div class="col-sm-7">
-                        <h4 class="font-weight-bold">Community Support</h4>
-                        <p>Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima  erat tempor</p>
+                        <h4 class="font-weight-bold"> Thiết bị hiện đại, đa dạng</h4>
+                        <p>Phòng gym của chúng tôi trang bị những máy móc và dụng cụ tập luyện tối tân, từ cardio đến tập tạ và các thiết bị chuyên biệt giúp khách hàng có trải nghiệm tập luyện toàn diện.</p>
                     </div>
                 </div>
             </div>
@@ -252,14 +295,20 @@
 
     <!-- Subscribe Start -->
     <div class="subscribe container-fluid my-5 py-5 text-center">
-        <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Subscribe Our Newsletter</h4>
-        <p class="text-white mb-4">Subscribe and get Our latest article in your inbox</p>
-        <form class="form-inline justify-content-center mb-5">
+        <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Đăng ký tư vấn</h4>
+        <p class="text-white mb-4">Để được hỗ trợ nhanh nhất,
+            Bạn hãy để lại số điện thoại tại đây nhé.</p>
+        <form class="form-inline justify-content-center mb-5" method="post" action="">
+            <!-- name -->
             <div class="input-group">
-                <input type="text" class="form-control-lg" placeholder="Your Email">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                </div>
+                <input type="text" name="fullname-sp" class="form-control-lg" placeholder="Họ và tên">
+            </div>
+            <!-- sdt -->
+            <div class="input-group">
+                <input type="text" name="telephone-sp" class="form-control-lg" placeholder="Số điện thoại">
+            </div>
+            <div class="input-group-append">
+                <input type="submit" class="btn btn-primary" value="Đăng ký"></input>
             </div>
         </form>
     </div>
@@ -269,8 +318,8 @@
     <!-- Class Timetable Start -->
     <div class="container gym-feature py-5">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">Class Timetable</h4>
-            <h4 class="display-4 font-weight-bold">Working Hours and Class Time</h4>
+            <h4 class="text-primary font-weight-bold">Lịch các lớp học</h4>
+            <h4 class="display-4 font-weight-bold">Giờ làm việc và giờ học</h4>
         </div>
         <div class="tab-class">
             <ul class="nav nav-pills justify-content-center mb-4">
@@ -281,10 +330,10 @@
                     <a class="nav-link" data-toggle="pill" href="#class-cardio">Cardio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#class-crossfit">Crossfit</a>
+                    <a class="nav-link" data-toggle="pill" href="#class-crossfit">Dance</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#class-powerlifting">Powerlifting</a>
+                    <a class="nav-link" data-toggle="pill" href="#class-powerlifting">Yoga</a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -306,42 +355,70 @@
                             <tbody class="text-center">
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">6.00am - 8.00am</th>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10.00am - 12.00am</th>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5.00pm - 7.00pm</th>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7.00pm - 9.00pm</th>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -366,42 +443,70 @@
                             <tbody class="text-center">
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">6.00am - 8.00am</th>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Cardio</h5>Antony
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10.00am - 12.00am</th>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
-                                    <td></td> 
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5.00pm - 7.00pm</th>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7.00pm - 9.00pm</th>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -426,42 +531,70 @@
                             <tbody class="text-center">
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">6.00am - 8.00am</th>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10.00am - 12.00am</th>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
-                                    <td></td> 
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Dance</h5>Ng.Minh Quân
+                                    </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5.00pm - 7.00pm</th>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Dance</h5>Ng.Minh Quân
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7.00pm - 9.00pm</th>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td><h5>Power Lifting</h5>James Alien</td>
+                                    <td>
+                                        <h5>Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -486,42 +619,70 @@
                             <tbody class="text-center">
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">6.00am - 8.00am</th>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Power Lifting</h5>James Alien</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10.00am - 12.00am</th>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Power Lifting</h5>James Alien</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
-                                    <td></td> 
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5.00pm - 7.00pm</th>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Power Lifting</h5>James Alien</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7.00pm - 9.00pm</th>
                                     <td></td>
-                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td>
+                                        <h5>Cardio</h5>Antony
+                                    </td>
                                     <td></td>
-                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td>
+                                        <h5>Dance</h5>Ng.Minh Quân
+                                    </td>
                                     <td></td>
-                                    <td class="bg-primary text-white"><h5 class="text-white">Power Lifting</h5>James Alien</td>
+                                    <td class="bg-primary text-white">
+                                        <h5 class="text-white">Yoga</h5>Maguire
+                                    </td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -540,39 +701,40 @@
             <div class="row px-3 align-items-center">
                 <div class="col-md-6">
                     <div class="pr-md-3 d-none d-md-block">
-                        <h4 class="text-primary">Body Mass Index </h4>
-                        <h4 class="display-4 text-white font-weight-bold mb-4">Whate is BMI?</h4>
-                        <p class="m-0 text-white">Vero elitr lorem magna justo magna justo at justo est ipsum sed clita lorem dolor ipsum sed. Lorem sea lorem vero. Sanct dolor clita clita rebum kasd magna erat diam</p>
+                        <h4 class="text-primary">Chỉ số khối cơ thể</h4>
+                        <h4 class="display-4 text-white font-weight-bold mb-4">BMI là gì ??</h4>
+                        <p class="m-0 text-white">Đo chỉ số BMI tại CITIGYM để đánh giá mức độ béo, gầy hay cân nặng lý tưởng của bạn
+                            CITIGYM hỗ trợ hội viên đo chỉ số BMI trước và trong quá trình tập luyện để hội viên có thể theo dõi được kết quả tập luyện. BMI là chỉ số khối cơ thể (Body Mass Index), được các bác sĩ và chuyên gia sức khỏe dùng để xác định một người có bị béo phì, thừa cân hay quá gầy. Hãy để lại thông tin để Gymnast có thể giúp bạn phân tích sức khỏe và đưa ra những tư vấn phù hợp với thể trạng của bạn.</p>
                     </div>
                 </div>
                 <div class="col-md-6 bg-secondary py-5">
                     <div class="py-5 px-3">
-                        <h1 class="mb-4 text-white">Calculate your BMI</h1>
+                        <h1 class="mb-4 text-white">Tính chỉ số BMI của bạn</h1>
                         <form>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Weight (KG)">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Cân nặng (KG)">
                                 </div>
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Height (CM)">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Chiều cao (CM)">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Age">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Tuổi">
                                 </div>
                                 <div class="col form-group">
                                     <select class="custom-select custom-select-lg bg-dark text-muted">
-                                        <option>Gender</option>
-                                        <option>Mal</option>
-                                        <option>Female</option>
+                                        <option>Giới tính</option>
+                                        <option>Nam</option>
+                                        <option>Nữ</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
                                     <input type="button" class="btn btn-lg btn-block btn-dark border-light"
-                                        value="Calculate Now">
+                                        value="Nhận kết quả">
                                 </div>
                             </div>
                         </form>
@@ -587,8 +749,8 @@
     <!-- Team Start -->
     <div class="container pt-5 team">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">Our Trainers</h4>
-            <h4 class="display-4 font-weight-bold">Meet Our Expert Trainers</h4>
+            <h4 class="text-primary font-weight-bold">Huấn Luyện Viên</h4>
+            <h4 class="display-4 font-weight-bold">Huấn Luyện Viên Chuẩn Quốc Tế</h4>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -601,8 +763,10 @@
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Trainer Name</h4>
-                        <p class="card-text">Trainer</p>
+                        <h4 class="card-title text-primary">NGUYỄN MINH QUÂN</h4>
+                        <p class="card-text">Chứng chỉ NASM Hoa Kỳ</p>
+                        <p class="card-text bg-danger" style="width: 254px;margin-left: -19px;">5 năm kinh nghiệm</p>
+                        <p class="card-text"> Chuyên môn:Yoga, Fitness, Karate, Boxing, Yudo,Hip hop</p>
                     </div>
                 </div>
             </div>
@@ -616,8 +780,13 @@
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Trainer Name</h4>
-                        <p class="card-text">Trainer</p>
+                        <h4 class="card-title text-primary">AN NGUYỄN</h4>
+                        <p class="card-text">Chứng chỉ HLV xuất sắc</p>
+                        <p class="card-text bg-danger" style="width: 254px;margin-left: -19px;">7 năm kinh nghiệm</p>
+                        <p class="card-text"> Chuyên môn: Bungee Workout, Dance, Boxing, Karate</p>
+
+
+
                     </div>
                 </div>
             </div>
@@ -631,8 +800,11 @@
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Trainer Name</h4>
-                        <p class="card-text">Trainer</p>
+                        <h4 class="card-title text-primary">ANTONY</h4>
+                        <p class="card-text"> Chứng chỉ HLV xuất sắc</p>
+                        <p class="card-text bg-danger" style="width: 254px;margin-left: -19px;">5 năm kinh nghiệm</p>
+                        <p class="card-text"> Chuyên môn:Bungee Workout, Cardio, Zumba, Dance FreeStyle.</p>
+
                     </div>
                 </div>
             </div>
@@ -646,8 +818,11 @@
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Trainer Name</h4>
-                        <p class="card-text">Trainer</p>
+                        <h4 class="card-title text-primary">MAGUIRE</h4>
+                        <p class="card-text"> chứng chỉ HLV xuất sắc</p>
+                        <p class="card-text bg-danger" style="width: 254px;margin-left: -19px;">8 năm kinh nghiệm</p>
+                        <p class="card-text"> Chuyên môn: Dance Fitness, Yoga, Cardio, Dance FreeStyle.</p>
+
                     </div>
                 </div>
             </div>
@@ -673,36 +848,36 @@
                                     <div class="d-flex align-items-center mb-4 text-white">
                                         <img width="80" height="80" class="rounded-circle bg-dark p-2" src="./assets/img/testimonial-1.jpg" alt="Image">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Client Name</h4>
-                                            <p class="m-0">Profession</p>
+                                            <h4 class="text-primary">Duy Bảo</h4>
+                                            <p class="m-0">Nhân viên văn phòng</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Sed ea amet kasd elitr stet nonumy, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolores tempor voluptua ipsum sanctus clita
+                                        Tôi thấy phòng tập rất tốt, chất lượng máy móc tốt, giáo viên nhiệt tình, phòng tập sạch sẽ, thoáng đãng, rất thích hợp cho việc tập luyện
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
                                         <img width="80" height="80" class="rounded-circle bg-dark p-2" src="./assets/img/testimonial-2.jpg" alt="Image">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Client Name</h4>
-                                            <p class="m-0">Profession</p>
+                                            <h4 class="text-primary">Nhường Em</h4>
+                                            <p class="m-0">Chủ tịch</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Sed ea amet kasd elitr stet nonumy, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolores tempor voluptua ipsum sanctus clita
+                                        Không gian rộng rãi, sạch sẽ. Đọi ngũ huấn luyện viên có tâm và giàu chuyên môn nhất mình từng gặp.
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
                                         <img width="80" height="80" class="rounded-circle bg-dark p-2" src="./assets/img/testimonial-3.jpg" alt="Image">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Client Name</h4>
-                                            <p class="m-0">Profession</p>
+                                            <h4 class="text-primary">Đầy Trương</h4>
+                                            <p class="m-0">Giám đốc Gara</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Sed ea amet kasd elitr stet nonumy, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolores tempor voluptua ipsum sanctus clita
+                                        Quả là một phòng tập tuyệt vời, thiết bị hiện đại, đội ngũ chuyên nghiệp, xứng đáng là phòng gym số một Việt Nam.
                                     </div>
                                 </div>
                             </div>
@@ -711,9 +886,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="pl-md-3 d-none d-md-block">
-                        <h4 class="text-primary">Testimonial</h4>
-                        <h4 class="display-4 mb-4 text-white font-weight-bold">What Our Clients Say?</h4>
-                        <p class="m-0 text-white">Vero elitr lorem magna justo magna justo at justo est ipsum sed clita lorem dolor ipsum sed. Lorem sea lorem vero. Sanct dolor clita clita rebum kasd magna erat diam</p>
+                        <h4 class="text-primary">Cảm nhận khách hàng</h4>
+                        <h4 class="display-4 mb-4 text-white font-weight-bold">Khách hàng nói gì về chúng tôi?</h4>
+                        <!-- <p class="m-0 text-white">Vero elitr lorem magna justo magna justo at justo est ipsum sed clita lorem dolor ipsum sed. Lorem sea lorem vero. Sanct dolor clita clita rebum kasd magna erat diam</p> -->
                     </div>
                 </div>
             </div>
@@ -725,49 +900,51 @@
     <!-- Blog Start -->
     <div class="container pt-5">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">Our Blog</h4>
-            <h4 class="display-4 font-weight-bold">Latest Article From Blog</h4>
+            <h4 class="text-primary font-weight-bold">Bài viết</h4>
+            <h4 class="display-4 font-weight-bold">Bài viết hữu ích</h4>
         </div>
         <div class="row">
             <div class="col-lg-6 mb-5 blog-item">
-                <img class="img-fluid mb-4" src="./assets/img/blog-1.jpg" alt="Image">
+                <img class="img-fluid mb-4" src="./assets/img/Nên uống nước gì trước, trong và sau khi tập gym_.jpeg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
                     <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
-                        <small>01</small>
-                        <strong class="text-uppercase m-0 text-white">Jan</strong>
-                        <small>2045</small>
+                        <small>20</small>
+                        <strong class="text-uppercase m-0 text-white">Oct</strong>
+                        <small>2024</small>
                     </div>
                     <div class="pl-3">
-                        <h3 class="font-weight-bold">Lorem ipsum dolor sit amet</h3>
+                        <h3 class="font-weight-bold">Lần đầu tập gym nên lưu ý điều gì?</h3>
                         <div class="d-flex">
-                            <small class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</small>
+                            <!-- <small class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</small>
                             <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                            <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                            <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small> -->
                         </div>
                     </div>
                 </div>
-                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos, sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod vero dolor sed kasd accusam</p>
-                <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
-            </div>
+                <p>Lần đầu đi tập gym nên lưu ý điều gì, nên lưu ý điều gì khi tập gym, trước khi tập ăn gì, sau khi tập ....</p>
+                <a class="btn btn-outline-primary mt-2 px-3" href="./view/feature.php">Đọc thêm <i class="fa fa-angle-right"></i></a>
+                </div>
             <div class="col-lg-6 mb-5 blog-item">
-                <img class="img-fluid mb-4" src="./assets/img/blog-2.jpg" alt="Image">
+                <img class="img-fluid mb-4" style="height:51%; width: 100%;" src="./assets/img/Best “LISS Cardio” Workout Ideas for Weight Loss.jpeg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
                     <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
                         <small>01</small>
-                        <strong class="text-uppercase m-0 text-white">Jan</strong>
-                        <small>2045</small>
+                        <strong class="text-uppercase m-0 text-white">Oct</strong>
+                        <small>2024</small>
                     </div>
                     <div class="pl-3">
-                        <h3 class="font-weight-bold">Lorem ipsum dolor sit amet</h3>
+                        <h3 class="font-weight-bold">
+                            Liss Cardio Là Gì? Các Bài Tập Liss Cardio Phổ Biến</h3>
                         <div class="d-flex">
-                            <small class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</small>
+                            <!-- <small class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</small>
                             <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                            <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                            <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small> -->
                         </div>
                     </div>
                 </div>
-                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos, sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod vero dolor sed kasd accusam</p>
-                <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
+                <p>
+			Liss cardio là một bài tập mang lại hiệu quả rất tốt trong việc đốt mỡ và giảm cân. Bài tập này thường khá đơn ...		</p>
+                <a class="btn btn-outline-primary mt-2 px-3" href="./view/feature.php">Đọc thêm <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>
@@ -778,8 +955,8 @@
     <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Get In Touch</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
+                <h4 class="text-primary mb-4">Gymnast</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>4 Nguyễn Văn Bảo, Gò Vấp, Thành phố Hồ Chí Minh</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <div class="d-flex justify-content-start mt-4">
@@ -790,39 +967,32 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Quick Links</h4>
+                <h4 class="text-primary mb-4">Liên kết</h4>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Về chúng tôi</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Dịch vụ</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
                     <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Popular Links</h4>
+                <h4 class="text-primary mb-4">Phổ biến</h4>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Về chúng tôi</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Dịch vụ</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
                     <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Opening Hours</h4>
+                <h4 class="text-primary mb-4">Giờ mở cửa</h4>
                 <h5 class="text-white">Monday - Friday</h5>
                 <p>8.00 AM - 8.00 PM</p>
                 <h5 class="text-white">Saturday - Sunday</h5>
                 <p>2.00 PM - 8.00 PM</p>
             </div>
         </div>
-        <div class="container border-top border-dark pt-5">
-            <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
-                <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
-            </p>
-        </div>
+
     </div>
     <!-- Footer End -->
 

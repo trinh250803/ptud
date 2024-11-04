@@ -1,0 +1,154 @@
+
+/* card */
+
+.gym-class-box {
+    border-radius: 20px;
+    margin: 20px;
+    background: linear-gradient(167deg, #072227 -41.96%, #202020 98.33%);
+    min-height: 580px !important;
+    
+}
+.basic{
+    background: linear-gradient(167deg, #aaaaaa -41.96%, #5b5b5b 98.33%) !important;
+}
+
+.card-item__link{
+    font-size: 1rem;
+    margin-bottom: 20px;
+    background-color: #d93518;
+    border-color: #d93518;
+    
+}
+
+
+.card-item__link:hover {
+    color: #fff;
+    background-color: #d93518 !important;
+    border-color: #d93518 !important;
+
+}
+
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+form.form-inline.justify-content-center.mb-5 {
+    display: inline-block;
+    height: 100%;
+}
+
+.input-group-append {
+    margin-left: 150px;
+    justify-content: center;
+    width: 116px;
+    margin-top: 20px;
+    height: 50px;
+}
+
+p.comment-service {
+    font-size: 24px;
+    line-height: 35px;
+}
+.service{
+    margin: 16px;
+    border-radius: 4px;
+}
+.service:hover{
+    cursor: pointer;
+    opacity: .95;
+}
+
+.img-service{
+    max-width: 100%;
+    
+}
+.img-service__item{
+    width: 100%;
+}
+
+.note-service {
+    margin-left: 16px;
+}
+
+/* card */
+.card-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    
+}
+.card-price{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    left: 0;
+    padding-left: 24px;
+}
+
+
+.card-price .price {
+    font-size: 2.44rem;
+    line-height: 1.2;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+}
+
+.price{
+    color: #d01515;
+}
+sup {
+    margin-top: 20px;
+}
+
+.card-notice{
+    color: #d01515;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 26px;
+    font-size: 1.2rem;
+    margin-bottom: 42px;
+}
+/* accept card */
+.accept-item{
+    font-size: 22px;
+    border-radius: 25px;
+    margin-right: 16px;
+
+}
+
+/* ve chung toi */
+.about-start{
+    background-color: rgb(154, 28, 28);
+    min-width: 100%;
+}
+.about-start__item{
+    font-size: 1.6rem;
+}
+
+a.btn.btn-lg.px-4.btn-outline-primary.about-start__more{
+    margin-top: 60px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.8rem;
+    background-color: #9b1b1b;
+    
+}
+
+
+a.btn.btn-lg.px-4.btn-outline-primary.about-start__more:hover {
+    background-color: #9b1b1b;
+
+}

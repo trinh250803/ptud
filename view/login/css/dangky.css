@@ -1,0 +1,139 @@
+/* General Styles */
+body {
+    background-color: #000000;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container Layout */
+.container {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #333333; /* Dark background color */
+    padding: 20px;
+    width: 200px; /* Adjust width as needed */
+    border-radius: 8px;
+}
+
+.sidebar .menu p {
+    text-align: center;
+    color: #bbbbbb; /* Light gray color for the title */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sidebar .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.sidebar .menu ul li {
+    margin: 10px 0;
+}
+
+.sidebar .menu ul li a {
+    color: #ffffff; /* White text color */
+    text-decoration: none;
+    font-weight: normal;
+    display: block;
+    padding: 10px 0;
+}
+
+.sidebar .menu ul li a:hover {
+    color: #d81b1b; /* Highlight color on hover */
+}
+
+/* Update Info Container */
+.update-info-container {
+    width: 100%;
+   
+    padding: 20px;
+    background-color: #e6dddd96!important; /* Light background */
+    border-radius: 8px;
+    color: #333333;
+}
+
+.update-info-container h2 {
+    color: #d81b1b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Elements */
+form label {
+    display: inline-block;
+    width: 100%;
+    margin-right: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="email"] {
+    width: calc(100%);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.update-btn {
+    background-color: #ee4f4f;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.update-btn:hover {
+    background-color: #d81b1b;
+}
+
+.cancel-btn:hover {
+    background-color: #444444;
+}
+
+/* Float-based Layout */
+.left {
+    width: 30%; /* Adjust the width as needed */
+    padding: 20px;
+    margin-left: 100px;
+}
+
+.right {
+    width: 70%; /* Adjust the width as needed */
+    padding: 20px;
+}
+
+/* Clear Floats */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
