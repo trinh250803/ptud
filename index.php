@@ -33,7 +33,7 @@ error_reporting(1);
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="./index.php" class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -42,14 +42,14 @@ error_reporting(1);
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
                     <a href="index.php" class="nav-item nav-link active">Trang chủ</a>
-                    <a href="./view/about.php" class="nav-item nav-link">Về chúng tôi</a>
-                    <a href="./view/feature.php" class="nav-item nav-link">Tin tức</a>
-                    <a href="./view/class.php" class="nav-item nav-link">Lớp học</a>
+                    <a href="view/about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="view/feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="view/class.php" class="nav-item nav-link">Lớp học</a>
 
-                    <a href="./view/contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <a href="view/contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="view/dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="view/dieukien.php" class="nav-item nav-link">Đăng nhập</a>';
                         echo '<a href="view/dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
                     }
                     else{

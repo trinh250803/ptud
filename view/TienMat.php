@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +19,51 @@
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/chitiethd.css">
+    <link rel="stylesheet" href="login\css\thanhtoan.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style>
+    button {
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left,
+    .right {
+        margin: 10px;
+    }
+
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
+
+    .confirmation {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        width: 500px;
+        height: fit-content;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation table {
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -61,11 +105,11 @@
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
             style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý thiết bị</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý thành viên</p>
+                <p class="m-0 text-white">Quản lý</p>
             </div>
         </div>
     </div>
@@ -91,39 +135,16 @@
         </div>
         <div class="right">
             <div class="update-info-container">
-                <h2>Thông Tin Hóa đơn </h2>
-                <label for="name">Số Tiền:</label>
-                <span class="Ten">500.000đ</span>
-                <br>
-
-                <label for="address">Trạng Thái Thanh Toán:</label>
-                <span class="diachi">Đã thanh toán</span>
-                <br>
-
-                <label for="phone">Ngày Thanh Toán:</label>
-                <span class="sdt">20/10/2024</span>
-                <br>
-                <label for="Email">Ngày Lập Hóa Đơn:</label>
-                <span class="email">20/10/2024</span>
-                <br>
-                <label for="Email">Loại Giao Dịch:</label>
-                <span class="ngaythamgia">Chuyển khoản</span>
-                <br>
-                <label for="thanhvien">Tên Thành Viên:</label>
-                <span class="thanhvien">Nguyễn văn A</span>
-                <br>
+                <h1 align="center">Thanh Toán tại</h1>
 
 
-                <div class="button-group">
-
-                    <button type="submit" class="update-btn">Cập nhật TTTT</button>
-                    <button type="button" class="submit-btn">OK</button>
-
-                </div>
+                <p align="center">4 Nguyễn Văn Bảo, Gò Vấp, Thành phố Hồ Chí Minh</p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.858169091041!2d106.68427047451765!3d10.822164158349457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174deb3ef536f31%3A0x8b7bb8b7c956157b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBUUC5IQ00!5e0!3m2!1svi!2s!4v1730796310877!5m2!1svi!2s"
+                    width="500" height="450" style="border:0;" allowfullscreen="no" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
 
             </div>
-
-
         </div>
     </div>
     <!-- Blog End -->
@@ -178,7 +199,8 @@
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved.
+                Designed
                 by
                 <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
             </p>

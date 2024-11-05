@@ -21,33 +21,36 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
     <style>
-        .confirmation {
-            border: 1px solid #ccc;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            height:300px;
-            margin: auto;
-            border-radius: 10px;
-            align-content:center;
-        }
-        button {
-            margin: 10px;
-        }
-        .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .confirmation {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        height: 300px;
+        margin: auto;
+        border-radius: 10px;
+        align-content: center;
+    }
 
-.left, .right {
-    margin: 10px;
-}
+    button {
+        margin: 10px;
+    }
 
-.left {
-    margin-right: 30px; /* Adjust for spacing between the menu and confirmation form */
-}
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .left,
+    .right {
+        margin: 10px;
+    }
+
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
     </style>
 </head>
 
@@ -55,7 +58,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -63,18 +66,22 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="feature.php" class="nav-item nav-link">Our Features</a>
-                    <a href="class.php" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <?php
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -107,7 +114,7 @@
                         <li><a href="#home">Thông tin chung</a></li>
                         <li><a href="#profile">Quản lý thành viên</a></li>
                         <li><a href="#settings">Quản lý thiết bị</a></li>
-                        
+
                         <li><a href="#logout">Logout</a></li>
                     </ul>
                 </div>
@@ -115,16 +122,16 @@
 
         </div>
         <div class="right">
-        <div class="confirmation">
-        
-        <p class="title">Bạn có chắc chắn muốn xóa nhân viên này không?</p>
-        <form action="/xoa-thiet-bi" method="POST">
-            <input type="hidden" name="deviceId" value="ID_THIET_BI"> 
-            <input type="submit" value="Xóa" class="delete-btn">
-            <input type="button" value="Hủy" class="cancel-btn" onclick="window.history.back();">
-        </form>
-    </div>
-    </form>
+            <div class="confirmation">
+
+                <p class="title">Bạn có chắc chắn muốn xóa nhân viên này không?</p>
+                <form action="/xoa-thiet-bi" method="POST">
+                    <input type="hidden" name="deviceId" value="ID_THIET_BI">
+                    <input type="submit" value="Xóa" class="delete-btn">
+                    <input type="button" value="Hủy" class="cancel-btn" onclick="window.history.back();">
+                </form>
+            </div>
+            </form>
 
 
         </div>

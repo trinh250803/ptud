@@ -35,5 +35,12 @@
 			return false;
 		}
         }
+        public function CapNhatHD($idhd,$sotien,$HTTT,$ngayThanhToan)
+        { $p = new mHoaDon();
+            
+            $kq= $p->UpdateHDTV($idhd,$sotien,$HTTT,$ngayThanhToan);
+            return $kq;
+
+        }
     }
 ?>

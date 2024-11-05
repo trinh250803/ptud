@@ -25,7 +25,7 @@
         <!-- Navbar Start -->
         <div class="container-fluid p-0 nav-bar">
             <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-                <a href="" class="navbar-brand">
+                <a href="./index.php" class="navbar-brand">
                     <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -33,16 +33,22 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto p-4 bg-secondary">
-                        <a href="../index.php" class="nav-item nav-link">Trang chủ</a>
-                        <a href="about.php" class="nav-item nav-link">về chúng tôi</a>
+                        <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                        <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
                         <a href="feature.php" class="nav-item nav-link">Tin tức</a>
-                        <a href="class.php" class="nav-item nav-link active">Lớp học</a>
+                        <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
                         <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                         <?php
-                        if (!isset($_SESSION['dn'])) {
-                            echo '<a href="./dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
-                        }
-                        ?>
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
+                    }
+                    ?>
                     </div>
                 </div>
             </nav>
@@ -52,7 +58,8 @@
 
         <!-- Page Header Start -->
         <div class="container-fluid page-header mb-5">
-            <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+                style="min-height: 400px">
                 <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Lớp học</h4>
                 <div class="d-inline-flex">
                     <p class="m-0 text-white"><a class="text-white" href="../index.php">Trang chủ</a></p>
@@ -69,39 +76,54 @@
             <!-- dance -->
             <div class="row px-3">
                 <div class="col-md-6 p-0">
-                    <div class="gym-class-box d-flex flex-column align-items-end justify-content-center text-right text-white py-5 px-5">
+                    <div
+                        class="gym-class-box d-flex flex-column align-items-end justify-content-center text-right text-white py-5 px-5">
                         <h3 class="display-4 mb-3 mt-3 text-black font-weight-bold dancer-header__item">Dance</h3>
-                        <img class="img-fluid mb-4 mb-lg-0 w-100 dancer-header__img" src="../assets/img/dance-class.jpeg" alt="Image">
+                        <img class="img-fluid mb-4 mb-lg-0 w-100 dancer-header__img"
+                            src="../assets/img/dance-class.jpeg" alt="Image">
                         <p class="text-dark mt-3  dance-class__accept">
-                            Nhảy hiện đại là một thể loại nhảy đương đại, phát triển mạnh mẽ từ những năm 1950 đến nay, đặc trưng bởi sự tự do sáng tạo và khám phá. Dưới đây là một số điểm nổi bật về nhảy hiện đại:
+                            Nhảy hiện đại là một thể loại nhảy đương đại, phát triển mạnh mẽ từ những năm 1950 đến nay,
+                            đặc trưng bởi sự tự do sáng tạo và khám phá. Dưới đây là một số điểm nổi bật về nhảy hiện
+                            đại:
 
-                            Bạn có thể tự do tạo ra và thể hiện cảm xúc, ý nghĩa thông qua các động tác và biểu cảm của mình, không bị ràng buộc bởi các quy tắc hay kỹ thuật cụ thể.
+                            Bạn có thể tự do tạo ra và thể hiện cảm xúc, ý nghĩa thông qua các động tác và biểu cảm của
+                            mình, không bị ràng buộc bởi các quy tắc hay kỹ thuật cụ thể.
 
-                            Nhảy hiện đại khuyến khích sự đa dạng và sáng tạo, cho phép người biểu diễn khám phá và phát triển phong cách riêng của mình thông qua việc thử nghiệm các kỹ thuật và ý tưởng mới.
+                            Nhảy hiện đại khuyến khích sự đa dạng và sáng tạo, cho phép người biểu diễn khám phá và phát
+                            triển phong cách riêng của mình thông qua việc thử nghiệm các kỹ thuật và ý tưởng mới.
 
-                            Nhảy hiện đại thường được sử dụng để truyền đạt cảm xúc sâu sắc và ý nghĩa sâu xa thông qua các cử động linh hoạt và biểu cảm của cơ thể.
+                            Nhảy hiện đại thường được sử dụng để truyền đạt cảm xúc sâu sắc và ý nghĩa sâu xa thông qua
+                            các cử động linh hoạt và biểu cảm của cơ thể.
 
-                            Đặc điểm của nhảy hiện đại là sự linh hoạt và mềm mại, với các động tác uốn cong và xoay vòng, đòi hỏi sự kiểm soát và linh hoạt của cơ thể.
+                            Đặc điểm của nhảy hiện đại là sự linh hoạt và mềm mại, với các động tác uốn cong và xoay
+                            vòng, đòi hỏi sự kiểm soát và linh hoạt của cơ thể.
                         </p>
                         <a href="#calculator" class="btn btn-lg btn-outline-dark mt-4 px-4">Xem lịch</a>
                     </div>
                 </div>
                 <!-- yoga -->
                 <div class="col-md-6 p-0 mt-3" style="height:900px;">
-                    <div class="gym-class-box d-flex flex-column align-items-start justify-content-center  text-left text-white py-5 px-5">
+                    <div
+                        class="gym-class-box d-flex flex-column align-items-start justify-content-center  text-left text-white py-5 px-5">
                         <h3 class="display-4 mb-3 text-dark font-weight-bold dancer-header__item">Yoga</h3>
-                        <img class="img-fluid mb-4 mb-lg-0 w-100 dancer-header__img" src="../assets/img/yogayoga.jpeg" alt="Image">
+                        <img class="img-fluid mb-4 mb-lg-0 w-100 dancer-header__img" src="../assets/img/yogayoga.jpeg"
+                            alt="Image">
 
                         <p class="text-dark mt-3  dance-class__accept">
-                            Yoga là một hình thức tập luyện gồm các tư thế, hơi thở và thiền, nhằm cải thiện cả sức khỏe và tinh thần.
+                            Yoga là một hình thức tập luyện gồm các tư thế, hơi thở và thiền, nhằm cải thiện cả sức khỏe
+                            và tinh thần.
 
-                            Yoga có nguồn gốc từ Ấn Độ và ngày nay đã trở thành một phần không thể thiếu của nền văn hóa và tập luyện trên toàn thế giới.
+                            Yoga có nguồn gốc từ Ấn Độ và ngày nay đã trở thành một phần không thể thiếu của nền văn hóa
+                            và tập luyện trên toàn thế giới.
 
-                            Các tư thế yoga nhằm tăng cường linh hoạt, sức mạnh và cân bằng cơ thể, trong khi hơi thở và thiền giúp giảm căng thẳng, tăng cường tập trung và mang lại cảm giác hạnh phúc.
+                            Các tư thế yoga nhằm tăng cường linh hoạt, sức mạnh và cân bằng cơ thể, trong khi hơi thở và
+                            thiền giúp giảm căng thẳng, tăng cường tập trung và mang lại cảm giác hạnh phúc.
 
-                            Yoga có nhiều dạng và phong cách khác nhau, từ nhẹ nhàng đến năng động, mỗi phong cách tập trung vào một mục tiêu tập luyện riêng.
+                            Yoga có nhiều dạng và phong cách khác nhau, từ nhẹ nhàng đến năng động, mỗi phong cách tập
+                            trung vào một mục tiêu tập luyện riêng.
 
-                            Yoga không chỉ là một hình thức tập luyện mà còn là một triết lý sống, giúp cân bằng và làm giàu cả cơ thể và tinh thần.
+                            Yoga không chỉ là một hình thức tập luyện mà còn là một triết lý sống, giúp cân bằng và làm
+                            giàu cả cơ thể và tinh thần.
                         </p>
                         <a href="#calculator" class="btn btn-lg btn-outline-dark px-4 dance-class__submit">Xem lịch</a>
 
@@ -109,15 +131,22 @@
                 </div>
                 <!-- cardio -->
                 <div class="col-md-12 p-0  cardio-class">
-                    <div class="gym-class-box d-flex flex-column align-items-center justify-content-center  text-left text-white py-5 px-5">
+                    <div
+                        class="gym-class-box d-flex flex-column align-items-center justify-content-center  text-left text-white py-5 px-5">
                         <h3 class="display-4 mb-3 text-dark font-weight-bold dancer-header__item">Cardio</h3>
-                        <img class="img-fluid mb-4 mb-lg-0 w-100 dancer-header__img" src="../assets/img//cardio-class.jpeg" alt="Image">
+                        <img class="img-fluid mb-4 mb-lg-0 w-100 dancer-header__img"
+                            src="../assets/img//cardio-class.jpeg" alt="Image">
 
                         <p class="text-dark mt-3  dance-class__accept">
-                            Cardio – viết tắt của Cardiovascular, là bài tập thể dục tăng cường sức khỏe tim mạch. Đây cũng là một phương pháp đốt cháy calo trong cơ thể hiệu quả, rất được khuyến khích cho người giảm cân hay những vận động viên cần xây dựng vóc dáng tiêu chuẩn.
-                            Cardio không tập trung vào một nhóm cơ nhất định mà cần có sự phối hợp của nhiều nhóm cơ khác nhau để cơ thể rèn luyện toàn diện.
+                            Cardio – viết tắt của Cardiovascular, là bài tập thể dục tăng cường sức khỏe tim mạch. Đây
+                            cũng là một phương pháp đốt cháy calo trong cơ thể hiệu quả, rất được khuyến khích cho người
+                            giảm cân hay những vận động viên cần xây dựng vóc dáng tiêu chuẩn.
+                            Cardio không tập trung vào một nhóm cơ nhất định mà cần có sự phối hợp của nhiều nhóm cơ
+                            khác nhau để cơ thể rèn luyện toàn diện.
 
-                            Chuỗi bài tập cardio rất đa dạng. Một số hoạt động tập cardio phổ biến bao gồm: chạy bộ, đạp xe, bơi lội, nhảy dây,… Tại phòng Gym, Cardio sẽ kết hợp với máy tập và tạ nhằm nâng cao hiệu quả tập luyện.
+                            Chuỗi bài tập cardio rất đa dạng. Một số hoạt động tập cardio phổ biến bao gồm: chạy bộ, đạp
+                            xe, bơi lội, nhảy dây,… Tại phòng Gym, Cardio sẽ kết hợp với máy tập và tạ nhằm nâng cao
+                            hiệu quả tập luyện.
                         </p>
                         <a href="#calculator" class="btn btn-lg btn-outline-dark  mt-4 px-4 ">Xem lịch</a>
 
@@ -508,47 +537,55 @@
         <!-- Class Timetable End -->
         <!-- Footer Start -->
         <div class="footer container-fluid  mt-5 py-5 px-sm-3 px-md-5 text-white">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Gymnast</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>4 Nguyễn Văn Bảo, Gò Vấp, Thành phố Hồ Chí Minh</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+            <div class="row pt-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-primary mb-4">Gymnast</h4>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>4 Nguyễn Văn Bảo, Gò Vấp, Thành phố Hồ Chí Minh</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <div class="d-flex justify-content-start mt-4">
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-primary mb-4">Liên kết</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white mb-2" href="../index.php"><i class="fa fa-angle-right mr-2"></i>Trang
+                            chủ</a>
+                        <a class="text-white mb-2" href="./about.php"><i class="fa fa-angle-right mr-2"></i>Về chúng
+                            tôi</a>
+                        <a class="text-white mb-2" href="./class.php"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
+                        <a class="text-white" href="./contact.php"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-primary mb-4">Phổ biến</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white mb-2" href="../index.php"><i class="fa fa-angle-right mr-2"></i>Trang
+                            chủ</a>
+                        <a class="text-white mb-2" href="./about.php"><i class="fa fa-angle-right mr-2"></i>Về chúng
+                            tôi</a>
+                        <a class="text-white mb-2" href="./class.php"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
+                        <a class="text-white" href="./contact.php"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-primary mb-4">Giờ mở cửa</h4>
+                    <h5 class="text-white">Monday - Friday</h5>
+                    <p>8.00 AM - 8.00 PM</p>
+                    <h5 class="text-white">Saturday - Sunday</h5>
+                    <p>2.00 PM - 8.00 PM</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Liên kết</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="../index.php"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
-                    <a class="text-white mb-2" href="./about.php"><i class="fa fa-angle-right mr-2"></i>Về chúng tôi</a>
-                    <a class="text-white mb-2" href="./class.php"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
-                    <a class="text-white" href="./contact.php"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Phổ biến</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="../index.php"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
-                    <a class="text-white mb-2" href="./about.php"><i class="fa fa-angle-right mr-2"></i>Về chúng tôi</a>
-                    <a class="text-white mb-2" href="./class.php"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
-                    <a class="text-white" href="./contact.php"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Giờ mở cửa</h4>
-                <h5 class="text-white">Monday - Friday</h5>
-                <p>8.00 AM - 8.00 PM</p>
-                <h5 class="text-white">Saturday - Sunday</h5>
-                <p>2.00 PM - 8.00 PM</p>
-            </div>
-        </div>
 
-    </div>
+        </div>
         <!-- Footer End -->
 
 
@@ -571,24 +608,24 @@
     </body>
 
     <style>
-        .dancer-header__item {
-            width: 100%;
-            text-align: center;
-            cursor: default !important;
-        }
+    .dancer-header__item {
+        width: 100%;
+        text-align: center;
+        cursor: default !important;
+    }
 
-        .dancer-header__img {
-            border-radius: 14px;
-        }
+    .dancer-header__img {
+        border-radius: 14px;
+    }
 
-        .dance-class__accept {
-            text-align: justify;
-        }
+    .dance-class__accept {
+        text-align: justify;
+    }
 
-        .dance-class__submit {
-            margin-left: 320px;
-            margin-top: 72px;
-        }
+    .dance-class__submit {
+        margin-left: 320px;
+        margin-top: 72px;
+    }
     </style>
 
     </html>

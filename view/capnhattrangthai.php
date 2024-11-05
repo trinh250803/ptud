@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +29,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -34,18 +37,22 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="feature.php" class="nav-item nav-link">Our Features</a>
-                    <a href="class.php" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <?php
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -54,7 +61,8 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+            style="min-height: 400px">
             <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản Lý Hóa Đơn</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="../index.php">Home</a></p>
@@ -64,28 +72,28 @@
         </div>
     </div>
     <!-- Page Header End -->
-            <!-- Update Form Start -->
-            <div class="col-lg-9,center">
-                <div class="bg-light p-4">
-                    <h2 class="text-center">Cập Nhật Trạng Thái Thanh Toán</h2>
-                    <form action="" method="POST" class="mt-4">
-                        <div class="form-group">
-                            <label for="trangThai">Chọn trạng thái thanh toán:</label>
-                            <select name="trangThai" id="trangThai" class="form-control" required>
-                                <option value="" disabled selected>-- Chọn trạng thái --</option>
-                                <option value="Đã thanh toán">Đã thanh toán</option>
-                                <option value="Chưa thanh toán">Chưa thanh toán</option>
-                            </select>
-                        </div>
-                        <div class="text-center mt-3">
-                            <button type="submit" name="btnUpdate" class="btn btn-primary px-4">Cập nhật</button>
-                            <a href="manage_invoices.php" class="btn btn-secondary px-4">Hủy</a>
-                        </div>
-                    </form>
+    <!-- Update Form Start -->
+    <div class="col-lg-9,center">
+        <div class="bg-light p-4">
+            <h2 class="text-center">Cập Nhật Trạng Thái Thanh Toán</h2>
+            <form action="" method="POST" class="mt-4">
+                <div class="form-group">
+                    <label for="trangThai">Chọn trạng thái thanh toán:</label>
+                    <select name="trangThai" id="trangThai" class="form-control" required>
+                        <option value="" disabled selected>-- Chọn trạng thái --</option>
+                        <option value="Đã thanh toán">Đã thanh toán</option>
+                        <option value="Chưa thanh toán">Chưa thanh toán</option>
+                    </select>
                 </div>
-            </div>
-            <!-- Update Form End -->
+                <div class="text-center mt-3">
+                    <button type="submit" name="btnUpdate" class="btn btn-primary px-4">Cập nhật</button>
+                    <a href="manage_invoices.php" class="btn btn-secondary px-4">Hủy</a>
+                </div>
+            </form>
         </div>
+    </div>
+    <!-- Update Form End -->
+    </div>
     </div>
 
     <!-- Footer Start -->
@@ -97,17 +105,22 @@
                 <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <!-- Additional Footer Content -->
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
+                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                by
                 <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
             </p>
         </div>

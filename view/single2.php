@@ -25,7 +25,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -33,21 +33,20 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Trang chủ</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
                     <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
                     <a href="feature.php" class="nav-item nav-link">Tin tức</a>
                     <a href="class.php" class="nav-item nav-link">Lớp học</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Dịch vụ</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
+
                     <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="view/dangky.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>
                 </div>
@@ -59,7 +58,8 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+            style="min-height: 400px">
             <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Bài viết</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="../index.php">Trang chủ</a></p>
@@ -77,7 +77,8 @@
             <div class="col-12">
                 <img class="img-fluid mb-4" src="../assets/img/carousel-1.jpg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 100px; height: 100px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 100px; height: 100px;">
                         <span>01</span>
                         <strong class="text-uppercase m-0 text-white">Jan</strong>
                         <span>2045</span>
@@ -91,21 +92,79 @@
                         </div>
                     </div>
                 </div>
-                <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren sit stet no diam kasd vero, eos tempor gubergren clita est consetetur dolores et dolor. Sadipscing lorem kasd labore ea sanctus sanctus, dolores invidunt et consetetur et duo. Tempor dolores accusam sit vero sit, sed labore duo vero et at, et amet et justo gubergren. Labore aliquyam voluptua dolor nonumy lorem. Sanctus sed sadipscing rebum ipsum dolor et ea no. Ipsum elitr sea erat.</p>
-                <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et, clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat justo dolore sit invidunt, sed duo dolor et amet no et. Ut takimata tempor kasd amet kasd ut. No et ipsum amet tempor et. Sed nonumy sed vero ut, sed aliquyam accusam clita dolores tempor est. Ea et takimata consetetur et amet sanctus. Duo no diam ipsum diam dolores, eirmod diam dolores clita sed erat magna. Dolore ut amet ea magna. Sea et dolore sit labore at amet eos. Dolor voluptua sit rebum sit ut nonumy. Dolor amet amet sit sadipscing, lorem.</p>
+                <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut magna lorem. Nonumy
+                    vero labore lorem sanctus rebum et lorem magna kasd, stet amet magna accusam consetetur eirmod. Kasd
+                    accusam sit ipsum sadipscing et at at sanctus et. Ipsum sit gubergren dolores et, consetetur justo
+                    invidunt at et aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren sit
+                    stet no diam kasd vero, eos tempor gubergren clita est consetetur dolores et dolor. Sadipscing lorem
+                    kasd labore ea sanctus sanctus, dolores invidunt et consetetur et duo. Tempor dolores accusam sit
+                    vero sit, sed labore duo vero et at, et amet et justo gubergren. Labore aliquyam voluptua dolor
+                    nonumy lorem. Sanctus sed sadipscing rebum ipsum dolor et ea no. Ipsum elitr sea erat.</p>
+                <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores vero stet
+                    consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit nonumy kasd diam dolores, sanctus
+                    lorem kasd duo dolor dolor vero sit et. Labore ipsum duo sanctus amet eos et. Consetetur no sed et
+                    aliquyam ipsum justo et, clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor
+                    erat justo dolore sit invidunt, sed duo dolor et amet no et. Ut takimata tempor kasd amet kasd ut.
+                    No et ipsum amet tempor et. Sed nonumy sed vero ut, sed aliquyam accusam clita dolores tempor est.
+                    Ea et takimata consetetur et amet sanctus. Duo no diam ipsum diam dolores, eirmod diam dolores clita
+                    sed erat magna. Dolore ut amet ea magna. Sea et dolore sit labore at amet eos. Dolor voluptua sit
+                    rebum sit ut nonumy. Dolor amet amet sit sadipscing, lorem.</p>
                 <h2 class="mb-4 font-weight-bold">Est dolor lorem et ea</h2>
                 <img class="w-50 float-left mr-4 mb-3" src="../assets/img/blog-1.jpg" alt="Image">
-                <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et. Justo erat magna ipsum magna sea. Magna amet est sit sed sadipscing. At takimata dolores ut dolore takimata stet nonumy ipsum, gubergren vero ea consetetur aliquyam kasd est magna justo, dolore justo at dolore et aliquyam nonumy lorem gubergren. Amet duo invidunt kasd labore aliquyam. Vero dolores lorem elitr justo ut, accusam erat sed dolor at accusam takimata ipsum sea diam. Ipsum voluptua lorem sed amet, amet sea sit et at nonumy labore takimata, justo ipsum voluptua stet takimata. Ea lorem elitr aliquyam gubergren sit magna sanctus, sed sed dolore ipsum justo dolor et amet invidunt erat. Sadipscing sanctus stet.</p>
+                <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est
+                    sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum
+                    eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem
+                    amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat.
+                    Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing
+                    stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore
+                    dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita
+                    sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos
+                    erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem
+                    dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et
+                    voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit
+                    voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et. Justo
+                    erat magna ipsum magna sea. Magna amet est sit sed sadipscing. At takimata dolores ut dolore
+                    takimata stet nonumy ipsum, gubergren vero ea consetetur aliquyam kasd est magna justo, dolore justo
+                    at dolore et aliquyam nonumy lorem gubergren. Amet duo invidunt kasd labore aliquyam. Vero dolores
+                    lorem elitr justo ut, accusam erat sed dolor at accusam takimata ipsum sea diam. Ipsum voluptua
+                    lorem sed amet, amet sea sit et at nonumy labore takimata, justo ipsum voluptua stet takimata. Ea
+                    lorem elitr aliquyam gubergren sit magna sanctus, sed sed dolore ipsum justo dolor et amet invidunt
+                    erat. Sadipscing sanctus stet.</p>
                 <h3 class="mb-4 font-weight-bold">Est dolor lorem et ea</h3>
                 <img class="w-50 float-right ml-4 mb-3" src="../assets/img/blog-2.jpg" alt="Image">
-                <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et. Justo erat magna ipsum magna sea. Magna amet est sit sed sadipscing. At takimata dolores ut dolore takimata stet nonumy ipsum, gubergren vero ea consetetur aliquyam kasd est magna justo, dolore justo at dolore et aliquyam nonumy lorem gubergren. Amet duo invidunt kasd labore aliquyam. Vero dolores lorem elitr justo ut, accusam erat sed dolor at accusam takimata ipsum sea diam. Ipsum voluptua lorem sed amet, amet sea sit et at nonumy labore takimata, justo ipsum voluptua stet takimata. Ea lorem elitr aliquyam gubergren sit magna sanctus, sed sed dolore ipsum justo dolor et amet invidunt erat. Sadipscing sanctus stet.</p>
+                <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est
+                    sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum
+                    eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem
+                    amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat.
+                    Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing
+                    stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore
+                    dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita
+                    sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos
+                    erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem
+                    dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et
+                    voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit
+                    voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et. Justo
+                    erat magna ipsum magna sea. Magna amet est sit sed sadipscing. At takimata dolores ut dolore
+                    takimata stet nonumy ipsum, gubergren vero ea consetetur aliquyam kasd est magna justo, dolore justo
+                    at dolore et aliquyam nonumy lorem gubergren. Amet duo invidunt kasd labore aliquyam. Vero dolores
+                    lorem elitr justo ut, accusam erat sed dolor at accusam takimata ipsum sea diam. Ipsum voluptua
+                    lorem sed amet, amet sea sit et at nonumy labore takimata, justo ipsum voluptua stet takimata. Ea
+                    lorem elitr aliquyam gubergren sit magna sanctus, sed sed dolore ipsum justo dolor et amet invidunt
+                    erat. Sadipscing sanctus stet.</p>
             </div>
             <div class="col-12 pt-4">
                 <div class="media bg-secondary text-white mb-4 p-5">
-                    <img src="../assets/img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle p-3 bg-dark" style="width:150px;">
+                    <img src="../assets/img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle p-3 bg-dark"
+                        style="width:150px;">
                     <div class="media-body">
                         <h4 class="text-primary mb-3">John Doe</h4>
-                        <p class="m-0">Consetetur elitr erat vero sanctus labore dolor ipsum et diam, tempor dolores eos dolor consetetur lorem ipsum, ipsum accusam ipsum sit no ut est. Gubergren ea ipsum erat consetetur magna kasd amet est, voluptua magna elitr ea sit justo sed sanctus. Accusam duo duo sit sit. Ut eos ipsum sed takimata sed dolor justo, elitr no labore amet et et sanctus. Duo invidunt magna diam no clita, ea eos vero sanctus est aliquyam et, dolores gubergren eirmod sea invidunt no kasd. Amet ut sadipscing eirmod et dolore. Sed lorem stet aliquyam ipsum eos.</p>
+                        <p class="m-0">Consetetur elitr erat vero sanctus labore dolor ipsum et diam, tempor dolores eos
+                            dolor consetetur lorem ipsum, ipsum accusam ipsum sit no ut est. Gubergren ea ipsum erat
+                            consetetur magna kasd amet est, voluptua magna elitr ea sit justo sed sanctus. Accusam duo
+                            duo sit sit. Ut eos ipsum sed takimata sed dolor justo, elitr no labore amet et et sanctus.
+                            Duo invidunt magna diam no clita, ea eos vero sanctus est aliquyam et, dolores gubergren
+                            eirmod sea invidunt no kasd. Amet ut sadipscing eirmod et dolore. Sed lorem stet aliquyam
+                            ipsum eos.</p>
                     </div>
                 </div>
             </div>
@@ -115,23 +174,29 @@
                     <img src="../assets/img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle" style="width:60px;">
                     <div class="media-body">
                         <h4>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h4>
-                        <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+                        <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum
+                            et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita
+                            aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
                         <button class="btn btn-sm btn-dark">Reply</button>
                     </div>
                 </div>
                 <div class="media mb-4">
-                    <img src="../assets/img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle"
-                        style="width:60px;">
+                    <img src="../assets/img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle" style="width:60px;">
                     <div class="media-body">
                         <h4>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h4>
-                        <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+                        <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum
+                            et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita
+                            aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
                         <button class="btn btn-sm btn-dark">Reply</button>
                         <div class="media mt-4">
                             <img src="../assets/img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle"
                                 style="width:60px;">
                             <div class="media-body">
                                 <h4>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h4>
-                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
+                                    accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.
+                                    Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor
+                                    consetetur at sit.</p>
                                 <button class="btn btn-sm btn-dark">Reply</button>
                             </div>
                         </div>
@@ -177,10 +242,14 @@
                 <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -213,7 +282,8 @@
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
+                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                by
                 <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
             </p>
         </div>

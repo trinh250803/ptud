@@ -70,7 +70,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -78,18 +78,22 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="feature.php" class="nav-item nav-link">Our Features</a>
-                    <a href="class.php" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <?php
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -133,7 +137,7 @@
             <div class="update-info-container">
                 <h1 align="center">Thanh Toán hóa đơn</h1>
 
-                <form>
+                <form method="post">
                     <!-- Chọn gói gia hạn -->
                     <?php
                         include_once('../controller/cHoaDon.php');
@@ -143,64 +147,129 @@
                         {
                            while($r=mysqli_fetch_assoc($kq))
                            {
+                           $_SESSION['TongTien']=$r['SoTien'];
                             echo ' <div class="package-details">
                         <p align="center"><strong>Thông tin hóa đơn</strong></p>
                         <p><strong>Tổng tiền:</strong> &emsp; '.$r['SoTien'].'</p>
                         <p><strong>Tình trạng Thanh Toán:</strong> &emsp; '.$r['TinhTrangThanhToan'].'</p>
                         <p><strong>Ngày lập hóa đơn:</strong> &emsp; '.$r['NgayLapHoaDon'].'</p>
                         <p><strong>Ngày lập hóa đơn:</strong> &emsp; 05/11/2024</p>
-                    </div>
-                    <fieldset>
-                        <label style="align-self: center;" for="khuyenmai">Khuyến mãi:</label>
-
-                        <div class="button-group">
-                            <input type="radio" id="svelt" name="frameworks" checked="" />
-                            <label for="svelt">Mã giảm 50k</label>
-                        </div>
-
-                        <div class="button-group">
-                            <input type="radio" id="react" name="frameworks" />
-                            <label for="react">Mã giảm 50k</label>
-                        </div>
-
-                        <div class="button-group">
-                            <input type="radio" id="vue" name="frameworks" />
-                            <label for="vue">Mã giảm 50k</label>
-                        </div>
-                    </fieldset>
-                    <div class="thanhtien">
-                        <br>
-                        <label style="float:right" for="Tổng tiền">Tổng tiền: &emsp;
-                            '.$r['SoTien'].'</label>
-                        <br>
-                    </div>
-                    <br>';
+                    </div>';
+                   
+                    
                            }
                         }
                     ?>
 
                     <!-- Hiển thị chi tiết gói -->
 
+                    <?php
+    include_once("../controller/cKhuyenMai.php");
+    $q= new cKhuyenMai();
+    $kq2=$q->getDKKM($_SESSION['TongTien']);
+    if ($kq2) {
+        echo '<fieldset>
+                  <label style="align-self: center;" for="khuyenmai">Khuyến mãi:</label>';
+        
+        // Counter for unique IDs
+        $counter = 1;
+        
+        while ($r = mysqli_fetch_assoc($kq2)) {
+            
+            $id = 'svelt' . $counter;  // Generate unique ID for each radio button
+            echo '
+                <div class="button-group">
+                    <input type="radio" id="' . $id . '" class="svelt1" name="khuyenmai" value="' . ($r['MucGiamGia']) . '"     />
+                    <label for="' . $id . '">' . ($r['TenKhuyenMai']) . '</label>
+                </div>';
+                
+            $counter++;
+        }
+        
+        echo '</fieldset>
+        
+        <input style="margin-left:5px; float:right  " name="apdung" type="submit" class="renew-button"
+                            value="Áp dụng"><br>';
+    }
+    
+?>
 
+                    <?php
+                    if(isset($_REQUEST['apdung']))
+                    {
+                        
+                        $_SESSION['KM']=$_REQUEST['khuyenmai'];
+                        $mucgiam=$_REQUEST['khuyenmai'];
+                        $thanhtien=(float)$_SESSION['TongTien']-(float)$mucgiam;
+                        echo'<div class="thanhtien">
+                        <br>
+                        <label style="float:right" for="Tthanhtien">Thành tiền: &emsp;'. (float)$_SESSION['TongTien']-(float)$mucgiam.'
+                    </label>
+                    <br>
+            </div>';
+            }
+            else{
+                $thanhtien=(float)$_SESSION['TongTien'];
+                echo'<div class="thanhtien">
+                <br>
+                <label style="float:right" for="Tthanhtien">Thành tiền: &emsp;'. (float)$_SESSION['TongTien'].'
+            </label>
+            <br>
+    </div>';
+            }
+            ?>
+
+                    <br>
 
 
 
 
 
                     <label for="membership-plan">Chọn phương thức thanh toán:</label>
-                    <select style="width:fit-content" class="form-select" aria-label="Default select example">
-                        <option value="Quan Ly">Tiền mặt 1</option>
-                        <option value="Nhan Vien">Chuyển khoản</option>
-                        <option value="Thanh Vien">Tình cảm</option>
+                    <select name="HTTT" style="width:fit-content" class="form-select"
+                        aria-label="Default select example">
+                        <option value="Tiền Mặt">Tiền mặt </option>
+                        <option value="Chuyển Khoản ngân hàng">Chuyển khoản</option>
+
                     </select>
+
                     <br>
+
+
+
                     <!-- Nút Gia hạn -->
-                    <div class="button" align="center"> <button type="button" class="renew-button">Thanh toán</button>
+
+
+                    <div class="button" align="center"> <input type="submit" name="ThanhToan" class="renew-button"
+                            value="Thanh Toán">
                     </div>
 
-
-
                 </form>
+                <?php 
+                    if(isset($_REQUEST['ThanhToan']))
+                    {
+                        $HinhThucTT=$_REQUEST['HTTT'];
+                        
+                        $currentDateTime = date('Y-m-d H:i:s');
+                       
+                        if($HinhThucTT==='Tiền Mặt')
+                        { $kq3=$p->CapNhatHD($_SESSION['IDHD'],$thanhtien,$HinhThucTT,$currentDateTime);
+                            echo'<script>window.location.href="TienMat.php"</script>';
+                        }
+                        else
+                        {
+                            $kq3=$p->CapNhatHD($_SESSION['IDHD'],$thanhtien,$HinhThucTT,$currentDateTime);
+                            echo'<script>window.location.href="TKNH.php"</script>';
+                        }
+                       
+                        
+                       
+                    }
+                    
+                        
+                       
+                    
+                ?>
             </div>
         </div>
     </div>

@@ -21,51 +21,56 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
     <style>
-        .confirmation {
-            border: 1px solid #ccc;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            height:300px;
-            margin: auto;
-            border-radius: 10px;
-            align-content:center;
-        }
-        button {
-            margin: 10px;
-        }
-        .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .confirmation {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        height: 300px;
+        margin: auto;
+        border-radius: 10px;
+        align-content: center;
+    }
 
-.left, .right {
-    margin: 10px;
-}
+    button {
+        margin: 10px;
+    }
 
-.left {
-    margin-right: 30px; /* Adjust for spacing between the menu and confirmation form */
-}
-.confirmation {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    width: 500px;
-    height: fit-content;
-    margin: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.confirmation form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .left,
+    .right {
+        margin: 10px;
+    }
 
-.confirmation table {
-    width: 100%;
-}
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
+
+    .confirmation {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        width: 500px;
+        height: fit-content;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation table {
+        width: 100%;
+    }
     </style>
 </head>
 
@@ -73,7 +78,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -81,18 +86,22 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="feature.php" class="nav-item nav-link">Our Features</a>
-                    <a href="class.php" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <?php
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -125,7 +134,7 @@
                         <li><a href="#home">Thông tin chung</a></li>
                         <li><a href="#profile">Quản lý thành viên</a></li>
                         <li><a href="#settings">Quản lý thiết bị</a></li>
-                        
+
                         <li><a href="#logout">Logout</a></li>
                     </ul>
                 </div>
@@ -133,55 +142,56 @@
 
         </div>
         <div class="right">
-        <div class="confirmation">
-        <h2>Thêm Thiết Bị</h2>
-        <form action="" method="post">
-            <table>
-                <tr>
-                    <td><label for="txtTenTB">Tên Thiết Bị:</label></td>
-                    <td>
-                        <input type="text" name="txtTenTB" id="txtTenTB" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="txtTinhTrang">Tình Trạng:</label></td>
-                    <td>
-                        <input type="text" name="txtTinhTrang" id="txtTinhTrang" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="txtNgaySX">Ngày Sản Xuất:</label></td>
-                    <td>
-                        <input type="date" name="txtNgaySX" id="txtNgaySX" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="txtNoiSX">Nơi Sản Xuất:</label></td>
-                    <td>
-                        <input type="text" name="txtNoiSX" id="txtNoiSX" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="idnhanvien">Chọn nhân viên</label></td>
-                    <td>
-                    
-                    <select style="width:calc(100%)" class="form-select" aria-label="Default select example">
-                        <option value="Quan Ly">nhân vien 1</option>
-                        <option value="Nhan Vien">Nhân viên 2</option>
-                        <option value="Thanh Vien">nhân vien 3</option>
-                    </select>
-                    </td>
-                </tr>
-                <tr>
-                <td colspan="2">
-                    <button  name="btnCapNhat" class="update-btn">Tạo </button>
-                    <button  value="Làm Lại" class="cancel-btn">Hủy bỏ </button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-    </form>
+            <div class="confirmation">
+                <h2>Thêm Thiết Bị</h2>
+                <form action="" method="post">
+                    <table>
+                        <tr>
+                            <td><label for="txtTenTB">Tên Thiết Bị:</label></td>
+                            <td>
+                                <input type="text" name="txtTenTB" id="txtTenTB" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="txtTinhTrang">Tình Trạng:</label></td>
+                            <td>
+                                <input type="text" name="txtTinhTrang" id="txtTinhTrang" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="txtNgaySX">Ngày Sản Xuất:</label></td>
+                            <td>
+                                <input type="date" name="txtNgaySX" id="txtNgaySX" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="txtNoiSX">Nơi Sản Xuất:</label></td>
+                            <td>
+                                <input type="text" name="txtNoiSX" id="txtNoiSX" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="idnhanvien">Chọn nhân viên</label></td>
+                            <td>
+
+                                <select style="width:calc(100%)" class="form-select"
+                                    aria-label="Default select example">
+                                    <option value="Quan Ly">nhân vien 1</option>
+                                    <option value="Nhan Vien">Nhân viên 2</option>
+                                    <option value="Thanh Vien">nhân vien 3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button name="btnCapNhat" class="update-btn">Tạo </button>
+                                <button value="Làm Lại" class="cancel-btn">Hủy bỏ </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            </form>
 
 
         </div>

@@ -28,5 +28,14 @@
             $p->DongKetNoi($con);
             return $ketqua;
         }
+        public function UpdateHDTV($idhd,$sotien,$HTTT,$ngayThanhToan)
+        {
+            $p = new clsketnoi();
+            $con = $p->MoKetNoi();
+            $truyvan = "UPDATE `hoadon` SET `SoTien`= '$sotien',`TinhTrangThanhToan` = 'Chờ xác nhận', `HinhThucThanhToan` = '$HTTT', `NgayThanhToan` = '$ngayThanhToan' WHERE `hoadon`.`IDHoaDon` = $idhd;";
+			$ketqua = mysqli_query($con, $truyvan);
+            $p->DongKetNoi($con);
+            return $ketqua;
+        }
     }
 ?>

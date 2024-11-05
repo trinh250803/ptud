@@ -1,7 +1,7 @@
 <?php
-include './model/ketnoi.php';
+
 session_start();
-error_reporting(1);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ error_reporting(1);
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="../index.php" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -42,14 +42,19 @@ error_reporting(1);
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
                     <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
-                    <a href="view/about.php" class="nav-item nav-link">Về chúng tôi</a>
-                    <a href="view/feature.php" class="nav-item nav-link">Tin tức</a>
-                    <a href="view/class.php" class="nav-item nav-link">Lớp học</a>
-  
-                    <a href="view/contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="dangnhap.php" class="nav-item nav-link">Đăng nhập</a>';   
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>
                 </div>
@@ -66,16 +71,20 @@ error_reporting(1);
                     <img class="w-100" src="../assets/img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h3 class="text-primary text-capitalize m-0">Gói tập chỉ từ 299K</h3>
-                        <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Thanh Toán Chill - Hưởng thả ga</h2>
-                        <a href="../view/dangnhap.php" class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Mua gói trả tháng ngay</a>
+                        <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Thanh Toán
+                            Chill - Hưởng thả ga</h2>
+                        <a href="../view/dangnhap.php"
+                            class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Mua gói trả tháng ngay</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="w-100" src="../assets/img/carousel-2.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h3 class="text-primary text-capitalize m-0">Một sân chơi mới</h3>
-                        <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Định nghĩa lại sự quyến rũ </h2>
-                        <a href="" class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Trải nghiệm miễn phí</a>
+                        <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Định nghĩa
+                            lại sự quyến rũ </h2>
+                        <a href="" class="btn btn-lg btn-outline-light mt-3 mt-md-5 py-md-3 px-md-5">Trải nghiệm miễn
+                            phí</a>
                     </div>
                 </div>
             </div>
@@ -95,13 +104,15 @@ error_reporting(1);
 
         <h4 class="display-4 font-weight-bold d-flex justify-content-center">HỘI VIÊN</h4>
         <p class="comment-service text-center mt-3" id="">
-            Gymnast cung cấp gói Hội viên Black Card và Classic. Cả hai đều cho bạn tham gia tập luyện không giới hạn trong không gian Không phán xét, nơi mọi người cảm thấy được chào đón khi bước vào.
+            Gymnast cung cấp gói Hội viên Black Card và Classic. Cả hai đều cho bạn tham gia tập luyện không giới hạn
+            trong không gian Không phán xét, nơi mọi người cảm thấy được chào đón khi bước vào.
         </p>
 
         <div class="row px-3 mt-5">
             <!-- card 1 -->
             <div class="col-md-6 p-0 ">
-                <div class="gym-class-box d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white  px-4">
+                <div
+                    class="gym-class-box d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white  px-4">
                     <div class="card-item mb-5 mt-lg-n5">
                         <h3 class="display-4 mb-3 text-white font-weight-bold">BLACK CARD</h3>
                         <label class="btn btn-lg px-4 btn-success rounded card-item__link ">Giá tốt nhất</label>
@@ -122,13 +133,15 @@ error_reporting(1);
                         Tập luyện tại toàn hệ thống Gymnast, chuyển nhượng gói tập, nhiều dịch vụ hấp dẫn
                         và nhiều hơn nữa!
                     </p>
-                    <a class="btn btn-outline-primary mt-5 px-4 accept-item" href="#">Tham gia<i class="fa fa-angle-right"></i></a>
+                    <a class="btn btn-outline-primary mt-5 px-4 accept-item" href="#">Tham gia<i
+                            class="fa fa-angle-right"></i></a>
                 </div>
 
             </div>
             <!-- card 2 -->
             <div class="col-md-6 p-0 ">
-                <div class="gym-class-box basic d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white  px-4">
+                <div
+                    class="gym-class-box basic d-flex flex-column align-items-end justify-content-center bg-primary text-right text-white  px-4">
                     <div class="card-item mb-5 mt-lg-n5 ml-0">
                         <h3 class="display-4 mb-3 text-white font-weight-bold text-left ml-3 w-100 ">BASIC</h3>
                     </div>
@@ -147,7 +160,8 @@ error_reporting(1);
                     <p class="comment-service text-center">
                         Gói hội viên cơ bản của Gymnast, bạn được tập luyện không giới hạn tại câu lạc bộ đăng ký.
                     </p>
-                    <a class="btn btn-outline-primary mt-5 px-4 accept-item" href="#">Tham gia<i class="fa fa-angle-right"></i></a>
+                    <a class="btn btn-outline-primary mt-5 px-4 accept-item" href="#">Tham gia<i
+                            class="fa fa-angle-right"></i></a>
                 </div>
 
             </div>
@@ -165,9 +179,12 @@ error_reporting(1);
             <div class="col-lg-6" style="margin-top: 140px;">
                 <h2 class="display-3 font-weight-bold mb-4 text-light ">Chào mừng bạn đến với Gymnast</h2>
                 <p class="about-start__item text-light">
-                    Chúng tôi tạo ra một môi trường nơi mà mọi người đều có thể cảm thấy thoải mái tập luyện một mình hoặc cùng bạn bè của mình, bất kể trình độ thể chất và hiểu biết về gym như thế nào mà không bao giờ lo lắng về việc bị đánh giá.</p>
+                    Chúng tôi tạo ra một môi trường nơi mà mọi người đều có thể cảm thấy thoải mái tập luyện một mình
+                    hoặc cùng bạn bè của mình, bất kể trình độ thể chất và hiểu biết về gym như thế nào mà không bao giờ
+                    lo lắng về việc bị đánh giá.</p>
 
-                <a href="" class="btn btn-lg px-4 btn-outline-primary about-start__more" style="background-color: #9b1b1b;border-bottom: 1px solid;outline:none">
+                <a href="" class="btn btn-lg px-4 btn-outline-primary about-start__more"
+                    style="background-color: #9b1b1b;border-bottom: 1px solid;outline:none">
                     <i class="fa-solid fa-arrow-right" style="color: #fff;"></i>
                     Tìm hiểu thêm
                 </a>
@@ -184,7 +201,8 @@ error_reporting(1);
             <!--  dv 1 -->
             <div class="col-lg-4 p-0">
                 <a href="" class="text-decoration-none  service-link">
-                    <div class="d-flex align-items-center bg-secondary text-white px-5 service " style="min-height: 300px;">
+                    <div class="d-flex align-items-center bg-secondary text-white px-5 service "
+                        style="min-height: 300px;">
                         <div class="img-service">
                             <img class="img-service__item" src="../assets/img/cardio.jpeg" alt="img-service"></img>
                         </div>
@@ -200,14 +218,16 @@ error_reporting(1);
             <!-- dv2 -->
             <div class="col-lg-4 p-0">
                 <a href="" class="text-decoration-none service-link">
-                    <div class="d-flex align-items-center bg-secondary text-white px-5 service" style="min-height: 300px;">
+                    <div class="d-flex align-items-center bg-secondary text-white px-5 service"
+                        style="min-height: 300px;">
                         <div class="img-service">
                             <img class="img-service__item" src="../assets/img/dancee.jpeg" alt="img-service">
                         </div>
                         <div class="note-service">
                             <h2 class="text-white mb-3">DANCE</h2>
                             <p class="comment-service__item">
-                                Sự kết hợp các điệu nhảy tự do với âm nhạc sôi động, giúp đốt cháy mỡ thừa,thư giãn cùng âm nhạc.
+                                Sự kết hợp các điệu nhảy tự do với âm nhạc sôi động, giúp đốt cháy mỡ thừa,thư giãn cùng
+                                âm nhạc.
                             </p>
                         </div>
                     </div>
@@ -215,13 +235,15 @@ error_reporting(1);
             </div>
             <div class="col-lg-4 p-0">
                 <a href="" class="text-decoration-none service-link">
-                    <div class="d-flex align-items-center bg-secondary text-white px-5 service" style="min-height: 300px;">
+                    <div class="d-flex align-items-center bg-secondary text-white px-5 service"
+                        style="min-height: 300px;">
                         <div class="img-service">
                             <img class="img-service__item" src="../assets/img/yoga.jpeg" alt="img-service">
                         </div>
                         <div class="note-service">
                             <h2 class="text-white mb-3">YOGA</h2>
-                            <p class="comment-service__item">Chương trình luyện tập yoga được thiết kế khoa học và phù hợp từ chuyên gia.
+                            <p class="comment-service__item">Chương trình luyện tập yoga được thiết kế khoa học và phù
+                                hợp từ chuyên gia.
                             </p>
                         </div>
                     </div>
@@ -247,7 +269,9 @@ error_reporting(1);
                     </div>
                     <div class="col-sm-7">
                         <h4 class="font-weight-bold">Chương trình tập luyện được cá nhân hóa</h4>
-                        <p>Chúng tôi cung cấp các chương trình tập luyện được tùy chỉnh riêng theo mục tiêu của mỗi người, dù đó là giảm cân, tăng cơ, cải thiện sức bền hay chuẩn bị cho các sự kiện đặc biệt</p>
+                        <p>Chúng tôi cung cấp các chương trình tập luyện được tùy chỉnh riêng theo mục tiêu của mỗi
+                            người, dù đó là giảm cân, tăng cơ, cải thiện sức bền hay chuẩn bị cho các sự kiện đặc biệt
+                        </p>
                     </div>
                 </div>
             </div>
@@ -259,7 +283,8 @@ error_reporting(1);
                     </div>
                     <div class="col-sm-7">
                         <h4 class="font-weight-bold"> Dịch vụ chăm sóc khách hàng tận tâm và chu đáo</h4>
-                        <p>Đội ngũ nhân viên tận tình và luôn sẵn sàng hỗ trợ, tư vấn các thông tin cần thiết từ việc đăng ký gói tập, các chương trình khuyến mãi đến những thắc mắc trong quá trình tập luyện.
+                        <p>Đội ngũ nhân viên tận tình và luôn sẵn sàng hỗ trợ, tư vấn các thông tin cần thiết từ việc
+                            đăng ký gói tập, các chương trình khuyến mãi đến những thắc mắc trong quá trình tập luyện.
                         </p>
                     </div>
                 </div>
@@ -272,7 +297,9 @@ error_reporting(1);
                     </div>
                     <div class="col-sm-7">
                         <h4 class="font-weight-bold">Đa dạng gói tập luyện linh hoạt</h4>
-                        <p>Phòng gym cung cấp nhiều gói tập khác nhau, từ ngắn hạn đến dài hạn, phù hợp với mọi nhu cầu và ngân sách. Khách hàng có thể chọn gói tập hàng ngày, hàng tháng hoặc gói tập không giới hạn</p>
+                        <p>Phòng gym cung cấp nhiều gói tập khác nhau, từ ngắn hạn đến dài hạn, phù hợp với mọi nhu cầu
+                            và ngân sách. Khách hàng có thể chọn gói tập hàng ngày, hàng tháng hoặc gói tập không giới
+                            hạn</p>
                     </div>
                 </div>
             </div>
@@ -284,7 +311,8 @@ error_reporting(1);
                     </div>
                     <div class="col-sm-7">
                         <h4 class="font-weight-bold"> Thiết bị hiện đại, đa dạng</h4>
-                        <p>Phòng gym của chúng tôi trang bị những máy móc và dụng cụ tập luyện tối tân, từ cardio đến tập tạ và các thiết bị chuyên biệt giúp khách hàng có trải nghiệm tập luyện toàn diện.</p>
+                        <p>Phòng gym của chúng tôi trang bị những máy móc và dụng cụ tập luyện tối tân, từ cardio đến
+                            tập tạ và các thiết bị chuyên biệt giúp khách hàng có trải nghiệm tập luyện toàn diện.</p>
                     </div>
                 </div>
             </div>
@@ -703,8 +731,13 @@ error_reporting(1);
                     <div class="pr-md-3 d-none d-md-block">
                         <h4 class="text-primary">Chỉ số khối cơ thể</h4>
                         <h4 class="display-4 text-white font-weight-bold mb-4">BMI là gì ??</h4>
-                        <p class="m-0 text-white">Đo chỉ số BMI tại CITIGYM để đánh giá mức độ béo, gầy hay cân nặng lý tưởng của bạn
-                            CITIGYM hỗ trợ hội viên đo chỉ số BMI trước và trong quá trình tập luyện để hội viên có thể theo dõi được kết quả tập luyện. BMI là chỉ số khối cơ thể (Body Mass Index), được các bác sĩ và chuyên gia sức khỏe dùng để xác định một người có bị béo phì, thừa cân hay quá gầy. Hãy để lại thông tin để Gymnast có thể giúp bạn phân tích sức khỏe và đưa ra những tư vấn phù hợp với thể trạng của bạn.</p>
+                        <p class="m-0 text-white">Đo chỉ số BMI tại CITIGYM để đánh giá mức độ béo, gầy hay cân nặng lý
+                            tưởng của bạn
+                            CITIGYM hỗ trợ hội viên đo chỉ số BMI trước và trong quá trình tập luyện để hội viên có thể
+                            theo dõi được kết quả tập luyện. BMI là chỉ số khối cơ thể (Body Mass Index), được các bác
+                            sĩ và chuyên gia sức khỏe dùng để xác định một người có bị béo phì, thừa cân hay quá gầy.
+                            Hãy để lại thông tin để Gymnast có thể giúp bạn phân tích sức khỏe và đưa ra những tư vấn
+                            phù hợp với thể trạng của bạn.</p>
                     </div>
                 </div>
                 <div class="col-md-6 bg-secondary py-5">
@@ -713,15 +746,18 @@ error_reporting(1);
                         <form>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Cân nặng (KG)">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white"
+                                        placeholder="Cân nặng (KG)">
                                 </div>
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Chiều cao (CM)">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white"
+                                        placeholder="Chiều cao (CM)">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Tuổi">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white"
+                                        placeholder="Tuổi">
                                 </div>
                                 <div class="col form-group">
                                     <select class="custom-select custom-select-lg bg-dark text-muted">
@@ -757,10 +793,14 @@ error_reporting(1);
                 <div class="card border-0 bg-secondary text-center text-white">
                     <img class="card-img-top" src="../assets/img/team-1.jpg" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">NGUYỄN MINH QUÂN</h4>
@@ -774,10 +814,14 @@ error_reporting(1);
                 <div class="card border-0 bg-secondary text-center text-white">
                     <img class="card-img-top" src="../assets/img/team-2.jpg" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">AN NGUYỄN</h4>
@@ -794,10 +838,14 @@ error_reporting(1);
                 <div class="card border-0 bg-secondary text-center text-white">
                     <img class="card-img-top" src="../assets/img/team-3.jpg" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">ANTONY</h4>
@@ -812,10 +860,14 @@ error_reporting(1);
                 <div class="card border-0 bg-secondary text-center text-white">
                     <img class="card-img-top" src="../assets/img/team-4.jpg" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                            style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">MAGUIRE</h4>
@@ -846,38 +898,44 @@ error_reporting(1);
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="../assets/img/testimonial-1.jpg" alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2"
+                                            src="../assets/img/testimonial-1.jpg" alt="Image">
                                         <div class="pl-4">
                                             <h4 class="text-primary">Duy Bảo</h4>
                                             <p class="m-0">Nhân viên văn phòng</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Tôi thấy phòng tập rất tốt, chất lượng máy móc tốt, giáo viên nhiệt tình, phòng tập sạch sẽ, thoáng đãng, rất thích hợp cho việc tập luyện
+                                        Tôi thấy phòng tập rất tốt, chất lượng máy móc tốt, giáo viên nhiệt tình, phòng
+                                        tập sạch sẽ, thoáng đãng, rất thích hợp cho việc tập luyện
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="../assets/img/testimonial-2.jpg" alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2"
+                                            src="../assets/img/testimonial-2.jpg" alt="Image">
                                         <div class="pl-4">
                                             <h4 class="text-primary">Nhường Em</h4>
                                             <p class="m-0">Chủ tịch</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Không gian rộng rãi, sạch sẽ. Đọi ngũ huấn luyện viên có tâm và giàu chuyên môn nhất mình từng gặp.
+                                        Không gian rộng rãi, sạch sẽ. Đọi ngũ huấn luyện viên có tâm và giàu chuyên môn
+                                        nhất mình từng gặp.
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="../assets/img/testimonial-3.jpg" alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2"
+                                            src="../assets/img/testimonial-3.jpg" alt="Image">
                                         <div class="pl-4">
                                             <h4 class="text-primary">Đầy Trương</h4>
                                             <p class="m-0">Giám đốc Gara</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Quả là một phòng tập tuyệt vời, thiết bị hiện đại, đội ngũ chuyên nghiệp, xứng đáng là phòng gym số một Việt Nam.
+                                        Quả là một phòng tập tuyệt vời, thiết bị hiện đại, đội ngũ chuyên nghiệp, xứng
+                                        đáng là phòng gym số một Việt Nam.
                                     </div>
                                 </div>
                             </div>
@@ -905,9 +963,11 @@ error_reporting(1);
         </div>
         <div class="row">
             <div class="col-lg-6 mb-5 blog-item">
-                <img class="img-fluid mb-4" src="../assets/img/Nên uống nước gì trước, trong và sau khi tập gym_.jpeg" alt="Image">
+                <img class="img-fluid mb-4" src="../assets/img/Nên uống nước gì trước, trong và sau khi tập gym_.jpeg"
+                    alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 80px; height: 80px;">
                         <small>20</small>
                         <strong class="text-uppercase m-0 text-white">Oct</strong>
                         <small>2024</small>
@@ -921,13 +981,17 @@ error_reporting(1);
                         </div>
                     </div>
                 </div>
-                <p>Lần đầu đi tập gym nên lưu ý điều gì, nên lưu ý điều gì khi tập gym, trước khi tập ăn gì, sau khi tập ....</p>
-                <a class="btn btn-outline-primary mt-2 px-3" href="../view/feature.php">Đọc thêm <i class="fa fa-angle-right"></i></a>
-                </div>
+                <p>Lần đầu đi tập gym nên lưu ý điều gì, nên lưu ý điều gì khi tập gym, trước khi tập ăn gì, sau khi tập
+                    ....</p>
+                <a class="btn btn-outline-primary mt-2 px-3" href="../view/feature.php">Đọc thêm <i
+                        class="fa fa-angle-right"></i></a>
+            </div>
             <div class="col-lg-6 mb-5 blog-item">
-                <img class="img-fluid mb-4" style="height:51%; width: 100%;" src="../assets/img/Best “LISS Cardio” Workout Ideas for Weight Loss.jpeg" alt="Image">
+                <img class="img-fluid mb-4" style="height:51%; width: 100%;"
+                    src="../assets/img/Best “LISS Cardio” Workout Ideas for Weight Loss.jpeg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 80px; height: 80px;">
                         <small>01</small>
                         <strong class="text-uppercase m-0 text-white">Oct</strong>
                         <small>2024</small>
@@ -943,8 +1007,10 @@ error_reporting(1);
                     </div>
                 </div>
                 <p>
-			Liss cardio là một bài tập mang lại hiệu quả rất tốt trong việc đốt mỡ và giảm cân. Bài tập này thường khá đơn ...		</p>
-                <a class="btn btn-outline-primary mt-2 px-3" href="../view/feature.php">Đọc thêm <i class="fa fa-angle-right"></i></a>
+                    Liss cardio là một bài tập mang lại hiệu quả rất tốt trong việc đốt mỡ và giảm cân. Bài tập này
+                    thường khá đơn ... </p>
+                <a class="btn btn-outline-primary mt-2 px-3" href="../view/feature.php">Đọc thêm <i
+                        class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>
@@ -960,10 +1026,14 @@ error_reporting(1);
                 <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">

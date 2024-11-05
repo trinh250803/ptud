@@ -70,7 +70,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="./index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -78,18 +78,22 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="feature.php" class="nav-item nav-link">Our Features</a>
-                    <a href="class.php" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
+                    <a href="feature.php" class="nav-item nav-link">Tin tức</a>
+                    <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
+                    <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
+                    <?php
+                    if (!isset($_SESSION['dn'])) {
+                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </nav>
@@ -146,14 +150,17 @@
                             echo' <select name="HoaDon" style="width:fit-content" class="form-select" aria-label="Default select example">';
                             while($r=mysqli_fetch_assoc($kq))
                             {
-                                $idhd= $r['IDHoaDon'];
-                            
-                            
+                               
+                               
+                              
                                 if($row["IDHoaDon"] == $idhd){
                                     echo"<option value=".$r['IDHoaDon']." selected>".$r['SoTien']."</option>";
                                    
+                                   
+                                   
                                 }else{
                                     echo"<option value=".$r['IDHoaDon'].">".$r['SoTien']."</option>";
+                                   
                                 }
                             }
                             echo' </select>';
@@ -175,6 +182,8 @@
                     if(isset($_REQUEST['search-btn']))
                     {
                         $_SESSION['IDHD']=$_REQUEST['HoaDon'];
+                       
+                     
                         echo "<script>window.location.href = 'ThanhToan2.php';</script>";
                     }
                     
