@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +16,7 @@ session_start();
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/chitiet.css">
+    <link rel="stylesheet" href="login/css/update.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
@@ -64,7 +61,7 @@ session_start();
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý thành viên</p>
+                <p class="m-0 text-white">Quản lý</p>
             </div>
         </div>
     </div>
@@ -78,26 +75,11 @@ session_start();
                 <div class="menu">
                     <p>Menu</p>
                     <ul>
-                        <?php
-                       if(!$_SESSION['dn'])
-                       {
-                        echo "<script>alert('Bạn không có quyền truy cập vào trang');</script>";
-                        echo "<script>window.location.href = '../index.php';</script>";
-                       }
-                      
-                       
-                                echo  '<li><a href="#settings">Xem thông tin tài khoản</a></li>';
-                                echo' <li><a href="#profile">Gia hạn </a></li>';
-                                echo  '<li><a href="#settings">Thanh toán</a></li>';
-                                echo  '<li><a href="#settings">Xem lịch sử thanh toán</a></li>';
-                               
-                    
-                        
-                       
+                        <li><a href="#home">Thông tin chung</a></li>
+                        <li><a href="#profile">Quản lý thành viên</a></li>
+                        <li><a href="#settings">Quản lý thiết bị</a></li>
 
-                     echo   '<li><a href="#logout">Logout</a></li>';
-
-                        ?>
+                        <li><a href="#logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -105,58 +87,28 @@ session_start();
         </div>
         <div class="right">
             <div class="update-info-container">
-                <?php
-                include_once('../controller/cThanhVien.php');
-                $p = new cThanhVien();
-                if(isset($_SESSION['id']))
-                {
-                    $idtv=$_SESSION['id'];
-                    $kq = $p->Query1TV($idtv);
-                    if($kq)
-                    {
-                        while($r= mysqli_fetch_assoc($kq))
-                        {
-                            
-                            echo'<h2>Thông Tin chung</h2>
-                <label for="name">Tên:</label>
-                <span class="Ten">'.$r['TenThanhVien'].'</span>
-                <br>
+                <h2>Cập nhật thông tin</h2>
+                <form action="update_info.php" method="POST" enctype="multipart/form-data">
+                    <label for="name">Tên</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+
+                    <label for="address">Địa chỉ</label>
+                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ">
+
+                    <label for="phone">SDT</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" pattern="[0-9]{10}"
+                        required>
+                    <label for="Email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Nhập Email" required
+                        aria-label="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="Please enter a valid email address (e.g., example@domain.com)">
 
 
-
-                <label for="phone">Số điện thoại:</label>
-                <span class="sdt">'.$r['SoDienThoai'].'</span>
-                <br>
-                <label for="Email">Email:</label>
-                <span class="email">'.$r['email'].'</span>
-                <br>
-                <label for="address">Địa chỉ:</label>
-                <span class="diachi">'.$r['DiaChi'].'</span>
-                <br>
-                <label for="address">Ngày tham gia:</label>
-                <span class="diachi">'.$r['NgayThamGia'].'</span>
-                <br>
-                
-                ';  
-                        }
-                      
-                    }
-                }
-                
-
-                ?>
-
-
-
-
-                <div class="button-group">
-
-                    <button type="submit" onclick="window.location.href='CapNhatTTCN.php'" class="update-btn">Cập nhật
-                        TTTT</button>
-                    <button type="button" class="submit-btn">OK</button>
-
-                </div>
-
+                    <div class="button-group">
+                        <button type="submit" class="update-btn">Cập nhật</button>
+                        <button type="button" class="cancel-btn">Hủy</button>
+                    </div>
+                </form>
             </div>
 
 

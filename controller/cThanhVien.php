@@ -11,6 +11,7 @@
             } else {
                 if(mysqli_num_rows($con)) {
                     while($r=mysqli_fetch_assoc($con)){
+                        session_start();
                         $_SESSION["dn"]=$r["SoDienThoai"];
                         $_SESSION["id"]=$r["IDThanhVien"];
                     }
@@ -22,7 +23,7 @@
                 } else {
                     echo "<script>alert('Đăng nhập thất bại');</script>";
                     // Sau khi hiện alert, chuyển hướng người dùng về trang đăng nhập
-                    echo "<script>window.location.href = 'dangnhap.php';</script>";
+                    echo "<script>window.location.href = 'dangnhap-tv.php';</script>";
                     exit();  // Kết thúc script sau khi chuyển hướng
                 }
             }
