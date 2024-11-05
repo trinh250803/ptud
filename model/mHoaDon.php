@@ -10,6 +10,15 @@
             $p->DongKetNoi($con);
             return $ketqua;
         }
+        public function selectAllHD($idtv)
+        {
+            $p = new clsketnoi();
+            $con = $p->MoKetNoi();
+            $truyvan = "SELECT * FROM `hoadon` hd join thanhvien tv on hd.IDThanhVien = tv.IDThanhVien  WHERE `TinhTrangThanhToan` not LIKE 'Chưa Thanh Toán'  AND  hd.`IDThanhVien` = '$idtv'  ";
+			$ketqua = mysqli_query($con, $truyvan);
+            $p->DongKetNoi($con);
+            return $ketqua;
+        }
         public function selectAllHDCTT($idtv)
         {
             $p = new clsketnoi();

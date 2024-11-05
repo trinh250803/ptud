@@ -7,6 +7,20 @@
             $kq= $p->InsertHD($tongtien,$ngayLapHD,$idtv);
             return $kq;
         }
+        public function getallhd($idtv)
+        {
+            $p = new mHoaDon();
+            
+		$kq= $p->selectAllHD($idtv);
+		if(mysqli_num_rows($kq)>0)
+		{
+			return $kq;
+		}
+		else
+		{
+			return false;
+		}
+        }
         public function getallhdctt($idtv)
         {
             $p = new mHoaDon();

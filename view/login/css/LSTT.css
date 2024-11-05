@@ -1,0 +1,178 @@
+/* Sidebar Styles */
+.sidebar {
+    background-color: #333333; /* Dark background color */
+    padding: 20px;
+    width: 200px; /* Adjust width as needed */
+    border-radius: 8px;
+}
+
+.sidebar .menu p {
+    text-align: center;
+    color: #bbbbbb; /* Light gray color for the title */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sidebar .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.sidebar .menu ul li {
+    margin: 10px 0;
+}
+
+.sidebar .menu ul li a {
+    color: #ffffff; /* White text color */
+    text-decoration: none;
+    font-weight: normal;
+    display: block;
+    padding: 10px 0;
+}
+
+.sidebar .menu ul li a:hover {
+    color: #d81b1b; /* Highlight color on hover */
+}
+
+
+/* Right Content Area */
+.right {
+    margin-left: 220px;
+    padding: 20px;
+    background-color: #ffffff; /* Dark background color */
+    padding: 20px;
+    width: 200px; /* Adjust width as needed */
+    border-radius: 8px;
+}
+
+.qltv h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+   
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+.search-bar .search-btn {
+    background-color: #ffffff;
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+}
+
+/* List Container */
+.list-container {
+    border-top: 1px solid #ddd;
+}
+.table-head {
+    display: flex;
+    justify-content: space-between; /* Căn giữa các cột */
+    background-color: #f2f2f2; /* Màu nền cho tiêu đề */
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd; /* Viền dưới cho tiêu đề */
+}
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.name{
+   font-size: 15px;
+   font-weight: bolder; 
+}
+
+.list-item span {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+}
+
+.update-btn,
+.submit-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+    color: #FFFFFF;
+}
+
+
+
+.update-btn {
+    background-color: #4CAF50;
+    margin-right: 10px;
+}
+.update-btn:hover {
+    background-color: #053606;
+    
+}
+.submit-btn{
+    background-color: #099696;
+    
+}
+.submit-btn:hover{
+    background-color: #0f5e5e;
+    
+}
+.delete-btn {
+    background-color: #f44336;
+    margin-right: 10px;
+}
+.delete-btn:hover {
+    background-color: #ff1100;
+    margin-right: 10px;
+}
+.left{
+   
+    margin-right: 20px; 
+ }
+ .right{
+    width: 100%;
+     margin-left: 20px; 
+ }
+ .container {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.list-container {
+    counter-reset: item-counter; /* Khởi tạo bộ đếm */
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    counter-increment: item-counter; /* Tăng bộ đếm cho mỗi mục */
+}
+
+.list-item::before {
+    content: counter(item-counter) ; /* Hiển thị số thứ tự */
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 8px; /* Khoảng cách giữa số thứ tự và nội dung */
+}
