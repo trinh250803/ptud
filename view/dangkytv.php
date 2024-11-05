@@ -15,12 +15,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./login/fonts/style.css">
 
-<link rel="stylesheet" href="./login/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./login/css/owl.carousel.min.css">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./login/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./login/css/bootstrap.min.css">
 
-<!-- Style -->
+    <!-- Style -->
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
@@ -69,7 +69,7 @@
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý</p>
+                <p class="m-0 text-white">Quản lý a</p>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
                         <li><a href="#home">Thông tin chung</a></li>
                         <li><a href="#profile">Quản lý thành viên</a></li>
                         <li><a href="#settings">Quản lý thiết bị</a></li>
-                        
+
                         <li><a href="#logout">Logout</a></li>
                     </ul>
                 </div>
@@ -94,80 +94,85 @@
 
         </div>
         <div class="right">
-        
-    
-
-      
-        <div class="row align-items-center  ">
-          <div class="col-md-11 update-info-container">
-            <h3 style=" margin-left: 80px; margin-bottom:30px;"><strong>Đăng ký thành viên</strong></h3>
-            <form action="#" method="post">
-              <div class="form-group first">
-                <label for="username">Họ tên</label>
-                <input type="text" class="form-control" placeholder="Họ tên*" id="username" name="username">
-                <span></span>
-                <small></small>
-              </div>
-
-              <div class="form-group first">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" placeholder="your-email@gmail.com*" id="email" name="email">
-                <span></span>
-                <small></small>
-              </div>
-              
-              <div class="form-group last mb-3">
-                <label for="text">Số điện thoại</label>
-                <input type="text" class="form-control" placeholder="Số điện thoại*" id="telephone" name="telephone">
-                <span></span>
-                <small></small>
-              </div>
-
-              <div class="form-group last mb-3">
-                <label for="text">Địa chỉ </label>
-                <input type="text" class="form-control" placeholder="Địa chỉ" id="address" name="address">
-                <span></span>
-                <small></small>
-              </div>
-              <!-- password -->
-              <div class="form-group last mb-3">
-                <label for="pass">Mật khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập Password" id="password" name="password">
-                <span></span>
-                <small></small>
-              </div>
-
-              <div class="form-group last mb-3">
-                <label for="pass"> Nhập lại mật khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập Password" id="password-reset" name="pass-reset">
-                <span></span>
-                <small></small>
-              </div>
-              
-              <input type="submit" value="Đăng ký" name="btn-dangky" class="btn btn-block mt-5" style="background-color: #da2127; color: #fff6f4; font-weight: 600; font-size:1.2rem; ">
 
 
-            </form>
-            <a class="already-signup" href="./dangnhap.php">Bạn đã có tài khoản</a>
-          
-        
-      </div>
-    </div>
 
 
-  </div>
+            <div class="row align-items-center  ">
+                <div class="col-md-11 update-info-container">
+                    <h3 style=" margin-left: 80px; margin-bottom:30px;"><strong>Đăng ký thành viên</strong></h3>
+                    <form action="#" method="post">
+                        <div class="form-group first">
+                            <label for="username">Họ tên</label>
+                            <input type="text" class="form-control" placeholder="Họ tên*" id="username" name="username">
+                            <span></span>
+                            <small></small>
+                        </div>
+
+                        <div class="form-group first">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" placeholder="your-email@gmail.com*" id="email"
+                                name="email">
+                            <span></span>
+                            <small></small>
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="text">Số điện thoại</label>
+                            <input type="text" class="form-control" placeholder="Số điện thoại*" id="telephone"
+                                name="telephone">
+                            <span></span>
+                            <small></small>
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="text">Địa chỉ </label>
+                            <input type="text" class="form-control" placeholder="Địa chỉ" id="address" name="address">
+                            <span></span>
+                            <small></small>
+                        </div>
+                        <!-- password -->
+                        <div class="form-group last mb-3">
+                            <label for="pass">Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Nhập Password" id="password"
+                                name="password">
+                            <span></span>
+                            <small></small>
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="pass"> Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Nhập Password" id="password-reset"
+                                name="pass-reset">
+                            <span></span>
+                            <small></small>
+                        </div>
+
+                        <input type="submit" value="Đăng ký" name="btn-dangky" class="btn btn-block mt-5"
+                            style="background-color: #da2127; color: #fff6f4; font-weight: 600; font-size:1.2rem; ">
 
 
-  <script src="./login/js/regester.js"></script>
-  <script src="./login/js/jquery-3.3.1.min.js"></script>
-  <script src="./login/js/popper.min.js"></script>
-  <script src="./login/js/bootstrap.min.js"></script>
-  <script src="./login/js/main.js"></script> 
-             
-            
+                    </form>
+                    <a class="already-signup" href="./dangnhap.php">Bạn đã có tài khoản</a>
+
+
+                </div>
+            </div>
 
 
         </div>
+
+
+        <script src="./login/js/regester.js"></script>
+        <script src="./login/js/jquery-3.3.1.min.js"></script>
+        <script src="./login/js/popper.min.js"></script>
+        <script src="./login/js/bootstrap.min.js"></script>
+        <script src="./login/js/main.js"></script>
+
+
+
+
+    </div>
     </div>
     <!-- Blog End -->
 
