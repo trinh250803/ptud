@@ -16,7 +16,7 @@
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login\css\giahan.css">
+    <link rel="stylesheet" href="login\css\thanhtoan.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
@@ -128,27 +128,66 @@
         </div>
         <div class="right">
             <div class="update-info-container">
-                <h1>Gia hạn gói thành viên</h1>
+                <h1 align="center">Thanh Toán hóa đơn</h1>
 
                 <form>
                     <!-- Chọn gói gia hạn -->
-                    <label for="membership-plan">Chọn gói gia hạn:</label>
+                    <label for="membership-plan">Chọn hóa đơn cần thanh toán:</label>
                     <select style="width:fit-content" class="form-select" aria-label="Default select example">
-                        <option value="Quan Ly">nhân vien 1</option>
-                        <option value="Nhan Vien">Nhân viên 2</option>
-                        <option value="Thanh Vien">nhân vien 3</option>
+                        <option value="Quan Ly">Hóa đơn 1</option>
+                        <option value="Nhan Vien">Hóa đơn 2</option>
+                        <option value="Thanh Vien">Hóa đơn 3</option>
                     </select>
 
                     <!-- Hiển thị chi tiết gói -->
                     <div class="package-details">
-                        <p align="center"><strong>Thông tin chi tiết gói tập:</strong></p>
-                        <p><strong>Tên gói:</strong> &emsp; 3 tháng</p>
-                        <p><strong>Giá:</strong> &emsp; 1.500.000</p>
+                        <p align="center"><strong>Thông tin hóa đơn</strong></p>
+                        <p><strong>Gói tập:</strong> &emsp; 3 tháng</p>
                         <p><strong>Thời hạn:</strong> &emsp; 3 tháng</p>
+                        <p><strong>Giá:</strong> &emsp; 1.500.000</p>
+                        <p><strong>Ngày lập hóa đơn:</strong> &emsp; 05/11/2024</p>
                     </div>
 
+
+                    <fieldset>
+                        <label style="align-self: center;" for="khuyenmai">Khuyến mãi:</label>
+
+                        <div class="button-group">
+                            <input type="radio" id="svelt" name="frameworks" checked="" />
+                            <label for="svelt">Mã giảm 50k</label>
+                        </div>
+
+                        <div class="button-group">
+                            <input type="radio" id="react" name="frameworks" />
+                            <label for="react">Mã giảm 50k</label>
+                        </div>
+
+                        <div class="button-group">
+                            <input type="radio" id="vue" name="frameworks" />
+                            <label for="vue">Mã giảm 50k</label>
+                        </div>
+                    </fieldset>
+                    <div class="thanhtien">
+                        <br>
+                        <label style="float:right" for="Tổng tiền">Tổng tiền: &emsp;
+                            1.500.000</label>
+                        <br>
+                    </div>
+                    <br>
+
+
+
+                    <label for="membership-plan">Chọn phương thức thanh toán:</label>
+                    <select style="width:fit-content" class="form-select" aria-label="Default select example">
+                        <option value="Quan Ly">Tiền mặt 1</option>
+                        <option value="Nhan Vien">Chuyển khoản</option>
+                        <option value="Thanh Vien">Tình cảm</option>
+                    </select>
+                    <br>
                     <!-- Nút Gia hạn -->
-                    <button type="button" class="renew-button">Gia hạn</button>
+                    <div class="button" align="center"> <button type="button" class="renew-button">Thanh toán</button>
+                    </div>
+
 
 
                 </form>

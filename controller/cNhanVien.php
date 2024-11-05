@@ -17,7 +17,7 @@
                     }
                     echo "<script>alert('Đăng nhập thành công');</script>";
                     // Sau khi hiện alert, chuyển hướng người dùng
-                    echo "<script>window.location.href = '../view/ThongTinChung.php';</script>";
+                    echo "<script>window.location.href = '../view/ThongTinChungNV.php';</script>";
                     
                     exit();  // Kết thúc script sau khi chuyển hướng
                 } else {
