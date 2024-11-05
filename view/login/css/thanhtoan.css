@@ -221,8 +221,7 @@ form input[type="email"] {
     display: flex;
     margin-top: 10px !important;
   }
-  
   .button button{
    width: fit-content;
-   align-self: center;
+   align-content: center;
   }

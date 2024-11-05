@@ -19,10 +19,51 @@
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/update.css">
+    <link rel="stylesheet" href="login\css\thanhtoan.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style>
+    button {
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left,
+    .right {
+        margin: 10px;
+    }
+
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
+
+    .confirmation {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        width: 500px;
+        height: fit-content;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation table {
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -60,7 +101,7 @@
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
             style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý thiết bị</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
@@ -88,74 +129,79 @@
             </div>
 
         </div>
-
-        <?php
-         include_once("../controller/cThanhVien.php");
-         $q= new cThanhVien();
-         $idtv=$_SESSION['id'];
-         $tbl =$q->Query1TV($idtv);
-         if($tbl)
-         {
-            while($r=mysqli_fetch_assoc($tbl))
-	{
-		$tentv=$r['TenThanhVien'];
-		$email=$r['email'];
-		$sdt=$r['SoDienThoai'];
-        $diachi=$r['DiaChi'];
-	}
-         }
-         
-        ?>
         <div class="right">
             <div class="update-info-container">
-                <h2>Cập nhật thông tin</h2>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <label for="name">Tên</label>
-                    <input type="text" id="name" name="name" value="<?php if(isset($tentv)) {echo $tentv;}  ?>"
-                        placeholder="Nhập tên của bạn" required>
+                <h1 align="center">Thanh Toán hóa đơn</h1>
 
-                    <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" name="address" value="<?php if(isset($diachi)) {
-	 echo $diachi;
-}  ?>" placeholder="Nhập địa chỉ">
-
-                    <label for="phone">SDT</label>
-                    <input type="tel" id="phone" name="phone" value="<?php if(isset($sdt)) {
-	 echo $sdt;
-}  ?>" placeholder="Nhập số điện thoại" pattern="[0-9]{10}" required>
-                    <label for="Email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php if(isset($email)) {
-	 echo $email;
-}  ?>" placeholder="Nhập Email" required aria-label="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Please enter a valid email address (e.g., example@domain.com)">
-
-
-                    <div class="button-group">
-                        <input type="submit" class="update-btn" name='update-btn' value="Cập nhật">
-                        <input type="button" class="cancel-btn" value="Hủy">
+                <form>
+                    <!-- Chọn gói gia hạn -->
+                    <?php
+                        include_once('../controller/cHoaDon.php');
+                        $p= new cHoaDon();
+                        $kq = $p->get1HD($_SESSION['IDHD']);
+                        if($kq)
+                        {
+                           while($r=mysqli_fetch_assoc($kq))
+                           {
+                            echo ' <div class="package-details">
+                        <p align="center"><strong>Thông tin hóa đơn</strong></p>
+                        <p><strong>Tổng tiền:</strong> &emsp; '.$r['SoTien'].'</p>
+                        <p><strong>Tình trạng Thanh Toán:</strong> &emsp; '.$r['TinhTrangThanhToan'].'</p>
+                        <p><strong>Ngày lập hóa đơn:</strong> &emsp; '.$r['NgayLapHoaDon'].'</p>
+                        <p><strong>Ngày lập hóa đơn:</strong> &emsp; 05/11/2024</p>
                     </div>
+                    <fieldset>
+                        <label style="align-self: center;" for="khuyenmai">Khuyến mãi:</label>
+
+                        <div class="button-group">
+                            <input type="radio" id="svelt" name="frameworks" checked="" />
+                            <label for="svelt">Mã giảm 50k</label>
+                        </div>
+
+                        <div class="button-group">
+                            <input type="radio" id="react" name="frameworks" />
+                            <label for="react">Mã giảm 50k</label>
+                        </div>
+
+                        <div class="button-group">
+                            <input type="radio" id="vue" name="frameworks" />
+                            <label for="vue">Mã giảm 50k</label>
+                        </div>
+                    </fieldset>
+                    <div class="thanhtien">
+                        <br>
+                        <label style="float:right" for="Tổng tiền">Tổng tiền: &emsp;
+                            '.$r['SoTien'].'</label>
+                        <br>
+                    </div>
+                    <br>';
+                           }
+                        }
+                    ?>
+
+                    <!-- Hiển thị chi tiết gói -->
+
+
+
+
+
+
+
+                    <label for="membership-plan">Chọn phương thức thanh toán:</label>
+                    <select style="width:fit-content" class="form-select" aria-label="Default select example">
+                        <option value="Quan Ly">Tiền mặt 1</option>
+                        <option value="Nhan Vien">Chuyển khoản</option>
+                        <option value="Thanh Vien">Tình cảm</option>
+                    </select>
+                    <br>
+                    <!-- Nút Gia hạn -->
+                    <div class="button" align="center"> <button type="button" class="renew-button">Thanh toán</button>
+                    </div>
+
+
+
                 </form>
-                <?php
-                include_once("../controller/cThanhVien.php");
-                $p= new cThanhVien();
-                if(isset($_REQUEST['update-btn'])){
-	
-	$kq2 = $p->CapNhat($_SESSION['id'],$_REQUEST['name'],$_REQUEST['phone'],$_REQUEST['email'],$_REQUEST['address']);
-	if($kq2)
-	{
-		echo '<script>alert("Update thành công!")</script>';
-		echo "<script>window.location.href = 'ThongTinChungTV.php';</script>";
-	}
-	else
-	{
-		echo '<script>alert("Update không thành công!")</script>';
-		header('refresh:0.5, url=ThongTinChungTV.php');
-	}
-}
-?>
             </div>
-
-
         </div>
     </div>
     <!-- Blog End -->

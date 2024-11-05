@@ -19,10 +19,51 @@
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/update.css">
+    <link rel="stylesheet" href="login\css\thanhtoan.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style>
+    button {
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left,
+    .right {
+        margin: 10px;
+    }
+
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
+
+    .confirmation {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        width: 500px;
+        height: fit-content;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation table {
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -60,7 +101,7 @@
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
             style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý thiết bị</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
@@ -88,74 +129,58 @@
             </div>
 
         </div>
-
-        <?php
-         include_once("../controller/cThanhVien.php");
-         $q= new cThanhVien();
-         $idtv=$_SESSION['id'];
-         $tbl =$q->Query1TV($idtv);
-         if($tbl)
-         {
-            while($r=mysqli_fetch_assoc($tbl))
-	{
-		$tentv=$r['TenThanhVien'];
-		$email=$r['email'];
-		$sdt=$r['SoDienThoai'];
-        $diachi=$r['DiaChi'];
-	}
-         }
-         
-        ?>
         <div class="right">
             <div class="update-info-container">
-                <h2>Cập nhật thông tin</h2>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <label for="name">Tên</label>
-                    <input type="text" id="name" name="name" value="<?php if(isset($tentv)) {echo $tentv;}  ?>"
-                        placeholder="Nhập tên của bạn" required>
+                <h1 align="center">Thanh Toán hóa đơn</h1>
 
-                    <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" name="address" value="<?php if(isset($diachi)) {
-	 echo $diachi;
-}  ?>" placeholder="Nhập địa chỉ">
+                <form method="post">
+                    <!-- Chọn gói gia hạn -->
+                    <label for="membership-plan">Chọn hóa đơn cần thanh toán:</label>
 
-                    <label for="phone">SDT</label>
-                    <input type="tel" id="phone" name="phone" value="<?php if(isset($sdt)) {
-	 echo $sdt;
-}  ?>" placeholder="Nhập số điện thoại" pattern="[0-9]{10}" required>
-                    <label for="Email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php if(isset($email)) {
-	 echo $email;
-}  ?>" placeholder="Nhập Email" required aria-label="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Please enter a valid email address (e.g., example@domain.com)">
+                    <?php
+                        include_once("../controller/cHoaDon.php");
+                        $p = new cHoaDon();
+                        $kq= $p->getallhdctt($_SESSION['id']);
+                        if($kq)
+                        {
+                            echo' <select name="HoaDon" style="width:fit-content" class="form-select" aria-label="Default select example">';
+                            while($r=mysqli_fetch_assoc($kq))
+                            {
+                                $idhd= $r['IDHoaDon'];
+                            
+                            
+                                if($row["IDHoaDon"] == $idhd){
+                                    echo"<option value=".$r['IDHoaDon']." selected>".$r['SoTien']."</option>";
+                                   
+                                }else{
+                                    echo"<option value=".$r['IDHoaDon'].">".$r['SoTien']."</option>";
+                                }
+                            }
+                            echo' </select>';
+                            echo '
+                        
+                            </select>
+                             <input style="margin-left:5px" name="search-btn" type="submit" class="renew-button"
+                            value="Tìm kiếm">';
+                        }
+                        else
+                        {
+                            echo'Chua co HD';
+                        }
 
+                    ?>
 
-                    <div class="button-group">
-                        <input type="submit" class="update-btn" name='update-btn' value="Cập nhật">
-                        <input type="button" class="cancel-btn" value="Hủy">
-                    </div>
                 </form>
                 <?php
-                include_once("../controller/cThanhVien.php");
-                $p= new cThanhVien();
-                if(isset($_REQUEST['update-btn'])){
-	
-	$kq2 = $p->CapNhat($_SESSION['id'],$_REQUEST['name'],$_REQUEST['phone'],$_REQUEST['email'],$_REQUEST['address']);
-	if($kq2)
-	{
-		echo '<script>alert("Update thành công!")</script>';
-		echo "<script>window.location.href = 'ThongTinChungTV.php';</script>";
-	}
-	else
-	{
-		echo '<script>alert("Update không thành công!")</script>';
-		header('refresh:0.5, url=ThongTinChungTV.php');
-	}
-}
-?>
+                    if(isset($_REQUEST['search-btn']))
+                    {
+                        $_SESSION['IDHD']=$_REQUEST['HoaDon'];
+                        echo "<script>window.location.href = 'ThanhToan2.php';</script>";
+                    }
+                    
+                
+                ?>
             </div>
-
-
         </div>
     </div>
     <!-- Blog End -->

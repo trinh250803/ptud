@@ -1,6 +1,7 @@
 <?php
-    session_start();
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,10 +20,51 @@
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/update.css">
+    <link rel="stylesheet" href="login/css/giahan1.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style>
+    button {
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left,
+    .right {
+        margin: 10px;
+    }
+
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
+
+    .confirmation {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        width: 500px;
+        height: fit-content;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .confirmation form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation table {
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -60,7 +102,7 @@
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
             style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý thiết bị</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
@@ -88,81 +130,78 @@
             </div>
 
         </div>
-
-        <?php
-         include_once("../controller/cThanhVien.php");
-         $q= new cThanhVien();
-         $idtv=$_SESSION['id'];
-         $tbl =$q->Query1TV($idtv);
-         if($tbl)
-         {
-            while($r=mysqli_fetch_assoc($tbl))
-	{
-		$tentv=$r['TenThanhVien'];
-		$email=$r['email'];
-		$sdt=$r['SoDienThoai'];
-        $diachi=$r['DiaChi'];
-	}
-         }
-         
-        ?>
         <div class="right">
             <div class="update-info-container">
-                <h2>Cập nhật thông tin</h2>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <label for="name">Tên</label>
-                    <input type="text" id="name" name="name" value="<?php if(isset($tentv)) {echo $tentv;}  ?>"
-                        placeholder="Nhập tên của bạn" required>
+                <h1>Gia hạn gói thành viên</h1>
 
-                    <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" name="address" value="<?php if(isset($diachi)) {
-	 echo $diachi;
-}  ?>" placeholder="Nhập địa chỉ">
+                <form method="post">
+                    <!-- Chọn gói gia hạn -->
 
-                    <label for="phone">SDT</label>
-                    <input type="tel" id="phone" name="phone" value="<?php if(isset($sdt)) {
-	 echo $sdt;
-}  ?>" placeholder="Nhập số điện thoại" pattern="[0-9]{10}" required>
-                    <label for="Email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php if(isset($email)) {
-	 echo $email;
-}  ?>" placeholder="Nhập Email" required aria-label="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Please enter a valid email address (e.g., example@domain.com)">
+                    <div class="package-details">
 
-
-                    <div class="button-group">
-                        <input type="submit" class="update-btn" name='update-btn' value="Cập nhật">
-                        <input type="button" class="cancel-btn" value="Hủy">
+                        <?php
+                
+        if(isset($_SESSION['idgt']))
+        {
+            include_once("../controller/cGoiTap.php");
+                    $p= new cGoiTap();
+          
+            
+           $kq2= $p->get1GT($_SESSION['idgt']);
+           if($kq2)
+           {
+            while($r=mysqli_fetch_assoc($kq2))
+            {$tengoi=$r['TenGoi'];
+                $gia=$r['Gia'];
+                $_SESSION['giagoi']=$r['Gia'];
+                $ThoiHan=$r['ThoiHan'];
+                echo'
+                       
+                        
+                        <p align="center"><strong>Thông tin chi tiết gói tập</strong></p>
+                        <p><strong>Tên gói:</strong> &emsp; '.$tengoi.'</p>
+                        <p><strong>Giá:</strong> &emsp; '.$gia.'</p>
+                        <p><strong>Thời hạn:</strong> &emsp; '.$ThoiHan.'</p>
                     </div>
+                    ';
+            }
+           }
+        }
+?>
+
+
+                        <!-- Hiển thị chi tiết gói -->
+
+
+                        <!-- Nút Gia hạn -->
+                        <input style="margin-top:10px;" name="btn-GH" type="submit" class="renew-button"
+                            value="Gia Hạn">
                 </form>
                 <?php
-                include_once("../controller/cThanhVien.php");
-                $p= new cThanhVien();
-                if(isset($_REQUEST['update-btn'])){
-	
-	$kq2 = $p->CapNhat($_SESSION['id'],$_REQUEST['name'],$_REQUEST['phone'],$_REQUEST['email'],$_REQUEST['address']);
-	if($kq2)
-	{
-		echo '<script>alert("Update thành công!")</script>';
-		echo "<script>window.location.href = 'ThongTinChungTV.php';</script>";
-	}
-	else
-	{
-		echo '<script>alert("Update không thành công!")</script>';
-		header('refresh:0.5, url=ThongTinChungTV.php');
-	}
-}
-?>
+                if(isset($_REQUEST['btn-GH']))
+                {
+                    include_once('../controller/cHoaDon.php');
+                    $q = new cHoaDon();
+                    $currentDateTime = date('Y-m-d H:i:s');
+                    
+                    $kq= $q->createHD($_SESSION['giagoi'],$currentDateTime,$_SESSION['id']);
+                    if($kq){
+                        echo"<script>alert('Gửi yêu cầu gia hạn thành công')</script>";
+                        echo "<script>window.location.href = 'ThanhToan.php';</script>";
+                       }else{
+                        echo"<script>alert('Gửi yêu cầu gia hạn thất bại')</script>";
+                        echo "<script>window.location.href = 'GiaHanTV.php';</script>";
+                       }
+                }
+                ?>
             </div>
-
-
         </div>
     </div>
     <!-- Blog End -->
 
 
     <!-- Footer Start -->
-    <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
+    <div class=" footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Get In Touch</h4>
@@ -210,7 +249,8 @@
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved.
+                Designed
                 by
                 <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
             </p>

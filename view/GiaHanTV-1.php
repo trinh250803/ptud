@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +20,7 @@
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login\css\giahan.css">
+    <link rel="stylesheet" href="login\css\thanhtoan.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
@@ -130,28 +134,61 @@
             <div class="update-info-container">
                 <h1>Gia hạn gói thành viên</h1>
 
-                <form>
+                <form method="post">
                     <!-- Chọn gói gia hạn -->
                     <label for="membership-plan">Chọn gói gia hạn:</label>
-                    <select style="width:fit-content" class="form-select" aria-label="Default select example">
-                        <option value="Quan Ly">nhân vien 1</option>
-                        <option value="Nhan Vien">Nhân viên 2</option>
-                        <option value="Thanh Vien">nhân vien 3</option>
-                    </select>
-
-                    <!-- Hiển thị chi tiết gói -->
-                    <div class="package-details">
-                        <p align="center"><strong>Thông tin chi tiết gói tập:</strong></p>
-                        <p><strong>Tên gói:</strong> &emsp; 3 tháng</p>
-                        <p><strong>Giá:</strong> &emsp; 1.500.000</p>
-                        <p><strong>Thời hạn:</strong> &emsp; 3 tháng</p>
-                    </div>
-
-                    <!-- Nút Gia hạn -->
-                    <button type="button" class="renew-button">Gia hạn</button>
-
+                    <?php
+                    include_once("../controller/cGoiTap.php");
+                    $p= new cGoiTap();
+                    $kq= $p->getAllGT();
+                    if($kq)
+                    {
+                        
+                        echo ' <select name="goitap" id="membership-plan" style="width:fit-content" class="form-select" aria-label="Default select example">';
+                        while($row=mysqli_fetch_assoc($kq))
+                        {
+                            $idgt= $row['idgt'];
+                            
+                            
+                            if($row["IDGoiTap"] == $idgt){
+                                echo"<option value=".$row['IDGoiTap']." selected>".$row['TenGoi']."</option>";
+                               
+                            }else{
+                                echo"<option value=".$row['IDGoiTap'].">".$row['TenGoi']."</option>";
+                            }
+                         
+                        }
+                        
+                        echo '
+                        
+                        </select>
+                         <input style="margin-left:5px" name="search-btn" type="submit" class="renew-button"
+                        value="Tìm kiếm">';
+                        
+                    }
+                    
+                    ?>
 
                 </form>
+                <?php
+                
+        if(isset($_REQUEST['search-btn']))
+        {
+           
+            $idg=$_REQUEST['goitap'];
+            $_SESSION['idgt']=$_REQUEST['goitap'];
+        
+            echo "<script>window.location.href = 'GiaHanTV-2.php';</script>";
+        }
+?>
+
+
+                <!-- Hiển thị chi tiết gói -->
+
+
+                <!-- Nút Gia hạn -->
+
+
             </div>
         </div>
     </div>
@@ -159,7 +196,7 @@
 
 
     <!-- Footer Start -->
-    <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
+    <div class=" footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Get In Touch</h4>
@@ -207,7 +244,8 @@
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved.
+                Designed
                 by
                 <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
             </p>
