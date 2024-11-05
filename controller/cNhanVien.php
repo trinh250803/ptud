@@ -56,6 +56,14 @@
 			return false;
 		}
         }
+        public function CapNhat($idnv,$tennv,$sdt,$email,$diachi)
+        {
+            $p = new mNhanVien();
+            $kq= $p->CapNhatTT($idnv,$tennv,$sdt,$email,$diachi);
+            return $kq;
+
+        }
+
         
 
 

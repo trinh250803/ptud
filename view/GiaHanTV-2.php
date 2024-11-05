@@ -214,10 +214,10 @@ session_start();
                     $kq= $q->createHD($_SESSION['giagoi'],$currentDateTime,$_SESSION['id']);
                     if($kq){
                         echo"<script>alert('Gửi yêu cầu gia hạn thành công')</script>";
-                        echo "<script>window.location.href = 'ThanhToan.php';</script>";
+                        echo "<script>window.location.href = 'ThanhToan1.php';</script>";
                        }else{
                         echo"<script>alert('Gửi yêu cầu gia hạn thất bại')</script>";
-                        echo "<script>window.location.href = 'GiaHanTV.php';</script>";
+                        echo "<script>window.location.href = 'GiaHanTV-1.php';</script>";
                        }
                 }
                 ?>

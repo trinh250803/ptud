@@ -168,17 +168,22 @@ session_start();
         </div>
         <div class="right">
             <div class="update-info-container">
-
+           
+    
                 <?php
     include_once("../controller/cHoaDon.php");
     $p= new cHoaDon();
     $kq= $p->getallhd($_SESSION['id']);
     if($kq)
     {
+        
         echo '
-    <form action="" method="POST">
+   
+        <h3 align="center"><strong>Lịch Sử Thanh Toán</strong></h3>
+            <form action="" method="POST">
         <div class="table-container">
-    <table>
+        
+        <table>
         <thead>
             <tr>
                 <th>STT</th>

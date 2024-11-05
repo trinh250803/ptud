@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@ session_start();
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/qltb.css">
+    <link rel="stylesheet" href="login/css/update.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
@@ -76,7 +76,7 @@ session_start();
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý thiết bị</p>
+                <p class="m-0 text-white">Quản lý</p>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@ session_start();
                 <div class="menu">
                     <p>Menu</p>
                     <ul>
-                         <?php
+                     <?php
                        if(!$_SESSION['dn'])
                        {
                         echo "<script>alert('Bạn không có quyền truy cập vào trang');</script>";
@@ -132,71 +132,71 @@ session_start();
             </div>
 
         </div>
+
+        <?php
+         include_once("../controller/cNhanVien.php");
+         $q= new cNhanVien();
+         $idnv=$_SESSION['id'];
+         $tbl =$q->Query1NV( $idnv);
+         if($tbl)
+         {
+            while($r=mysqli_fetch_assoc($tbl))
+	{
+		$tennv=$r['TenNhanVien'];
+		$email=$r['Email'];
+		$sdt=$r['SoDienThoai'];
+        $diachi=$r['DiaChi'];
+	}
+         }
+         
+        ?>
         <div class="right">
-            <div class="qltv">
-                <h1 align="center">Quản lý lịch làm việc</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Tìm nhân viên">
-                    <button class="search-btn">&#128269;</button>
-                </div>
-                <div class="list-container">
-                    <div class="table-head">
-                        <span>STT</span>
-                        <span style="margin-right:50px">Tên nhân viên</span>
-                        <span style="margin-right:50px">Thao tác</span>
-                    </div>
-                    <div class="list-item">
+            <div class="update-info-container">
+                <h2>Cập nhật thông tin</h2>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <label for="name">Tên</label>
+                    <input type="text" id="name" name="name" value="<?php if(isset($tennv)) {echo $tennv;}  ?>"
+                        placeholder="Nhập tên của bạn" required>
 
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
-                    </div>
-                    <!-- Repeat the .list-item div for each item in the list -->
-                    <div class="list-item">
+                    <label for="address">Địa chỉ</label>
+                    <input type="text" id="address" name="address" value="<?php if(isset($diachi)) {
+	 echo $diachi;
+}  ?>" placeholder="Nhập địa chỉ">
 
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
-                    </div>
-                    <div class="list-item">
+                    <label for="phone">SDT</label>
+                    <input type="tel" id="phone" name="phone" value="<?php if(isset($sdt)) {
+	 echo $sdt;
+}  ?>" placeholder="Nhập số điện thoại" pattern="[0-9]{10}" required>
+                    <label for="Email">Email</label>
+                    <input type="email" id="email" name="email" value="<?php if(isset($email)) {
+	 echo $email;
+}  ?>" placeholder="Nhập Email" required aria-label="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="Please enter a valid email address (e.g., example@domain.com)">
 
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
-                    </div>
-                    <div class="list-item">
 
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
+                    <div class="button-group">
+                        <input type="submit" class="update-btn" name='update-btn' value="Cập nhật">
+                        <input type="button" class="cancel-btn" value="Hủy">
                     </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Nhân viên 1</span>
-                        <button class="update-btn">Sửa lịch</button>
-                        <button class="delete-btn">Xoá lịch</button>
-                        <button class="submit-btn">Xem lịch</button>
-                    </div>
-                    <!-- Add more list items as needed -->
-                </div>
+                </form>
+                <?php
+                include_once("../controller/cNhanVien.php");
+                $p= new cNhanVien();
+                if(isset($_REQUEST['update-btn'])){
+	
+	$kq2 = $p->CapNhat($_SESSION['id'],$_REQUEST['name'],$_REQUEST['phone'],$_REQUEST['email'],$_REQUEST['address']);
+	if($kq2)
+	{
+		echo '<script>alert("Update thành công!")</script>';
+		echo "<script>window.location.href = 'ThongTinChungNV.php';</script>";
+	}
+	else
+	{
+		echo '<script>alert("Update không thành công!")</script>';
+		header('refresh:0.5, url=ThongTinChungNV.php');
+	}
+}
+?>
             </div>
 
 
