@@ -26,6 +26,15 @@
             $p->DongKetNoi($con);
             return $kq;
         }
+        public function CapNhatTT($idtv,$tentv,$sdt,$email,$diachi)
+        {
+            $p = new clsketnoi();
+            $con = $p->MoKetNoi();
+            $query = "UPDATE `thanhvien` SET `TenThanhVien` = '$tentv', `SoDienThoai` = '$sdt', `DiaChi` = '$diachi', `email` = '$email' WHERE `thanhvien`.`IDThanhVien` = $idtv;";
+            $kq = mysqli_query($con, $query);
+            $p->DongKetNoi($con);
+            return $kq;
+        }
         
     }
 ?>

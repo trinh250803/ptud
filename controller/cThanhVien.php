@@ -57,6 +57,13 @@
 		}
         }
         
+        public function CapNhat($idtv,$tentv,$sdt,$email,$diachi)
+        {
+            $p = new mThanhVien();
+            $kq= $p->CapNhatTT($idtv,$tentv,$sdt,$email,$diachi);
+            return $kq;
+
+        }
 
 
     }   
