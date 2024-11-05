@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +28,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="../index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -33,24 +36,30 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Trang chủ</a>
-                    <a href="about.php" class="nav-item nav-link">về chúng tôi</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
                     <a href="feature.php" class="nav-item nav-link">Tin tức</a>
                     <a href="class.php" class="nav-item nav-link">Lớp học</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Dịch vụ</a>
-                        <div class="dropdown-menu text-capitalize">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                            <a href="single.php" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
+
                     <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="./dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                        echo '<a href="dieukien.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        if($_SESSION['dn']== 1 || $_SESSION['dn']==2 ||$_SESSION['dn']==3)
+                        {
+                            echo '<a href="thongtinchungnv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        else{
+                            echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>
-                
+
+
                 </div>
             </div>
         </nav>
@@ -60,7 +69,8 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+            style="min-height: 400px">
             <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Our Blog</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="../index.php">Trang chủ</a></p>
@@ -82,7 +92,8 @@
             <div class="col-lg-6 mb-5 blog-item">
                 <img class="img-fluid mb-4" src="../assets/img/blog-1.jpg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 80px; height: 80px;">
                         <small>01</small>
                         <strong class="text-uppercase m-0 text-white">Jan</strong>
                         <small>2045</small>
@@ -96,13 +107,16 @@
                         </div>
                     </div>
                 </div>
-                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos, sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod vero dolor sed kasd accusam</p>
+                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos,
+                    sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod
+                    vero dolor sed kasd accusam</p>
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="col-lg-6 mb-5 blog-item">
                 <img class="img-fluid mb-4" src="../assets/img/blog-2.jpg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 80px; height: 80px;">
                         <small>01</small>
                         <strong class="text-uppercase m-0 text-white">Jan</strong>
                         <small>2045</small>
@@ -116,13 +130,16 @@
                         </div>
                     </div>
                 </div>
-                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos, sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod vero dolor sed kasd accusam</p>
+                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos,
+                    sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod
+                    vero dolor sed kasd accusam</p>
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="col-lg-6 mb-5 blog-item">
                 <img class="img-fluid mb-4" src="../assets/img/blog-1.jpg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 80px; height: 80px;">
                         <small>01</small>
                         <strong class="text-uppercase m-0 text-white">Jan</strong>
                         <small>2045</small>
@@ -136,13 +153,16 @@
                         </div>
                     </div>
                 </div>
-                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos, sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod vero dolor sed kasd accusam</p>
+                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos,
+                    sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod
+                    vero dolor sed kasd accusam</p>
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="col-lg-6 mb-5 blog-item">
                 <img class="img-fluid mb-4" src="../assets/img/blog-2.jpg" alt="Image">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
+                    <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white"
+                        style="width: 80px; height: 80px;">
                         <small>01</small>
                         <strong class="text-uppercase m-0 text-white">Jan</strong>
                         <small>2045</small>
@@ -156,26 +176,28 @@
                         </div>
                     </div>
                 </div>
-                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos, sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod vero dolor sed kasd accusam</p>
+                <p>Eos kasd et sea labore. Et sed amet magna elitr amet, stet et amet erat nonumy labore lorem ut eos,
+                    sed ut at tempor diam no. Kasd sit ea amet lorem et sea, ipsum sed dolor dolores sed dolore eirmod
+                    vero dolor sed kasd accusam</p>
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="col-lg-12">
                 <nav aria-label="Page navigation">
-                  <ul class="pagination justify-content-center mb-4">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </ul>
+                    <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </div>
@@ -192,10 +214,14 @@
                 <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -228,7 +254,8 @@
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
+                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                by
                 <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
             </p>
         </div>

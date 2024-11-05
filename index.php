@@ -1,7 +1,7 @@
 <?php
-include './model/ketnoi.php';
+
 session_start();
-error_reporting(1);
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,13 @@ error_reporting(1);
                         echo '<a href="view/dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
                     }
                     else{
-                        echo '<a href="view/thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        if($_SESSION['dn']== 1 || $_SESSION['dn']==2 ||$_SESSION['dn']==3)
+                        {
+                            echo '<a href="view/thongtinchungnv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        else{
+                            echo '<a href="view/thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
                         echo '<a href="view/dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>

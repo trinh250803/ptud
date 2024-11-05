@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +29,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="" class="navbar-brand">
+            <a href="../index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -34,16 +37,29 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4 bg-secondary">
-                    <a href="../index.php" class="nav-item nav-link">Trang chủ</a>
-                    <a href="about.php" class="nav-item nav-link active">Về chúng tôi</a>
+                    <a href="../index.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="about.php" class="nav-item nav-link">Về chúng tôi</a>
                     <a href="feature.php" class="nav-item nav-link">Tin tức</a>
                     <a href="class.php" class="nav-item nav-link">Lớp học</a>
+
                     <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="./dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                        echo '<a href="dieukien.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
+                    }
+                    else{
+                        if($_SESSION['dn']== 1 || $_SESSION['dn']==2 ||$_SESSION['dn']==3)
+                        {
+                            echo '<a href="thongtinchungnv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        else{
+                            echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>
+
 
                 </div>
             </div>
@@ -54,7 +70,8 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+            style="min-height: 400px">
             <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Về chúng tôi</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="../index.php">Trang chủ</a></p>
@@ -74,9 +91,12 @@
             </div>
             <div class="col-lg-6">
                 <h2 class="display-4 font-weight-bold mb-4">Không chỉ là một phòng tập thể dục</h2>
-                <p>Tại GymNast, bạn nhận được nhiều hơn số tiền bạn phải trả! Bạn có thể tận hưởng tư cách thành viên linh hoạt,
-                    các lớp học không giới hạn và quyền truy cập 24/7, nhưng đó không chỉ là những thứ bạn mong đợi từ một phòng tập thể dục,
-                    mà còn là giá trị bổ sung. Hãy nghĩ đến những người bạn mới, nhiều thời gian hơn, các nhóm thân thiện và một không gian không phán xét để tập luyện và cảm thấy thoải mái.
+                <p>Tại GymNast, bạn nhận được nhiều hơn số tiền bạn phải trả! Bạn có thể tận hưởng tư cách thành viên
+                    linh hoạt,
+                    các lớp học không giới hạn và quyền truy cập 24/7, nhưng đó không chỉ là những thứ bạn mong đợi từ
+                    một phòng tập thể dục,
+                    mà còn là giá trị bổ sung. Hãy nghĩ đến những người bạn mới, nhiều thời gian hơn, các nhóm thân
+                    thiện và một không gian không phán xét để tập luyện và cảm thấy thoải mái.
                     Không có gì ngạc nhiên khi chúng tôi là phòng tập thể dục yêu thích của Việt Nam.</p>
 
             </div>
@@ -98,7 +118,8 @@
                 <h5 class=" text-light about-item ">SỨ MỆNH</h5>
                 <p class=" text-light">
                     Đối với Cộng đồng: Khỏe, đẹp cho cuộc sống chất lượng. Đối với Đối tác
-                    Nhà Đầu tư: Gymnast là nơi đáng tin cậy để hợp tác cùng phát triển và tạo nên những giá trị vững bền.
+                    Nhà Đầu tư: Gymnast là nơi đáng tin cậy để hợp tác cùng phát triển và tạo nên những giá trị vững
+                    bền.
                     Đối với Nhân viên: GymNastlà nơi công việc và đam mê luôn song hành.
                 </p>
             </div>
@@ -106,7 +127,8 @@
             <div class="col-lg-4">
                 <h5 class=" text-light about-item ">GIÁ TRỊ</h5>
                 <p class=" text-light">
-                    Sức khỏe là ưu tiên hàng đầu. Uy tín: GymNast luôn giữ uy tín với khách hàng, đối tác, cam kết lời nói đi đôi với hành động.
+                    Sức khỏe là ưu tiên hàng đầu. Uy tín: GymNast luôn giữ uy tín với khách hàng, đối tác, cam kết lời
+                    nói đi đôi với hành động.
                 </p>
             </div>
         </div>
@@ -121,10 +143,14 @@
                 <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                 <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                 <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0"
+                        style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -132,7 +158,7 @@
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="../index.php"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
                     <a class="text-white mb-2" href="./about.php"><i class="fa fa-angle-right mr-2"></i>Về chúng tôi</a>
-                    
+
                     <a class="text-white mb-2" href="./class.php"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
                     <a class="text-white" href="./contact.php"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
                 </div>
@@ -142,7 +168,7 @@
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="../index.php"><i class="fa fa-angle-right mr-2"></i>Trang chủ</a>
                     <a class="text-white mb-2" href="./about.php"><i class="fa fa-angle-right mr-2"></i>Về chúng tôi</a>
-                    
+
                     <a class="text-white mb-2" href="./class.php"><i class="fa fa-angle-right mr-2"></i>Lớp học</a>
                     <a class="text-white" href="./contact.php"><i class="fa fa-angle-right mr-2"></i>Liên hệ</a>
                 </div>
@@ -180,12 +206,10 @@
 
 
 <style>
-.about-item{
+.about-item {
     width: 100px;
     line-height: 30px;
 }
-
-
 </style>
 
 </html>

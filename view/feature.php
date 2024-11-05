@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +29,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="./index.php" class="navbar-brand">
+            <a href="../index.php" class="navbar-brand">
                 <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Gymnast</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -42,14 +45,22 @@
                     <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dieukien.php" class="nav-item nav-link">Đăng nhập</a>';
                         echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
                     }
                     else{
-                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        if($_SESSION['dn']== 1 || $_SESSION['dn']==2 ||$_SESSION['dn']==3)
+                        {
+                            echo '<a href="thongtinchungnv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        else{
+                            echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
                         echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>
+
+
                 </div>
             </div>
         </nav>

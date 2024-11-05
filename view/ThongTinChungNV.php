@@ -45,14 +45,22 @@ session_start();
                     <a href="contact.php" class="nav-item nav-link">Liên hệ</a>
                     <?php
                     if (!isset($_SESSION['dn'])) {
-                        echo '<a href="dangnhap-tv.php" class="nav-item nav-link">Đăng nhập</a>';
+                        echo '<a href="dieukien.php" class="nav-item nav-link">Đăng nhập</a>';
                         echo '<a href="dangkitapthu.php" class="nav-item nav-link">Đăng ký tập thử</a>';
                     }
                     else{
-                        echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        if($_SESSION['dn']== 1 || $_SESSION['dn']==2 ||$_SESSION['dn']==3)
+                        {
+                            echo '<a href="thongtinchungnv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
+                        else{
+                            echo '<a href="thongtinchungtv.php" class="nav-item nav-link">Hồ sơ</a>';
+                        }
                         echo '<a href="dangxuat.php" class="nav-item nav-link">Đăng xuất</a>';
                     }
                     ?>
+
+
                 </div>
             </div>
         </nav>
@@ -96,14 +104,23 @@ session_start();
                                 echo' <li><a href="#profile">Quản lý nhân viên</a></li>';
                                 echo  '<li><a href="#settings">Quản lý khuyến mãi</a></li>';
                                 echo  '<li><a href="#settings">Quản lý lịch làm việc</a></li>';
+                                echo  '<li><a href="#settings">Quản lý Gói tập</a></li>';
                                 break;
                             }
+                            case 2:
+                                {
+                                    echo' <li><a href="#profile">Quản lý Thành viên</a></li>';
+                                    echo  '<li><a href="#settings">Quản lý thiết bị</a></li>';
+                                    break;
+                                }
+                            case 3: 
+                                {
+                                    echo' <li><a href="#profile">Quản lý hóa đơn</a></li>';
+                                    echo  '<li><a href="#settings">Cập nhật tình trạng thanh toán</a></li>';
+                                    break;
+                                }
                        }
-                       if($_SESSION['dn']==2)
-                       {
-                        echo' <li><a href="#profile">Quản lý thành viên</a></li>';
-                      echo  '<li><a href="#settings">Quản lý thiết bị</a></li>';
-                       }
+                       
                         
                        
 
