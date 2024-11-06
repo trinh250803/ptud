@@ -218,12 +218,15 @@
 ?>
 
                     <?php
+                     $mucgiam =0;
+                    $_SESSION['thanhtien']=(float)$_SESSION['TongTien']-(float)$mucgiam;
+                   
                     if(isset($_REQUEST['apdung']))
                     {
                         
                         $_SESSION['KM']=$_REQUEST['khuyenmai'];
                         $mucgiam=$_REQUEST['khuyenmai'];
-                        $thanhtien=(float)$_SESSION['TongTien']-(float)$mucgiam;
+                        $_SESSION['thanhtien']=(float)$_SESSION['TongTien']-(float)$mucgiam;
                         echo'<div class="thanhtien">
                         <br>
                         <label style="float:right" for="Tthanhtien">Thành tiền: &emsp;'. (float)$_SESSION['TongTien']-(float)$mucgiam.'
@@ -232,7 +235,7 @@
             </div>';
             }
             else{
-                $thanhtien=(float)$_SESSION['TongTien'];
+                $_SESSION['thanhtien']=(float)$_SESSION['TongTien']-$mucgiam;
                 echo'<div class="thanhtien">
                 <br>
                 <label style="float:right" for="Tthanhtien">Thành tiền: &emsp;'. (float)$_SESSION['TongTien'].'
@@ -276,12 +279,12 @@
                         $currentDateTime = date('Y-m-d H:i:s');
                        
                         if($HinhThucTT==='Tiền Mặt')
-                        { $kq3=$p->CapNhatHD($_SESSION['IDHD'],$thanhtien,$HinhThucTT,$currentDateTime);
+                        { $kq3=$p->CapNhatHD($_SESSION['IDHD'],$_SESSION['thanhtien'],$HinhThucTT,$currentDateTime);
                             echo'<script>window.location.href="TienMat.php"</script>';
                         }
                         else
                         {
-                            $kq3=$p->CapNhatHD($_SESSION['IDHD'],$thanhtien,$HinhThucTT,$currentDateTime);
+                            $kq3=$p->CapNhatHD($_SESSION['IDHD'],$_SESSION['thanhtien'],$HinhThucTT,$currentDateTime);
                             echo'<script>window.location.href="TKNH.php"</script>';
                         }
                        
