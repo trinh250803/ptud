@@ -64,6 +64,16 @@
             return $kq;
 
         }
+        public function registerTK($tentv,$sdt,$diachi,$email,$ngaythamgia,$password)
+        {
+            $p = new mThanhVien();
+            $password = md5($password);
+            $kq= $p->DangKyTV($tentv,$sdt,$diachi,$email,$ngaythamgia,$password);
+            return $kq;
+
+        }
+        
+        
 
 
     }   

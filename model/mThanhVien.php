@@ -35,6 +35,14 @@
             $p->DongKetNoi($con);
             return $kq;
         }
-        
+        public function DangKyTV($tentv,$sdt,$diachi,$email,$ngaythamgia,$password)
+        {
+            $p = new clsketnoi();
+            $con = $p->MoKetNoi();
+            $query = "INSERT INTO `thanhvien` (`IDThanhVien`, `TenThanhVien`, `SoDienThoai`, `DiaChi`, `email`, `NgayThamGia`, `Password`) VALUES (NULL, '$tentv', '$sdt', '$diachi', '$email', '$ngaythamgia', '$password');";
+            $kq = mysqli_query($con, $query);
+            $p->DongKetNoi($con);
+            return $kq;
+        }
     }
 ?>

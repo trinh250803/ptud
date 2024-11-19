@@ -90,7 +90,7 @@ session_start();
                 <div class="menu">
                     <p>Menu</p>
                     <ul>
-                         <?php
+                        <?php
                        if(!$_SESSION['dn'])
                        {
                         echo "<script>alert('Bạn không có quyền truy cập vào trang');</script>";
@@ -135,13 +135,21 @@ session_start();
         <div class="right">
             <div class="qltv">
                 <h1 align="center">Quản lý thành viên</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Tìm thành viên">
-                    <button class="search-btn">&#128269;</button>
-                </div>
+                <form method="post">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Tìm thành viên">
+                        <button class="search-btn">&#128269;</button>
+                    </div>
+                    <div class="add">
+                        <input type="submit" name="Register-btn" class="submit-btn" value="Đăng ký thành viên">
+                    </div>
+                </form>
                 <?php
-
-?>
+                    if(isset($_REQUEST['Register-btn']))
+                    {
+                        echo "<script>window.location.href = 'dangky.php';</script>";
+                    }
+                ?>
 
                 <div class="list-container">
                     <div class="table-head">
@@ -160,10 +168,10 @@ session_start();
                             {
                                 echo '<div class="list-item">
 
-                        <span class="name" style="margin-left:50px">'.$r['TenThanhVien'].'</span>
-                        <button class="update-btn">Sửa</button>
-                        <button class="delete-btn">Xoá</button>
-                        <button class="submit-btn">Ghi danh</button>
+                        <span><a  href="ThongTinTV.php?idtv='.$r['IDThanhVien'].'" class="name" style="margin-left:50px">'.$r['TenThanhVien'].'</a></span>
+                        <a href="CapNhatTTTV.php?idtv='.$r['IDThanhVien'].'" class="update-btn">Sửa</a>
+                        <a href="XoaTV.php?idtv='.$r['IDThanhVien'].'"  class="delete-btn">Xoá</a>
+                        <a  href="GhiDanh.php?idtv='.$r['IDThanhVien'].'" name="Register-btn" " class="submit-btn">Ghi Danh </a>
                     </div>';
                             }
                         }
