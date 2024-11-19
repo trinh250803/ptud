@@ -127,7 +127,7 @@ session_start();
     </div>
 
 
-    <!-- <script src="./login/js/reg.js"></script> -->
+    <!-- <script src="./login/js/regester.js"></script> -->
     <script src="./login/js/jquery-3.3.1.min.js"></script>
     <script src="./login/js/popper.min.js"></script>
     <script src="./login/js/bootstrap.min.js"></script>
