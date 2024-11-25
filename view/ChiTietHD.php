@@ -24,7 +24,15 @@ session_start();
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
 </head>
+<STYle>
+    h2.text-center {
+    margin-bottom: -50px;  /* Giảm khoảng cách dưới tiêu đề */
+}
 
+.table {
+    margin-top: 0; /* Giảm khoảng cách trên bảng */
+}
+</STYle>
 <body class="bg-white">
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
@@ -72,11 +80,11 @@ session_start();
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
             style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Kế toán</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý thành viên</p>
+                <p class="m-0 text-white">Quản lý hóa đơn</p>
             </div>
         </div>
     </div>
@@ -116,7 +124,6 @@ session_start();
                             case 3: 
                                 {
                                     echo' <li><a href="QLHD.php">Quản lý hóa đơn</a></li>';
-                                    echo  '<li><a href="Capnhattrangthai.php">Cập nhật tình trạng thanh toán</a></li>';
                                     break;
                                 }
                        }
@@ -134,33 +141,92 @@ session_start();
         </div>
         <div class="right">
             <div class="update-info-container">
-                <h2>Thông Tin Hóa đơn </h2>
-                <label for="name">Số Tiền:</label>
-                <span class="Ten">500.000đ</span>
-                <br>
+            <?php
+include_once("../controller/cHoaDon.php");
 
-                <label for="address">Trạng Thái Thanh Toán:</label>
-                <span class="diachi">Đã thanh toán</span>
-                <br>
+if (isset($_GET['idhd'])) {
+    $idhd = $_GET['idhd']; // Lấy ID hóa đơn từ URL
 
-                <label for="phone">Ngày Thanh Toán:</label>
-                <span class="sdt">20/10/2024</span>
-                <br>
-                <label for="Email">Ngày Lập Hóa Đơn:</label>
-                <span class="email">20/10/2024</span>
-                <br>
-                <label for="Email">Loại Giao Dịch:</label>
-                <span class="ngaythamgia">Chuyển khoản</span>
-                <br>
-                <label for="thanhvien">Tên Thành Viên:</label>
-                <span class="thanhvien">Nguyễn văn A</span>
-                <br>
+    $q = new cHoaDon();
+    $kq = $q->getChiTietHoaDon($idhd); // Lấy chi tiết hóa đơn từ controller
+
+    if ($kq) {
+        $r = mysqli_fetch_assoc($kq); // Lấy kết quả truy vấn
+    } else {
+        echo '<p>Không tìm thấy hóa đơn này!</p>';
+        exit;
+    }
+} else {
+    echo '<p>Không có ID hóa đơn được cung cấp!</p>';
+    exit;
+}
+?>
+
+<!-- HTML Display the Invoice Details -->
+<h2 class="text-center">Chi Tiết Hóa Đơn</h2>
+<div class="container">
+    <div class="invoice-details">
+        <table class="table">
+           
+            <tr>
+                <th>Mã Thành Viên</th>
+                <td><?php echo $r['IDThanhVien']; ?></td>
+            </tr>
+            <tr>
+                <th>Tên Thành Viên</th>
+                <td><?php echo $r['TenThanhVien'] ? $r['TenThanhVien'] : 'Không có tên'; ?></td>
+            </tr>
+            <tr>
+                <th>Tên Nhân Viên lập hóa đơn</th>
+                <td><?php echo $r['TenNhanVien'] ? $r['TenNhanVien'] : 'Không có tên nhân viên'; ?></td>
+            </tr>
+            <tr>
+                <th>Mã Nhân Viên</th>
+                <td><?php echo $r['IDNhanVien'] ? $r['IDNhanVien'] : 'Chưa xác định'; ?></td>
+            </tr>
+            <tr>
+                <th>Số Tiền</th>
+                <td><?php echo number_format($r['SoTien'], 2); ?> VND</td>
+            </tr>
+            <tr>
+                <th>Tình Trạng Thanh Toán</th>
+                <td><?php echo $r['TinhTrangThanhToan'] ? $r['TinhTrangThanhToan'] : 'Chưa xác nhận'; ?></td>
+            </tr>
+            <tr>
+                <th>Phương Thức Thanh Toán</th>
+                <td><?php echo $r['HinhThucThanhToan'] ? $r['HinhThucThanhToan'] : 'Chưa xác định'; ?></td>
+            </tr>
+            <tr>
+                <th>Ngày Thanh Toán</th>
+                <td><?php echo ($r['NgayThanhToan'] ? $r['NgayThanhToan'] : 'Chưa thanh toán'); ?></td>
+            </tr>
+            <tr>
+                <th>Ngày Lập Hóa Đơn</th>
+                <td><?php echo $r['NgayLapHoaDon']; ?></td>
+            </tr>
+            <tr>
+                <th>Loại Giao Dịch</th>
+                <td><?php echo $r['LoaiGiaoDich']; ?></td>
+            </tr>
+          
+            
+        </table>
+
+        <div class="text-center mt-3">
+        <button class="update-btn" onclick="window.location.href='CapNhatTTTT.php?idhd=<?php echo $r['IDHoaDon']; ?>'">Cập nhật tình trạng thanh toán</button>
+            <a href="QLHD.php" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
 
 
                 <div class="button-group">
 
-                    <button type="submit" class="update-btn">Cập nhật TTTT</button>
-                    <button type="button" class="submit-btn">OK</button>
 
                 </div>
 
