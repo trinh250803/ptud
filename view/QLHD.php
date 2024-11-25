@@ -1,11 +1,12 @@
 <?php
+
 session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gymnast - Gym Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
@@ -24,7 +25,77 @@ session_start();
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
 </head>
+<style>
+    
+/* Căn chỉnh container chứa các item */
+.list-container {
+    display: flex; /* Sử dụng Flexbox để hiển thị các item theo chiều ngang */
+    flex-wrap: nowrap; /* Không cho phép xuống dòng */
+    overflow-x: auto; /* Cho phép cuộn ngang nếu các mục quá dài */
+    gap: 100px; /* Khoảng cách giữa các phần tử */
+    padding: 10px; /* Khoảng cách giữa các item và viền container */
+}
 
+/* Căn chỉnh từng item hóa đơn */
+.list-item {
+    flex-shrink: 0; /* Đảm bảo item không bị thu nhỏ */
+    width: 100%; /* Đặt chiều rộng cho mỗi item */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng khi hover */
+.list-item:hover {
+    transform: scale(1.05);
+}
+
+.item-content {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.item-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.item-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-btn {
+    background-color: #c62828;
+    color: white;
+}
+
+.submit-btn {
+    background-color: BLACK;
+    color: white;
+}
+
+.update-btn:hover, .submit-btn:hover {
+    opacity: 0.8;
+}
+
+/* Các thuộc tính cho các span (chữ) */
+.name, .id, .status {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
+a:hover {
+    text-decoration: underline;
+}
+
+</style>
 <body class="bg-white">
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
@@ -72,11 +143,11 @@ session_start();
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
             style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Quản lý</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Kế Toán</h4>
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý thiết bị</p>
+                <p class="m-0 text-white">Quản lý hóa đơn</p>
             </div>
         </div>
     </div>
@@ -116,7 +187,8 @@ session_start();
                             case 3: 
                                 {
                                     echo' <li><a href="QLHD.php">Quản lý hóa đơn</a></li>';
-                                    echo  '<li><a href="Capnhattrangthai.php">Cập nhật tình trạng thanh toán</a></li>';
+                                    echo' <li><a href="TaoHoaDon.php">Tạo hóa đơn</a></li>';
+
                                     break;
                                 }
                        }
@@ -133,62 +205,71 @@ session_start();
 
         </div>
         <div class="right">
-            <div class="qltv">
+            <div class="qlhd">
                 <h1 align="center">Quản lý Hóa đơn</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Tìm hóa đơn">
-                    <button class="search-btn">&#128269;</button>
-                </div>
-                <div class="list-container">
-                    <div class="table-head">
-                        <span>STT</span>
-                        <span style="margin-right:50px">Tên</span>
-                        <span style="margin-right:50px">Thao tác</span>
+
+                <?php
+include_once("../controller/cHoaDon.php");
+$p = new cHoaDon();
+
+// Kiểm tra nếu người dùng tìm kiếm
+if (isset($_POST['submit']) && !empty($_POST['search']) || isset($_POST['submit_status'])) {
+    $keyword = htmlspecialchars(strip_tags($_POST['search'])); // Bảo vệ đầu vào
+    $status = isset($_POST['status']) ? $_POST['status'] : ''; // Lấy trạng thái thanh toán nếu có
+    $result = $p->getHDByName($keyword, $status); // Tìm kiếm theo tên và trạng thái thanh toán
+} else {
+    $result = $p->getAllHD(); // Lấy tất cả hóa đơn nếu không tìm kiếm
+}
+?>
+
+<!-- Form tìm kiếm -->
+<div class="search">
+    <form method="POST" action="">
+        <input type="text" name="search" placeholder="Nhập tên thành viên" value="<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''; ?>">
+        <button type="submit" name="submit">&#128269;</button>
+        <select name="status">
+            <option value="">Chọn trạng thái thanh toán</option>
+            <option value="Đã thanh toán" <?php echo (isset($_POST['status']) && $_POST['status'] == 'Đã thanh toán') ? 'selected' : ''; ?>>Đã thanh toán</option>
+            <option value="Chưa thanh toán" <?php echo (isset($_POST['status']) && $_POST['status'] == 'Chưa thanh toán') ? 'selected' : ''; ?>>Chưa thanh toán</option>
+        </select>
+        <button type="submit" name="submit_status">&#128269;</button>
+    </form>
+</div>
+
+<!-- Hiển thị kết quả -->
+<?php
+if ($result) {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='list-item'>
+    <span class='name' style='margin-left:30px ; '>
+        <a href='ChiTietHD.php?idnv={$row['IDThanhVien']}'>" . $row['TenThanhVien'] . "</a>
+    </span>
+    <span class='name'  style='text-align: center; display: block; margin: 0 auto;'> " . $row['TinhTrangThanhToan'] . "</span>
+    <button class='update-btn' onclick=\"window.location.href='CapNhatTTTT.php?idhd={$row['IDHoaDon']}';\">Cập nhật tình trạng thanh toán</button>
+    <button class='submit-btn' onclick=\"window.location.href='ChiTietHD.php?idhd={$row['IDHoaDon']}';\">Xem chi tiết</button>
+</div>";
+        }
+    } else {
+        echo "<p>Không tìm thấy hóa đơn nào!</p>";
+    }
+} else {
+    echo "<p>Lỗi kết nối cơ sở dữ liệu!</p>";
+}
+?>
+
+               
+                <div >
+                    <div >
+                     <!-- Form tìm kiếm -->
+
                     </div>
-                    <div class="list-item">
+                    <div >
 
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
-
-                    </div>
-                    <!-- Repeat the .list-item div for each item in the list -->
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
+                        
 
                     </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
-
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
-
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
-
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
-
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Hóa đơn 1</span>
-                        <button class="update-btn">Cập nhật</button>
-
-                    </div>
-                    <!-- Add more list items as needed -->
+                   
                 </div>
             </div>
 
