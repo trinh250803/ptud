@@ -132,32 +132,72 @@ session_start();
             </div>
 
         </div>
+        <?php
+        include("../controller/cThanhVien.php");
+        $q= new cThanhVien();
+        $kq = $q->Query1TV($_REQUEST['idtv']);
+        if($kq)
+        {
+            while($r=mysqli_fetch_assoc($kq)){
+                $tentv=$r['TenThanhVien'];
+                $sdt=$r['SoDienThoai'];
+                $diachi=$r['DiaChi'];
+                $email=$r['email'];
+            }
+        }
+        else{
+            echo 'ko co du lieu';
+        }
+        ?>
         <div class="right">
             <div class="update-info-container">
                 <h2>Cập nhật thông tin</h2>
-                <form action="update_info.php" method="POST" enctype="multipart/form-data">
-                    <label for="name">Tên</label>
-                    <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <label for="name">Tên thành viên</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập tên của thành viên" required
+                        value="<?php if(isset($tentv)) echo $tentv;?>">
 
                     <label for="address">Địa chỉ</label>
-                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ">
+                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ"
+                        value="<?php if(isset($diachi)) echo $diachi;?>">
 
                     <label for="phone">SDT</label>
                     <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" pattern="[0-9]{10}"
-                        required>
+                        required value="<?php if(isset($sdt)) echo $sdt;?>">
                     <label for="Email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Nhập Email" required
                         aria-label="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Please enter a valid email address (e.g., example@domain.com)">
+                        title="Please enter a valid email address (e.g., example@domain.com)"
+                        value="<?php if(isset($email)) echo $email;?>">
 
 
                     <div class="button-group">
-                        <button type="submit" class="update-btn">Cập nhật</button>
-                        <button type="button" class="cancel-btn">Hủy</button>
+                        <input type="submit" class="update-btn" name="update-btn" value="Cập nhật">
+                        <input type="button" value="Hủy" class="cancel-btn" onclick="window.history.back();">
+
                     </div>
                 </form>
             </div>
 
+            <?php
+                include_once("../controller/cThanhVien.php");
+                if(isset($_REQUEST['update-btn']) && $_REQUEST['update-btn']=='Cập nhật' )
+                {
+                    $kq1= $q->CapNhat($_REQUEST['idtv'],$_REQUEST['name'],$_REQUEST['phone'],$_REQUEST['email'],$_REQUEST['address']);
+                    if($kq1)
+                    {
+                        echo "<script>alert('Cập nhật thông tin thành viên thành công');</script>";
+                        echo "<script>window.location.href = 'QLTV.php';</script>"; 
+                    }
+                    else
+                    {
+                        
+                        echo "<script>alert('Cập nhật thông tin thành viên không thành công');</script>";
+                        echo "<script>window.location.href = 'QLTV.php';</script>"; 
+                    }
+                }
+                
+            ?>
 
         </div>
     </div>

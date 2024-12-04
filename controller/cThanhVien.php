@@ -64,6 +64,19 @@
             return $kq;
 
         }
+        public function XoaTV($idtv)
+        {
+            $p = new mThanhVien();
+            $kq= $p->deletetv($idtv);
+            return $kq;
+        }
+        public function GhiDanh($date,$idtv)
+        { $p = new mThanhVien();
+          
+           
+           $kq= $p-> createGhiDanh($idtv,$date);
+            return $kq;
+        }
 
 
     }   

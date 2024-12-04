@@ -19,10 +19,42 @@ session_start();
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/qltv.css">
+    <link rel="stylesheet" href="login\css\ghidanh.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
+    <style>
+    .confirmation {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        height: 300px;
+        margin: auto;
+        border-radius: 10px;
+        align-content: center;
+    }
+
+    button {
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left,
+    .right {
+        margin: 10px;
+    }
+
+    .left {
+        margin-right: 30px;
+        /* Adjust for spacing between the menu and confirmation form */
+    }
+    </style>
 </head>
 
 <body class="bg-white">
@@ -76,7 +108,7 @@ session_start();
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Quản lý thành viên</p>
+                <p class="m-0 text-white">Quản lý</p>
             </div>
         </div>
     </div>
@@ -133,49 +165,37 @@ session_start();
 
         </div>
         <div class="right">
-            <div class="qltv">
-                <h1 align="center">Quản lý thành viên</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Tìm thành viên">
-                    <button class="search-btn">&#128269;</button>
-                </div>
-                <?php
+            <div class="confirmation">
+
+                <p class="title">Ghi danh thành viên ngày</p>
+                <form action="" method="POST">
+                    <label for="date">Ngày vào tập:</label>
+                    <input type="date" name="date" id="id" value="<?php $currentDateTime = date('Y-m-d') ;
+                    echo $currentDateTime;?>">
+                    <input type="submit" value="Ghi Danh" name="submit-btn" class="submit-btn">
+                    <input type="button" value="Hủy" class="cancel-btn" onclick="window.history.back();">
+                </form>
+            </div>
+            </form>
+            <?php
+include_once("../controller/cThanhVien.php");
+$p = new cThanhVien();
+if(isset($_REQUEST['submit-btn']) && $_REQUEST['submit-btn']=="Ghi Danh")
+{
+    $kq = $p->GhiDanh($_REQUEST['date'],$_REQUEST['idtv']);
+    if($kq)
+    {
+        echo "<script>alert('Ghi danh  thành viên thành công');</script>";
+                            echo "<script>window.location.href = 'QLTV.php';</script>"; 
+    }
+    else
+    {
+        echo "<script>alert('Ghi danh thành viên không thành công');</script>";
+                            echo "<script>window.location.href = 'QLTV.php';</script>"; 
+    }
+}
 
 ?>
-
-                <div class="list-container">
-                    <div class="table-head">
-                        <span>STT</span>
-                        <span style="margin-right:50px">Tên</span>
-                        <span style="margin-right:50px">Thao tác</span>
-                    </div>
-
-                    <?php
-                        include_once("../controller/cThanhVien.php");
-                        $q= new cThanhVien();
-                        $kq = $q->getAllTV();
-                        if($kq)
-                        {
-                            while($r=mysqli_fetch_assoc($kq))
-                            {
-                                echo '<div class="list-item">
-
-                        <span class="name" style="margin-left:50px"><a class="name" href="ChiTietTV.php?idtv='.$r['IDThanhVien'].'">'.$r['TenThanhVien'].'</a></span>
-                        <a  href ="CapNhatTTTV.php?idtv='.$r['IDThanhVien'].'"class="update-btn">Sửa</a>
-                        <a class="delete-btn">Xoá</a>
-                        <a class="submit-btn">Ghi danh</a>
-                    </div>';
-                            }
-                        }
-                    
-                    ?>
-
-                    <!-- Repeat the .list-item div for each item in the list -->
-
-                    <!-- Add more list items as needed -->
-                </div>
-            </div>
-
 
         </div>
     </div>

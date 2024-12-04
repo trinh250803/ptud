@@ -19,7 +19,7 @@ session_start();
 
     <!-- Flaticon Font -->
     <link href="../assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link rel="stylesheet" href="login/css/chitiettv.css">
+    <link rel="stylesheet" href="login/css/chitiettttv.css">
     <link rel="stylesheet" href="login/css/style.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.min.css" rel="stylesheet">
@@ -90,7 +90,7 @@ session_start();
                 <div class="menu">
                     <p>Menu</p>
                     <ul>
-                         <?php
+                        <?php
                        if(!$_SESSION['dn'])
                        {
                         echo "<script>alert('Bạn không có quyền truy cập vào trang');</script>";
@@ -132,39 +132,61 @@ session_start();
             </div>
 
         </div>
-        <div class="right">
-            <div class="update-info-container">
-                <h2>Thông Tin thành viên </h2>
+        <?php
+        include("../controller/cThanhVien.php");
+        $q= new cThanhVien();
+        $kq = $q->Query1TV($_REQUEST['idtv']);
+        if($kq)
+        {
+            echo' <div class="right">
+            <div class="update-info-container"><h2>Thông Tin thành viên </h2>';
+            while($r=mysqli_fetch_assoc($kq)){
+                $tentv=$r['TenThanhVien'];
+                $sdt=$r['SoDienThoai'];
+                $diachi=$r['DiaChi'];
+                $email=$r['email'];
+                $date=$r['NgayThamGia'];
+                echo' 
                 <label for="name">Tên:</label>
-                <span class="Ten">nguyenduybao</span>
+                <span class="Ten">'.$tentv.'</span>
                 <br>
 
                 <label for="address">Địa chỉ:</label>
-                <span class="diachi">nguyenduybao</span>
+                <span class="diachi">'.$diachi.'</span>
                 <br>
 
                 <label for="phone">SDT:</label>
-                <span class="sdt">nguyenduybao</span>
+                <span class="sdt">'.$sdt.'</span>
                 <br>
                 <label for="Email">Email:</label>
-                <span class="email">nguyenduybao</span>
+                <span class="email">'.$email.'</span>
                 <br>
                 <label for="Email">Ngày tham gia:</label>
-                <span class="ngaythamgia">nguyenduybao</span>
+                <span class="ngaythamgia">'.$date.'</span>
                 <br>
+';
+
+            }
+            echo '  <div class="">
+                    <a href="CapNhatTTTV.php?idtv='.$_REQUEST['idtv'].'"  class="update-btn">Sửa</a>
+                    <a  href="GhiDanhTV.php?idtv='.$_REQUEST['idtv'].'"  class="submit-btn">Ghi Danh</a>
+                    <a  href="XoaTV.php?idtv='.$_REQUEST['idtv'].'"   class="delete-btn">Xoá</a>
+
+                </div>';
+        }
+        else{
+            echo 'ko co du lieu';
+        }
+        ?>
 
 
-                <div class="button-group">
-                    <button type="update" class="update-btn">Sửa</button>
-                    <button type="submit" class="update-btn">Ghi Danh</button>
-                    <button type="button" class="cancel-btn">Xoá</button>
-
-                </div>
-
-            </div>
 
 
-        </div>
+
+    </div>
+
+
+    </div>
     </div>
     <!-- Blog End -->
 

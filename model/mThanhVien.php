@@ -35,6 +35,25 @@
             $p->DongKetNoi($con);
             return $kq;
         }
-        
+        public function  deletetv($idtv)
+        {
+            $p = new clsketnoi();
+            $con = $p->MoKetNoi();
+            $query = "delete from  `thanhvien`  WHERE `thanhvien`.`IDThanhVien` = $idtv;";
+            $kq = mysqli_query($con, $query);
+            $p->DongKetNoi($con);
+            return $kq; 
+        }
+        public function createGhiDanh($idtv,$date)
+        {
+            
+            $p = new clsketnoi();
+            $con = $p->MoKetNoi();
+            $query = "INSERT INTO `lichsutapluyen` (`NgayTap`, `IDThanhVien`) VALUES ('$date', '$idtv');";
+            $kq = mysqli_query($con, $query);
+            $p->DongKetNoi($con);
+            return $kq; 
+
+        }
     }
 ?>

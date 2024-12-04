@@ -49,12 +49,13 @@ body {
 
 
 
+
 .update-info-container {
-    width: 100%;
-    max-width: 500px;
+    width: 75%;
+    max-width: 100%;
     margin-left: 20px;
     padding: 20px;
-    background-color: #b8b8b8c2;
+    background-color: #e6dddd96;
     border-radius: 8px;
     color: #333333;
 }
@@ -65,15 +66,30 @@ body {
     margin-bottom: 20px;
 }
 
- label {
+form label {
     display: inline-block;
-    width: 150px;
-    margin-right: 10px;
+    width: 100px;
+    margin-right: 5px;
     color: #333333;
-    font-weight: 1000;
+    font-weight: bold;
 }
 
-
+form input[type="text"],
+form input[type="tel"] ,
+form input[type='date']{
+    width: calc(100% - 120px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+form input[type="email"] {
+    width: calc(100% - 120px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 .button-group {
     display: flex;
@@ -81,7 +97,7 @@ body {
     justify-content: center;
 }
 
-.update-btn {
+.delete-btn {
     background-color: #ee4f4f;
     color: #ffffff;
     padding: 10px 20px;
@@ -89,17 +105,29 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
-
+.title{
+    font: 1.4em sans-serif;
+    font-weight: bolder;
+    color: #000000;
+    padding: 20px;
+}
 .cancel-btn {
     background-color: #333333;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.submit-btn {
+    background-color: #035529;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
-
-
 .update-btn:hover {
     background-color: #d81b1b;
 }

@@ -122,7 +122,7 @@ session_start();
                 <div class="menu">
                     <p>Menu</p>
                     <ul>
-                         <?php
+                        <?php
                        if(!$_SESSION['dn'])
                        {
                         echo "<script>alert('Bạn không có quyền truy cập vào trang');</script>";
@@ -168,14 +168,32 @@ session_start();
             <div class="confirmation">
 
                 <p class="title">Bạn có chắc chắn muốn xóa thành viên này không?</p>
-                <form action="/xoa-thiet-bi" method="POST">
+                <form action="" method="POST">
                     <input type="hidden" name="deviceId" value="ID_THIET_BI">
-                    <input type="submit" value="Xóa" class="delete-btn">
+                    <input type="submit" value="Xóa" name="delete-btn" class="delete-btn">
                     <input type="button" value="Hủy" class="cancel-btn" onclick="window.history.back();">
                 </form>
             </div>
             </form>
+            <?php
+include_once("../controller/cThanhVien.php");
+$p = new cThanhVien();
+if(isset($_REQUEST['delete-btn']) && $_REQUEST['delete-btn']=="Xóa")
+{
+    $kq = $p->XoaTV($_REQUEST['idtv']);
+    if($kq)
+    {
+        echo "<script>alert('Xóa thông tin thành viên thành công');</script>";
+                            echo "<script>window.location.href = 'QLTV.php';</script>"; 
+    }
+    else
+    {
+        echo "<script>alert('Xóa thông tin thành viên không thành công');</script>";
+                            echo "<script>window.location.href = 'QLTV.php';</script>"; 
+    }
+}
 
+?>
 
         </div>
     </div>
