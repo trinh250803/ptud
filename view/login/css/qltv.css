@@ -52,13 +52,20 @@
     color: #333;
     margin-bottom: 20px;
 }
+.add
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
 
 /* Search Bar */
 .search-bar {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .search-bar input {

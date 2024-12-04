@@ -38,7 +38,7 @@ session_start();
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-7">
                         <h3 style=" margin-left: 80px; margin-bottom:30px;"><strong>Đăng ký thành viên</strong></h3>
-                        <form action="#" method="post">
+                        <form  method="post">
                             <div class="form-group first">
                                 <label for="username">Họ tên</label>
                                 <input type="text" class="form-control" placeholder="Họ tên*" id="username"
@@ -56,7 +56,7 @@ session_start();
                             </div>
 
                             <div class="form-group last mb-3">
-                                <label for="text">Số điện thoại</label>
+                                <label for="telephone">Số điện thoại</label>
                                 <input type="text" class="form-control" placeholder="Số điện thoại*" id="telephone"
                                     name="telephone">
                                 <span></span>
@@ -64,7 +64,7 @@ session_start();
                             </div>
 
                             <div class="form-group last mb-3">
-                                <label for="text">Địa chỉ </label>
+                                <label for="address">Địa chỉ </label>
                                 <input type="text" class="form-control" placeholder="Địa chỉ" id="address"
                                     name="address">
                                 <span></span>
@@ -72,7 +72,7 @@ session_start();
                             </div>
                             <!-- password -->
                             <div class="form-group last mb-3">
-                                <label for="pass">Mật khẩu</label>
+                                <label for="password">Mật khẩu</label>
                                 <input type="password" class="form-control" placeholder="Nhập Password" id="password"
                                     name="password">
                                 <span></span>
@@ -80,20 +80,45 @@ session_start();
                             </div>
 
                             <div class="form-group last mb-3">
-                                <label for="pass"> Nhập lại mật khẩu</label>
+                                <label for="pass-reset"> Nhập lại mật khẩu</label>
                                 <input type="password" class="form-control" placeholder="Nhập Password"
-                                    id="password-reset" name="pass-reset">
+                                    id="pass-reset" name="pass-reset">
                                 <span></span>
                                 <small></small>
                             </div>
 
-                            <input type="submit" value="Đăng ký" name="btn-dangky" class="btn btn-block mt-5"
+                            <input type="submit"   name="btn-dangky" class="btn btn-block mt-5" value="Đăng ký"
                                 style="background-color: #da2127; color: #fff6f4; font-weight: 600; font-size:1.2rem; ">
-
+                                
 
                         </form>
-                        <a class="already-signup" href="./dangnhap.php">Bạn đã có tài khoản</a>
+                        <?php
+                            if (isset($_POST['btn-dangky']) && $_POST['btn-dangky'] == 'Đăng ký') 
+                            { 
+                               
+                                include_once("../controller/cThanhVien.php");
+                                $p = new cThanhVien();
+                                $tentv=$_REQUEST['username'];
+                                $sdt=$_REQUEST['telephone'];
+                                $diachi=$_REQUEST['address'];
+                                $email=$_REQUEST['email'];
+                                $ngaythamgia= date("Y/m/d");
+                                
+                                $password=$_REQUEST['password'];
+                                
+                                $kq= $p->registerTK($tentv,$sdt,$diachi,$email,$ngaythamgia,$password);
+                                if(!$kq)
+                                {
+                                    echo "<script>alert('Đăng ký ko thành công');</script>";
+                                }
+                                else{
+                                    echo "<script>window.location.href = 'QLTV.php';</script>";
+                                }
+                            }
+                    ?>
+                        <a class="already-signup" href="./dangnhap-tv.php">Bạn đã có tài khoản</a>
                     </div>
+                   
                 </div>
             </div>
         </div>
@@ -102,7 +127,7 @@ session_start();
     </div>
 
 
-    <script src="./login/js/regester.js"></script>
+    <!-- <script src="./login/js/regester.js"></script> -->
     <script src="./login/js/jquery-3.3.1.min.js"></script>
     <script src="./login/js/popper.min.js"></script>
     <script src="./login/js/bootstrap.min.js"></script>
