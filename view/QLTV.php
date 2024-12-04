@@ -173,7 +173,7 @@ session_start();
                      
                     
                         <a href="XoaTV.php?idtv='.$r['IDThanhVien'].'"  class="delete-btn">Xoá</a>
-                        <a  href="GhiDanh.php?idtv='.$r['IDThanhVien'].'" name="Register-btn" " class="submit-btn">Ghi Danh </a>
+                        <a  href="GhiDanhTV.php?idtv='.$r['IDThanhVien'].'" name="Register-btn" " class="submit-btn">Ghi Danh </a>
                     </div>';
                             }
                         }

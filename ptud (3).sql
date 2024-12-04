@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2024 at 12:10 PM
+-- Generation Time: Dec 04, 2024 at 05:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -87,7 +87,8 @@ INSERT INTO `hoadon` (`IDHoaDon`, `SoTien`, `TinhTrangThanhToan`, `HinhThucThanh
 (7, 800000.0000, 'Chờ xác nhận', 'Tiền Mặt', '2024-11-05 11:05:00', '0000-00-00 00:00:00', '', 1, 1),
 (8, 450000.0000, 'Chờ xác nhận', 'Chuyển Khoản ngân hàng', '2024-11-05 09:57:43', '2024-11-05 09:29:13', '', 1, 1),
 (9, 800000.0000, 'Chờ xác nhận', 'Chuyển Khoản ngân hàng', '2024-11-05 09:56:07', '2024-11-05 09:34:23', '', 1, 1),
-(10, 450000.0000, 'Chờ xác nhận', 'Tiền Mặt', '2024-11-05 11:05:24', '2024-11-05 09:35:29', '', 1, 1);
+(10, 450000.0000, 'Chờ xác nhận', 'Tiền Mặt', '2024-11-05 11:05:24', '2024-11-05 09:35:29', '', 1, 1),
+(11, 450000.0000, 'Chờ xác nhận', 'Tiền Mặt', '2024-12-04 14:01:34', '2024-12-04 14:01:19', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -141,8 +142,6 @@ INSERT INTO `lichlamviec` (`IDLichLamViec`, `NgayLamViec`, `CaLamViec`, `TrangTh
 
 CREATE TABLE `lichsutapluyen` (
   `NgayTap` datetime NOT NULL,
-  `GioVao` datetime NOT NULL,
-  `GioRa` datetime NOT NULL,
   `IDThanhVien` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -150,8 +149,12 @@ CREATE TABLE `lichsutapluyen` (
 -- Dumping data for table `lichsutapluyen`
 --
 
-INSERT INTO `lichsutapluyen` (`NgayTap`, `GioVao`, `GioRa`, `IDThanhVien`) VALUES
-('2024-10-12 00:00:00', '2024-10-12 18:50:06', '2024-10-12 15:50:06', 1);
+INSERT INTO `lichsutapluyen` (`NgayTap`, `IDThanhVien`) VALUES
+('2024-10-12 00:00:00', 1),
+('2024-12-04 16:42:15', 1),
+('2024-12-04 00:00:00', 1),
+('2024-12-04 00:00:00', 1),
+('2024-12-04 00:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -176,7 +179,7 @@ CREATE TABLE `nhanvien` (
 
 INSERT INTO `nhanvien` (`IDNhanVien`, `TenNhanVien`, `SoDienThoai`, `Password`, `DiaChi`, `Email`, `NgayVaoLam`, `IDRole`) VALUES
 (1, 'Minh', '0379789461', 'e10adc3949ba59abbe56e057f20f883e', '22 Thạnh Xuân', 'npnminh@gmail.com', '2024-05-05', 1),
-(2, 'Nguyễn Duy Bảo', '0822191159', 'e10adc3949ba59abbe56e057f20f883e', '26 nê nợi', 'nguyenduybao@gmail.com', '2024-10-09', 2),
+(2, 'Nguyễn Duy Bảo', '0822191159', 'e10adc3949ba59abbe56e057f20f883e', '26 nê nợi', 'nguyenduybaoaaa@gmail.com', '2024-10-09', 2),
 (3, 'MA', '0354455525', 'e10adc3949ba59abbe56e057f20f883e', 'ai biet', 'kbiet@gmail.com', '2024-10-09', 3);
 
 -- --------------------------------------------------------
@@ -213,7 +216,8 @@ CREATE TABLE `thanhvien` (
 --
 
 INSERT INTO `thanhvien` (`IDThanhVien`, `TenThanhVien`, `SoDienThoai`, `DiaChi`, `email`, `NgayThamGia`, `Password`) VALUES
-(1, 'Nguyễn Duy Bảo', '0822191159', '26 lê lợi', 'nguynduybao112@gmail', '2024-09-12', 'e10adc3949ba59abbe56e057f20f883e');
+(1, 'Nguyễn Duy Bảo', '0822191159', 'quang trung, 340', 'dba@gmaail.aaa', '2024-09-12', 'e10adc3949ba59abbe56e057f20f883e'),
+(3, 'duk', '0354729909', 'quang trung', 'nguyenduybaodt1821@gmail.com', '2024-12-04', 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
@@ -246,9 +250,17 @@ CREATE TABLE `thietbi` (
   `TenThietBi` varchar(100) NOT NULL,
   `TinhTrang` varchar(50) NOT NULL,
   `NgaySanXuat` date NOT NULL,
-  `NoiSanXuat` varchar(50) NOT NULL,
-  `IDNhanVien` int(10) NOT NULL
+  `NoiSanXuat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `thietbi`
+--
+
+INSERT INTO `thietbi` (`IDThietBi`, `TenThietBi`, `TinhTrang`, `NgaySanXuat`, `NoiSanXuat`) VALUES
+(2, 'Máy tập tạ', 'OK', '0000-00-00', 'nghệ an'),
+(3, 'may nâng ngực', 'ok', '2024-12-03', 'nghệ an'),
+(4, 'may nâng ngực', 'ok', '2024-12-03', 'nghệ an');
 
 -- --------------------------------------------------------
 
@@ -361,8 +373,7 @@ ALTER TABLE `thanhvien_goitap`
 -- Indexes for table `thietbi`
 --
 ALTER TABLE `thietbi`
-  ADD PRIMARY KEY (`IDThietBi`),
-  ADD KEY `IDNhanVien` (`IDNhanVien`);
+  ADD PRIMARY KEY (`IDThietBi`);
 
 --
 -- Indexes for table `thietbi_loi`
@@ -396,7 +407,7 @@ ALTER TABLE `goitap`
 -- AUTO_INCREMENT for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `IDHoaDon` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `IDHoaDon` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `khuyenmai`
@@ -426,13 +437,13 @@ ALTER TABLE `phanhoikhachhang`
 -- AUTO_INCREMENT for table `thanhvien`
 --
 ALTER TABLE `thanhvien`
-  MODIFY `IDThanhVien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDThanhVien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `thietbi`
 --
 ALTER TABLE `thietbi`
-  MODIFY `IDThietBi` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDThietBi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -482,12 +493,6 @@ ALTER TABLE `phanhoikhachhang`
 ALTER TABLE `thanhvien_goitap`
   ADD CONSTRAINT `thanhvien_goitap_ibfk_1` FOREIGN KEY (`IDThanhVien`) REFERENCES `thanhvien` (`IDThanhVien`),
   ADD CONSTRAINT `thanhvien_goitap_ibfk_2` FOREIGN KEY (`IDGoiTap`) REFERENCES `goitap` (`IDGoiTap`);
-
---
--- Constraints for table `thietbi`
---
-ALTER TABLE `thietbi`
-  ADD CONSTRAINT `thietbi_ibfk_1` FOREIGN KEY (`IDNhanVien`) REFERENCES `nhanvien` (`IDNhanVien`);
 
 --
 -- Constraints for table `thietbi_loi`

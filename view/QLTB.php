@@ -90,7 +90,7 @@ session_start();
                 <div class="menu">
                     <p>Menu</p>
                     <ul>
-                         <?php
+                        <?php
                        if(!$_SESSION['dn'])
                        {
                         echo "<script>alert('Bạn không có quyền truy cập vào trang');</script>";
@@ -145,49 +145,27 @@ session_start();
                         <span style="margin-right:50px">Tên</span>
                         <span style="margin-right:50px">Thao tác</span>
                     </div>
-                    <div class="list-item">
+                    <?php
+                    include_once("../controller/cThietBi.php");
+                    $p = new cThietBi();
+                    $tbl=$p->getAllTB();
+                    if($tbl)
+                    {
+                        while($r=mysqli_fetch_assoc($tbl))
+                        {
+                        echo' <div class="list-item">   
 
-                        <span class="name" style="margin-left:50px">Thiết bị 1</span>
+                        <span class="name" style="margin-left:50px"><a href="ChiTietTB.php?idtb='.$r['IDThietBi'].'" >'.$r['TenThietBi'].'</a></span>
                         <button class="update-btn">Sửa</button>
                         <button class="delete-btn">Xoá</button>
                         <button class="submit-btn">Báo cáo lỗi</button>
-                    </div>
+                    </div>';
+                        }
+                    }
+                    ?>
+
                     <!-- Repeat the .list-item div for each item in the list -->
-                    <div class="list-item">
 
-                        <span class="name" style="margin-left:50px">Thiết bị 1</span>
-                        <button class="update-btn">Sửa</button>
-                        <button class="delete-btn">Xoá</button>
-                        <button class="submit-btn">Báo cáo lỗi</button>
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Thiết bị 1</span>
-                        <button class="update-btn">Sửa</button>
-                        <button class="delete-btn">Xoá</button>
-                        <button class="submit-btn">Báo cáo lỗi</button>
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Thiết bị 1</span>
-                        <button class="update-btn">Sửa</button>
-                        <button class="delete-btn">Xoá</button>
-                        <button class="submit-btn">Báo cáo lỗi</button>
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Thiết bị 1</span>
-                        <button class="update-btn">Sửa</button>
-                        <button class="delete-btn">Xoá</button>
-                        <button class="submit-btn">Báo cáo lỗi</button>
-                    </div>
-                    <div class="list-item">
-
-                        <span class="name" style="margin-left:50px">Thiết bị 1</span>
-                        <button class="update-btn">Sửa</button>
-                        <button class="delete-btn">Xoá</button>
-                        <button class="submit-btn">Báo cáo lỗi</button>
-                    </div>
                     <!-- Add more list items as needed -->
                 </div>
             </div>
